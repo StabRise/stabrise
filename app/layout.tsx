@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <Header />
             <SectionContainer>
-              <div className="mx-auto max-w-8xl rounded-lg bg-white px-6 py-16 mt-8 mb-8 shadow-lg">
+              <div className="mx-auto max-w-8xl rounded-lg bg-white py-16 my-8 shadow-lg">
                 <main className="mb-auto">{children}</main>
               </div>
             </SectionContainer>

@@ -1,56 +1,43 @@
 import Image from './Image'
 import Link from './Link'
+import FeaturesList from "@/components/FeaturesList";
 
-const Card = ({ title, description, imgSrc, href }) => (
-  <div className="md max-w-[544px] p-4 md:w-1/2">
-    <div
-      className={`${
-        imgSrc && 'h-full'
-      } overflow-hidden rounded-md border-2 border-gray-200/60 dark:border-gray-700/60`}
-    >
-      {imgSrc &&
-        (href ? (
-          <Link href={href} aria-label={`Link to ${title}`}>
+const Card = ({ title, description, imgSrc, href, features }) => (
+  <div className="mx-auto rounded-lg bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl">
+    <Link href={href} aria-label={`Link to ${title}`}>
+      {/* Title */}
+      <h3 className="px-6 pt-3 text-xl font-semibold bg-primary-100 rounded-t-lg">
+        {/* If there is an image, display it */}
+        {imgSrc ? (
+          <div className="overflow-hidden rounded-t-lg">
             <Image
               alt={title}
               src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
+              className="object-cover object-center w-full"
               width={544}
               height={306}
             />
-          </Link>
+          </div>
         ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
-          />
-        ))}
-      <div className="p-6">
-        <h2 className="mb-3 text-2xl leading-8 font-bold tracking-tight">
-          {href ? (
-            <Link href={href} aria-label={`Link to ${title}`}>
-              {title}
-            </Link>
-          ) : (
-            title
-          )}
-        </h2>
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
-        {href && (
-          <Link
-            href={href}
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-base leading-6 font-medium"
-            aria-label={`Link to ${title}`}
-          >
-            Learn more &rarr;
-          </Link>
+          <p className="px-4 py-13">{title}</p> // Show title if no image is provided
         )}
-      </div>
-    </div>
-  </div>
-)
+      </h3>
 
-export default Card
+      {/* Divider */}
+      <hr className="mb-4 border-gray-300" />
+
+      {/* Content Section */}
+      <div className="px-6 pb-6 grey-700">
+        {/* Description */}
+        <p className="text-justify text-base leading-relaxed text-gray-700 italic">
+          {description}
+        </p>
+
+        {/* Features List */}
+        {features && <FeaturesList features={features} />}
+      </div>
+    </Link>
+  </div>
+);
+
+export default Card;
