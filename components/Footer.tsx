@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Product Links */}
           <div className="col-span-1">
             <h2 className="mb-3 text-lg font-semibold text-gray-700 dark:text-white">
-            Product TODO:
+            Products
             </h2>
             <div className="space-y-2">
               <p>
