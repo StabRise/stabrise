@@ -6,46 +6,52 @@ import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  let headerClass =
-    'flex items-center w-full bg-primary-100 justify-between px-5 mb-3 border-b-4 border-gray-300 shadow-lg'
-  if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 z-50'
-  }
+const headerClass = siteMetadata.stickyNav
+  ? 'flex items-center w-full bg-primary-100 justify-between py-2 sticky top-0 z-50 shadow-md'
+  : 'flex items-center w-full bg-primary-100 justify-between py-2 shadow-md'
 
   return (
     <header className={headerClass}>
+      {/* Logo and Header Title */}
       <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between mr-6">
-          <div className="">
-            <Logo className="h-12 w-32" />
-          </div>
+        <div className="flex items-center">
+          <Logo className="mx-3 h-8 w-auto" />
+          {typeof siteMetadata.headerTitle === 'string' ? (
+            <div className="hidden sm:block text-2xl font-semibold">{siteMetadata.headerTitle}</div>
+          ) : (
+            siteMetadata.headerTitle
+          )}
         </div>
       </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6 w-full justify-between">
-        <div className="flex items-center space-x-4 flex-grow">
-          <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
-            {headerNavLinks
-              .filter((link) => link.href !== '/')
-              .map((link) => (
-                <Link
-                  key={link.title}
-                  href={link.href}
-                  className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
-                >
-                  {link.title}
-                </Link>
-              ))}
-          </div>
+
+      {/* Right-side items: Navigation, Search, and Button */}
+      <div className="flex items-center space-x-4">
+        {/* Desktop Navigation */}
+        <div className="hidden sm:flex items-center gap-x-6 overflow-x-auto">
+          {headerNavLinks
+            .filter((link) => link.href !== '/')
+            .map((link) => (
+              <Link
+                key={link.title}
+                href={link.href}
+                className="hover:text-primary-500 dark:hover:text-primary-400 font-medium text-gray-900 dark:text-gray-100"
+              >
+                {link.title}
+              </Link>
+            ))}
         </div>
 
-        {/* Schedule Demo Button */}
-        <div className="flex items-center">
-          <button className="bg-primary-500 text-white px-6 py-2 hover:bg-primary-600 mb-3 mr-4">
-            Schedule Demo
-          </button>
-        </div>
+        {/* Search Button */}
+        <SearchButton />
+
+        {/* Call-to-action Button */}
+        <button className="hidden sm:block bg-secondary-400 text-white px-6 py-2 rounded-md hover:bg-primary-600 transition-colors">
+          Contact Us
+        </button>
+
+        {/* Mobile Navigation */}
+        <MobileNav />
       </div>
-      <MobileNav />
     </header>
   )
 }

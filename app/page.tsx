@@ -84,7 +84,7 @@ export default async function Page() {
       <hr className="" />
       <section className="bg-primary-100 py-16">
         <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-primary-950 text-3xl font-semibold text-center mb-8">Our Use Cases</h2>
+          <h2 className="text-grey-900 text-3xl font-semibold text-center mb-8">Why Choose StabRise?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChooseUs.map((card, index) => (
               <SimpleCard
