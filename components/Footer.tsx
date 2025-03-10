@@ -32,33 +32,29 @@ export default function Footer() {
             <div className="space-y-2">
               <p>
                 <Link
-                  href="/redaction"
-                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-                >
+                  href="/scaledp"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
                   ScaleDP
                 </Link>
               </p>
               <p>
                 <Link
-                  href="/redaction"
-                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-                >
+                  href="/scaledp-pro"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
                   ScaleDP Pro
                 </Link>
               </p>
               <p>
                 <Link
-                  href="/redaction"
-                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-                >
+                  href="/spark-pdf"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
                   Spark PDF
                 </Link>
               </p>
               <p>
                 <Link
-                  href="/redaction"
-                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-                >
+                  href="https://pdf-redaction.com/"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
                   PDF Redaction
                 </Link>
               </p>
@@ -69,30 +65,34 @@ export default function Footer() {
           <div className="col-span-1">
             <h2 className="mb-3 text-lg font-semibold text-gray-700 dark:text-white">Legal</h2>
             <div className="space-y-2">
-              <Link
-                href="/privacy"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="/gdpr"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-              >
-                GDPR Compliance
-              </Link>
-              <Link
-                href="/cookies"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
-              >
-                Cookie Policy
-              </Link>
+              <p>
+                <Link
+                    href="/privacy"
+                    className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                  Privacy Policy
+                </Link>
+              </p>
+              <p>
+                  <Link
+                      href="/terms"
+                      className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                    Terms of Service
+                  </Link>
+              </p>
+              <p>
+                  <Link
+                      href="/gdpr"
+                      className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                    GDPR Compliance
+                  </Link>
+              </p>
+              <p>
+                  <Link
+                      href="/cookies"
+                      className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                    Cookie Policy
+                  </Link>
+              </p>
             </div>
           </div>
 

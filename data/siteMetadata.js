@@ -13,7 +13,7 @@ const siteMetadata = {
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'support@pdf-redaction.com',
   phone: '+48-790-844-156',
-  github: 'https://github.com',
+  github: 'https://github.com/StabRise',
   // x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
