@@ -11,7 +11,7 @@ const siteMetadata = {
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'support@pdf-redaction.com',
+  email: 'info@stabrise.com',
   phone: '+48-790-844-156',
   github: 'https://github.com/StabRise',
   // x: 'https://twitter.com/x',
