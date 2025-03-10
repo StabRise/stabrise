@@ -1,35 +1,169 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import Logo from '@/data/logo.svg'
 
 export default function Footer() {
   return (
     <footer>
-      <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-          <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-          <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-          <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
-          <SocialIcon kind="x" href={siteMetadata.x} size={6} />
-          <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
-          <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
-          <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          {/* Logo Section */}
+          <div className="col-span-1">
+            {/* Logo */}
+            <div className="mb-6">
+              <Logo className="h-12 w-32" />
+            </div>
+
+            {/* Description Text */}
+            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+              Document Processing Solutions
+            </p>
+            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+              Scalable by the Spark. Process structured and unstructured data with ease.
+            </p>
+          </div>
+
+          {/* Product Links */}
+          <div className="col-span-1">
+            <h2 className="mb-3 text-lg font-semibold text-gray-700 dark:text-white">
+            Product TODO:
+            </h2>
+            <div className="space-y-2">
+              <p>
+                <Link
+                  href="/redaction"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  ScaleDP
+                </Link>
+              </p>
+              <p>
+                <Link
+                  href="/redaction"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  ScaleDP Pro
+                </Link>
+              </p>
+              <p>
+                <Link
+                  href="/redaction"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Spark PDF
+                </Link>
+              </p>
+              <p>
+                <Link
+                  href="/redaction"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  PDF Redaction
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Legal Links */}
+          <div className="col-span-1">
+            <h2 className="mb-3 text-lg font-semibold text-gray-700 dark:text-white">Legal</h2>
+            <div className="space-y-2">
+              <Link
+                href="/privacy"
+                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                href="/gdpr"
+                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+              >
+                GDPR Compliance
+              </Link>
+              <Link
+                href="/cookies"
+                className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+              >
+                Cookie Policy
+              </Link>
+            </div>
+          </div>
+
+          {/* Connect With Us */}
+          <div className="col-span-1">
+            <h2 className="mb-3 text-lg font-semibold text-gray-700 dark:text-white">
+              Connect With Us
+            </h2>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <svg
+                  className="h-5 w-5 text-gray-600 dark:text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4-8 5-8-5V6l8 5 8-5z" />
+                </svg>
+                <a
+                  href="mailto:support@pdf-redaction.com"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  support@pdf-redaction.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <svg
+                  className="h-5 w-5 text-gray-600 dark:text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02z" />
+                </svg>
+                <a
+                  href="tel:+48-790-844-156"
+                  className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
+                >
+                  +48-790-844-156
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
-        </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
-          </Link>
+
+        {/* Footer Bottom */}
+        <div className="mt-8 border-t border-gray-300 pt-4 text-center dark:border-gray-700">
+          <div className="flex flex-col items-center">
+            <div className="mb-3 flex space-x-4">
+              <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
+              <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+              <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
+              <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
+              <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
+              <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
+              <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
+              <SocialIcon kind="x" href={siteMetadata.x} size={6} />
+              <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
+              <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
+              <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
+            </div>
+            <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+              <div>{siteMetadata.author}</div>
+              <div>{` • `}</div>
+              <div>{`© ${new Date().getFullYear()}`}</div>
+              <div>{` • `}</div>
+              <Link href="/">{siteMetadata.title}</Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
