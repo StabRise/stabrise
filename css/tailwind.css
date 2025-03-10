@@ -66,15 +66,15 @@ body {
 }
 
 h1 {
-  @apply font-bold text-5xl tracking-tight leading-tight text-gray-900;
+  @apply font-bold text-5xl tracking-tight leading-tight;
 }
 
 h2 {
-  @apply font-bold text-4xl tracking-tight leading-tight text-gray-900;
+  @apply font-bold text-4xl tracking-tight leading-tight;
 }
 
 h3 {
-  @apply font-bold text-3xl tracking-tight leading-tight text-gray-900;
+  @apply font-bold text-3xl tracking-tight leading-tight;
 }
 
 

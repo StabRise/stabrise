@@ -4,21 +4,21 @@ import Image from '@/components/pages/Image'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
     return {
-        // h1: ({children}) => (
-        //     <Typography variant="h1" sx={{textAlign: 'center', my: 4}}>
-        //         {children}
-        //     </Typography>
-        // ),
-        // h2: ({children}) => (
-        //     <Typography variant="h2" sx={{textAlign: 'center', my: 3}}>
-        //         {children}
-        //     </Typography>
-        // ),
-        // h3: ({children}) => (
-        //     <Typography variant="h3" sx={{textAlign: 'left', my: 2}}>
-        //         {children}
-        //     </Typography>
-        // ),
+        h1: ({children}) => (
+            <h1 className="text-center my-6">
+              {children}
+            </h1>
+        ),
+        h2: ({children}) => (
+          <h2 className="text-center my-6">
+              {children}
+          </h2>
+        ),
+        h3: ({ children }) => (
+          <h3 className="text-center my-6">
+              {children}
+          </h3>
+        ),
 
         // img: ({src, alt, ...props}) => (
         //     <Image
@@ -44,16 +44,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         //         {children}
         //     </Link>
         // ),
-        // p: ({children}) => (
-        //     <p
-        //         style={{
-        //             marginBottom: '1.5em',
-        //             marginTop: '1.5em',
-        //         }}
-        //     >
-        //         {children}
-        //     </p>
-        // ),
+        p: ({children}) => (
+            <p className="my-6">
+                {children}
+            </p>
+        ),
         // blockquote: ({children}) => (
         //     <Note>
         //         {children}
