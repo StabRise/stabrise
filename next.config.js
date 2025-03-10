@@ -1,8 +1,13 @@
+const withMDX = require('@next/mdx')({
+  // You can add any MDX-related plugins or configuration here
+})
 const { withContentlayer } = require('next-contentlayer2')
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+// import createMDX from '@next/mdx'
+// import { withContentlayer } from 'next-contentlayer2'
+// import withBundleAnalyzer from '@next/bundle-analyzer'
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -62,7 +67,7 @@ const unoptimized = process.env.UNOPTIMIZED ? true : undefined
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 module.exports = () => {
-  const plugins = [withContentlayer, withBundleAnalyzer]
+  const plugins = [withContentlayer, withBundleAnalyzer, withMDX]
   return plugins.reduce((acc, next) => next(acc), {
     output,
     basePath,

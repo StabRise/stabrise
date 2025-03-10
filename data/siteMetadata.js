@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'StabRise - Document Processing Solutions.',
-  author: 'Mykola Melnyk',
+  author: '',
   headerTitle: '',
   description: 'StabRise - Document Processing and De-Identification Solutions',
   language: 'en-us',

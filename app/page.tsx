@@ -45,7 +45,7 @@ export default async function Page() {
       {/*  </div>*/}
       {/*</section>*/}
       <hr className="mt-6" />
-      <section id="projects" className="bg-gray-50 py-6 px-3 text-center">
+      <section id="projects" className="bg-gray-50 py-6 px-6 text-center">
         <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {projectsData.map((d) => (
