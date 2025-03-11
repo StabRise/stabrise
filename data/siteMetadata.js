@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'StabRise - Document Processing and De-Identification Solutions',
   language: 'en-us',
   theme: 'light', // system, dark or light
-  siteUrl: 'https://https://stabrise.com/',
+  siteUrl: 'https://https://stabrise.com',
   siteRepo: 'https://github.com/StabRise',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
