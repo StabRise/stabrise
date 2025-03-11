@@ -1,0 +1,101 @@
+---
+title: ScaleDP
+imgSrc: /static/images/projects/scaledp.webp
+description: An Open-Source Library for Processing Documents using AI/ML in Apache Spark.
+href: /projects/scale-dp/
+colab:
+test:
+maven:
+license: https://github.com/StabRise/spark-pdf/blob/master/LICENSE
+codacy: https://app.codacy.com/gh/StabRise/ScaleDP/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+pypi: https://pypi.org/project/scaledp
+pStabRise: https://stabrise.com
+github: https://github.com/StabRise/ScaleDP
+---
+
+# Welcome to the ScaleDP library
+
+ScaleDP is library allows you to process documents using AI/ML capabilities and scale it using Apache Spark.
+
+**LLM** (Large Language Models) and **VLM** (Vision Language Models) models are used to extract data from text and images in combination with **OCR** engines. Discover
+pretrained models for your projects or play with the thousands of models hosted on the [Hugging Face Hub](https://huggingface.co/)
+
+## Key features
+
+ - ✅ Loading **PDF** documents/**Images** to the Spark DataFrame (using [Spark PDF DataSource](https://stabrise.com/spark-pdf/)  and as `binaryFile`)
+ - ✅ Extraction text/images from **PDF** documents/Images
+ - ✅ Zero-Shot extraction **structured data** from Text/Images/Pdf's using LLM and ML models
+ - ✅ Possibility run as **REST API** service without Spark Session for have minimum processing latency
+ - ✅ Support **Streaming** mode for processing documents in real-time and integrate to event based architecture
+
+# Quick Start
+
+## Installation
+
+Prerequisites:
+ - **Python** 3.10 or higher
+
+In case to run with Spark:
+
+ - **Apache Spark** 3.5 or higher
+ - **Java** 8
+
+Install the `ScaleDP` package with pip. Python package on pypi is scaledp:
+```shell
+pip install scaledp
+```
+
+## Start a Spark session with ScaleDP
+
+```python
+from scaledp import *
+spark = ScaleDPSession(with_spark_pdf=True)
+spark
+```
+
+## Read PDF file to the DataFrame
+
+```python
+pdf_example = files('resources/pdfs/Invoice.pdf')
+
+df = spark.read.format("pdf") \
+    .load(pdf_example)
+
+df.show()
+```
+
+# Generative AI capabilities
+
+LLM based OCR
+ - Accurate
+ - Multilingual
+
+LLM Data Extraction
+ - Zero-shot data extraction
+ - Declarative (possibility to define schema)
+ - Scalable
+
+Visual LLM data extraction
+ - Extract data from the images
+ - Zero shot
+ - Accurate
+ - Declarative
+
+LLM Ner
+ - Zero-shot NER
+
+# Supported OCR engines
+
+Tesseract OCR
+ - Fast
+ - Most popular
+
+Easy OCR
+ - Ready-to-use OCR with 80+ languages support.
+
+Surya OCR
+ - OCR in 90+ languages that benchmarks favorably vs cloud services
+ - Line-level text detection in any language
+
+DocTR OCR
+ - Optical Character Recognition made seamless & accessible to anyone, powered by TensorFlow 2 & PyTorch

@@ -1,29 +1,28 @@
-import React from 'react';
+import React from 'react'
 
 interface BadgeLinksProps {
-  colabLink?: string;
-  testLink?: string;
-  mavenLink?: string;
-  licenseLink?: string;
-  codacyLink?: string;
+  colabLink?: string
+  testLink?: string
+  mavenLink?: string
+  licenseLink?: string
+  codacyLink?: string
+  pypiLink?: string
+  pStabRiseLink?: string
 }
 
 const BadgeLinks: React.FC<BadgeLinksProps> = ({
-                                                 colabLink,
-                                                 testLink,
-                                                 mavenLink,
-                                                 licenseLink,
-                                                 codacyLink,
-                                               }) => {
+  colabLink,
+  testLink,
+  mavenLink,
+  licenseLink,
+  codacyLink,
+  pypiLink,
+  pStabRiseLink,
+}) => {
   return (
     <div className="flex justify-center space-x-2">
       {colabLink && (
-        <a
-          href={colabLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center"
-        >
+        <a href={colabLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
           <img
             alt="Open In Colab Quick Start"
             src="https://colab.research.google.com/assets/colab-badge.svg"
@@ -72,8 +71,18 @@ const BadgeLinks: React.FC<BadgeLinksProps> = ({
           />
         </a>
       )}
+      {pypiLink && (
+        <a href={pypiLink} className="flex items-center">
+          <img alt="PyPi Badge" src="https://img.shields.io/pypi/v/scaledp.svg" className="h-4" />
+        </a>
+      )}
+      {pStabRiseLink && (
+        <a href={pStabRiseLink} className="flex items-center">
+          <img alt="powered by StabRise" src="https://img.shields.io/badge/powered%20by-StabRise-orange.svg?style=flat&colorA=E1523D&colorB=007D8A" className="h-4" />
+        </a>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default BadgeLinks;
+export default BadgeLinks
