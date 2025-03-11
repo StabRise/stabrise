@@ -74,7 +74,7 @@ export default function Footer() {
               </p>
               <p>
                   <Link
-                      href="/terms"
+                      href="/terms-of-use"
                       className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
                     Terms of Service
                   </Link>
