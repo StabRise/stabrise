@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function ProjectLayout({ children, content }: Props) {
-  const { title, description, href, imgSrc, colab, test, maven, license, codacy, github } = content
+  const { title, description, href, imgSrc, colab, test, maven, license, codacy, pypi, pStabRise, github } = content
 
   return (
     <div className="px-8">
@@ -32,6 +32,8 @@ export default function ProjectLayout({ children, content }: Props) {
           mavenLink={maven}
           licenseLink={license}
           codacyLink={codacy}
+          pypiLink={pypi}
+          pStabRiseLink={pStabRise}
         />
         <Link href={github} className="text-center">
           <Image

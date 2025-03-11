@@ -161,6 +161,8 @@ export const Projects = defineDocumentType(() => ({
     maven: { type: 'string' },
     license: { type: 'string' },
     codacy: { type: 'string' },
+    pypi: { type: 'string' },
+    pStabRise: { type: 'string' },
     layout: { type: 'string' },
     github: { type: 'string' },
   },
