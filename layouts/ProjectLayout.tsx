@@ -27,11 +27,11 @@ export default function ProjectLayout({ children, content }: Props) {
         </h3>
         <p className="mx-auto max-w-3xl pb-6 text-lg text-gray-600">{description}</p>
         <BadgeLinks
-          colabLink="colab"
-          testLink="test"
-          mavenLink="maven"
-          licenseLink="license"
-          codacyLink="codacy"
+          colabLink={colab}
+          testLink={test}
+          mavenLink={maven}
+          licenseLink={license}
+          codacyLink={codacy}
         />
         <Link href={github} className="text-center">
           <Image
