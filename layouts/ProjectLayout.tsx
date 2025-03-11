@@ -13,7 +13,7 @@ export default function ProjectLayout({ children, content }: Props) {
   const { title, description, href, imgSrc, colab, test, maven, license, codacy, pypi, pStabRise, github } = content
 
   return (
-    <div className="px-8">
+    <div className="px-12">
       <section className="mb-6 text-center">
         <h3>
           <Image
@@ -45,13 +45,10 @@ export default function ProjectLayout({ children, content }: Props) {
           />
         </Link>
       </section>
+      <hr />
       <section>
-        <div className="divide-y divide-gray-200 px-12 text-justify dark:divide-gray-700">
-          <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-            <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
-              {children}
-            </div>
-          </div>
+        <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
+          {children}
         </div>
       </section>
     </div>
