@@ -162,6 +162,7 @@ export const Projects = defineDocumentType(() => ({
     license: { type: 'string' },
     codacy: { type: 'string' },
     layout: { type: 'string' },
+    github: { type: 'string' },
   },
   computedFields,
 }))

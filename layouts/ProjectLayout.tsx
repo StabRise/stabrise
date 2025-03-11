@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import type { Project } from 'contentlayer/generated'
 import Image from '@/components/Image'
 import BadgeLinks from '@/components/BadgeLinks'
+import Link from 'next/link'
 
 interface Props {
   children: ReactNode
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export default function ProjectLayout({ children, content }: Props) {
-  const { title, description, href, imgSrc, colab, test, maven, license, codacy } = content
+  const { title, description, href, imgSrc, colab, test, maven, license, codacy, github } = content
 
   return (
     <div className="px-8">
@@ -32,6 +33,15 @@ export default function ProjectLayout({ children, content }: Props) {
           licenseLink="license"
           codacyLink="codacy"
         />
+        <Link href={github} className="text-center">
+          <Image
+            src="/static/images/github-icon.png"
+            alt="github"
+            width={40}
+            height={40}
+            className="mt-3 mr-auto ml-auto"
+          />
+        </Link>
       </section>
       <section>
         <div className="divide-y divide-gray-200 px-12 text-justify dark:divide-gray-700">
