@@ -147,9 +147,28 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }))
 
+export const Projects = defineDocumentType(() => ({
+  name: 'Projects',
+  filePathPattern: 'projects/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    description: { type: 'string' },
+    href: { type: 'string' },
+    imgSrc: { type: 'string' },
+    colab: { type: 'string' },
+    test: { type: 'string' },
+    maven: { type: 'string' },
+    license: { type: 'string' },
+    codacy: { type: 'string' },
+    layout: { type: 'string' },
+  },
+  computedFields,
+}))
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Authors, Projects],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

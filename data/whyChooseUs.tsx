@@ -19,17 +19,17 @@ const whyChooseUs = [
   {
     title: "Scalability",
     description: "Our solution offers unparalleled scalability, capable of running seamlessly on a Spark cluster or as a REST API service. Whether deployed on your isolated infrastructure or on cloud platforms like AWS, Azure, or Databricks, our solution adapts to your evolving needs with ease.",
-    icon: <FaCloud size={24} className="text-green-300" />
+    icon: <FaCloud size={24} className="text-red-300" />
   },
   {
     title: "Handling Large Files",
     description: "We specialize in managing large files, including DICOM and PDF formats. Our solution effortlessly handles files up to 3GB in DICOM format and up to 10,000 pages in PDF format, ensuring efficient processing of extensive datasets.",
-    icon: <FaFilePdf size={24} className="text-purple-300" />
+    icon: <FaFilePdf size={24} className="text-orange-300" />
   },
   {
     title: "Quality Control",
     description: "Utilizing human oversight and Generative AI, we ensure the quality of results for each document or page. Our rigorous quality control measures guarantee accurate and reliable outcomes, meeting the highest standards of excellence.",
-    icon: <FaCheckCircle size={24} className="text-orange-300" />
+    icon: <FaCheckCircle size={24} className="text-blue-300" />
   }
 ];
 

@@ -18,7 +18,7 @@ export default async function Page() {
   // const posts = allCoreContent(sortedPosts);
 
   return (
-    <main className="mx-auto">
+    <main className="mx-auto p-8">
       <section className="mb-8 text-center">
         <h1 className="p-6 text-3xl font-semibold text-gray-900">
           Scalable Document Processing Solutions

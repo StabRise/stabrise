@@ -11,14 +11,14 @@ const projectsData: Project[] = [
     title: "SparkPDF",
     description: `A powerful, open-source data source for processing and handling PDF files in Apache Spark. Designed to efficiently manage large PDF files with minimal memory usage and scalable performance.`,
     imgSrc: '/static/images/projects/sparkpdf.webp',
-    href: "/sparkpdf/",
+    href: "/projects/spark-pdf/",
     features: ["Open-source", "Supports large files", "Optimized for performance"]
   },
   {
     title: "Scale DP",
     description: `An Open-Source Library for Processing Documents using AI/ML in Apache Spark.`,
     imgSrc: '/static/images/projects/scaledp.webp',
-    href: "/scaledp/",
+    href: "/projects/scale-dp/",
     features: ["Open-source", "Highly scalable"]
   },
   {
