@@ -1,19 +1,21 @@
-import { sortPosts, allCoreContent } from "pliny/utils/contentlayer";
-import { allBlogs } from "contentlayer/generated";
-import Main from "./Main";
-import FeaturesList from "@/components/FeaturesList";
+// import { sortPosts, allCoreContent } from "pliny/utils/contentlayer";
+// import { allBlogs } from "contentlayer/generated";
+// import Main from "./Main";
 
-import projectsData from "@/data/projectsData";
-import useCases from "@/data/useCases";
+import FeaturesList from '@/components/FeaturesList'
+import Card from '@/components/Card'
+import Image from '@/components/Image'
+import SimpleCard from '@/components/SimpleCard'
 
-import Card from "@/components/Card";
-import SimpleCard from "@/components/SimpleCard";
-import { FaRegFileAlt, FaRegSmile } from "react-icons/fa";
-import whyChooseUs from "@/data/whyChooseUs";
+import projectsData from '@/data/projectsData'
+import useCases from '@/data/useCases'
+import whyChooseUs from '@/data/whyChooseUs'
+
+import { FaRegFileAlt, FaRegSmile } from 'react-icons/fa'
 
 export default async function Page() {
-  const sortedPosts = sortPosts(allBlogs);
-  const posts = allCoreContent(sortedPosts);
+  // const sortedPosts = sortPosts(allBlogs);
+  // const posts = allCoreContent(sortedPosts);
 
   return (
     <main className="mx-auto">
@@ -21,12 +23,22 @@ export default async function Page() {
         <h1 className="p-6 text-3xl font-semibold text-gray-900">
           Scalable Document Processing Solutions
         </h1>
-        <p className="mx-auto mt-6 pb-6 max-w-3xl text-lg text-gray-600">
+        <p className="mx-auto mt-6 max-w-3xl pb-6 text-lg text-gray-600">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
           efficiency. Powered by Spark, we help you scale your document processing smoothly and
           securely.
         </p>
+        <div className="p-6">
+          <Image
+            src="/static/images/banner.jpeg"
+            alt="Banner image"
+            layout="intrinsic"
+            width={1200}
+            height={600}
+            className="w-full"
+          />
+        </div>
       </section>
       {/* Video Section */}
       {/*<section className="mb-8 text-center">*/}
@@ -45,7 +57,7 @@ export default async function Page() {
       {/*  </div>*/}
       {/*</section>*/}
       <hr className="mt-6" />
-      <section id="projects" className="bg-gray-50 py-6 px-6 text-center">
+      <section id="projects" className="bg-gray-50 px-6 py-6 text-center">
         <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {projectsData.map((d) => (
@@ -62,16 +74,14 @@ export default async function Page() {
       </section>
       <hr className="" />
       <section className="py-6">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-center my-6">Use Cases</h2>
+        <div className="mx-auto max-w-screen-xl px-6">
+          <h2 className="my-6 text-center">Use Cases</h2>
           <div className="">
             <div className="usage-cases-list">
               {useCases.map((item, index) => (
                 <div key={index} className="usage-case-item mb-5">
-                  <div className="usage-case-header flex items-center mb-2.5">
-                    <div className="usage-case-icon mr-2.5 text-primary">
-                      {item.icon}
-                    </div>
+                  <div className="usage-case-header mb-2.5 flex items-center">
+                    <div className="usage-case-icon text-primary mr-2.5">{item.icon}</div>
                     <p className="text-xl text-gray-800">{item.title}</p>
                   </div>
                   <p className="text-base text-gray-700">{item.description}</p>
@@ -83,9 +93,11 @@ export default async function Page() {
       </section>
       <hr className="" />
       <section className="bg-primary-100 py-16">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-grey-900 text-3xl font-semibold text-center mb-8">Why Choose StabRise?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mx-auto max-w-screen-xl px-6">
+          <h2 className="text-grey-900 mb-8 text-center text-3xl font-semibold">
+            Why Choose StabRise?
+          </h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {whyChooseUs.map((card, index) => (
               <SimpleCard
                 key={index}
@@ -173,5 +185,5 @@ export default async function Page() {
       {/*  </div>*/}
       {/*</section>*/}
     </main>
-  );
+  )
 }
