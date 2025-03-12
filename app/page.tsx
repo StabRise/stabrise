@@ -20,24 +20,24 @@ export default async function Page() {
 
   return (
     <SectionContainer>
-      <section className="p-12">
-        <h1 className="my-6 text-3xl text-center font-semibold text-gray-800">
+      <section className="">
+        <h1 className="my-6 pt-18 px-6  text-3xl text-center font-semibold text-gray-800">
           Scalable Document Processing Solutions
         </h1>
-        <p className="mx-auto mt-6 max-w-3xl pb-6 text-lg text-gray-600">
+        <p className="text-center px-6 mx-auto mt-6 max-w-5xl pb-6 text-lg text-gray-600">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
           efficiency. Powered by Spark, we help you scale your document processing smoothly and
           securely.
         </p>
-        <div className="p-6">
+        <div>
           <Image
-            src="/static/images/banner.jpeg"
+            src="/static/images/banner.svg"
             alt="Banner image"
             layout="intrinsic"
             width={1200}
             height={600}
-            className="w-full"
+            className="w-full sm:block hidden"
           />
         </div>
       </section>
@@ -57,7 +57,7 @@ export default async function Page() {
       {/*    </video>*/}
       {/*  </div>*/}
       {/*</section>*/}
-      <hr className="mt-6" />
+      <hr className="" />
       <section id="projects" className="bg-gray-50 px-6 py-6 text-center">
         <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
         <div className="grid gap-6 md:grid-cols-2">

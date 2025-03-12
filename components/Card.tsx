@@ -19,7 +19,7 @@ const Card = ({ title, description, imgSrc, href, features }) => (
             />
           </div>
         ) : (
-          <p className="px-4 py-13">{title}</p> // Show title if no image is provided
+          <p className="px-4 py-10">{title}</p> // Show title if no image is provided
         )}
       </h3>
 

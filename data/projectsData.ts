@@ -11,6 +11,7 @@ const projectsData: Project[] = [
     title: "PDF Datasource",
     description: `A powerful, open-source data source for processing and handling PDF files in Apache Spark. Designed to efficiently manage large PDF files with minimal memory usage and scalable performance.`,
     imgSrc: '/static/images/projects/sparkpdf.webp',
+    img2Src: '/static/images/projects/spark-pdf800x600.png',
     href: "/projects/spark-pdf/",
     features: ["Open-source", "Supports large files", "Optimized for performance"]
   },
@@ -18,6 +19,7 @@ const projectsData: Project[] = [
     title: "Scale DP",
     description: `An Open-Source Library for Processing Documents using AI/ML in Apache Spark.`,
     imgSrc: '/static/images/projects/scaledp.webp',
+    img2Src: '/static/images/projects/scale-dp-800x600.png',
     href: "/projects/scale-dp/",
     features: ["Open-source", "Highly scalable"]
   },

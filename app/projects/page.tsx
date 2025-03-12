@@ -23,11 +23,11 @@ export default function Projects() {
               <Link href={d.href} aria-label={`Link to ${d.title}`}>
                 <div className="p-6">
                   <div className="flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
-                    {d.imgSrc ? (
+                    {d.img2Src ? (
                       <div className="flex-shrink-0">
                         <Image
                           alt={d.title}
-                          src={d.imgSrc}
+                          src={d.img2Src}
                           className="h-32 w-32 rounded-lg object-cover"
                           width={54}
                           height={30}
