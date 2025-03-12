@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 import type { Project } from 'contentlayer/generated'
 import Image from '@/components/Image'
 import BadgeLinks from '@/components/BadgeLinks'
-import Link from 'next/link'
+import Link from '@/components/Link'
+import SocialIcon from '@/components/social-icons'
 
 interface Props {
   children: ReactNode
@@ -35,15 +36,14 @@ export default function ProjectLayout({ children, content }: Props) {
           pypiLink={pypi}
           pStabRiseLink={pStabRise}
         />
-        <Link href={github} className="text-center">
-          <Image
-            src="/static/images/github-icon.png"
-            alt="github"
-            width={40}
-            height={40}
-            className="mt-3 mr-auto ml-auto"
+        <div className="mt-1 inline-flex">
+          <SocialIcon
+            size={6}
+            kind="github"
+            href={github}
+            className="transition-colors duration-200 hover:text-black"
           />
-        </Link>
+        </div>
       </section>
       <hr />
       <section>
