@@ -167,6 +167,7 @@ export const Projects = defineDocumentType(() => ({
     pStabRise: { type: 'string' },
     layout: { type: 'string' },
     github: { type: 'string' },
+    gettingStarted: { type: 'string' },
   },
   computedFields,
 }))
