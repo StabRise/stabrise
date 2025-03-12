@@ -45,7 +45,7 @@ const headerClass = siteMetadata.stickyNav
         <SearchButton />
 
         {/* Call-to-action Button */}
-        <button className="hidden sm:block bg-secondary-400 text-white px-6 py-2 rounded-md hover:bg-primary-600 transition-colors">
+        <button className="hidden sm:block bg-secondary-400 text-white px-6 py-2 rounded-md hover:bg-secondary-600 transition-colors">
           Contact Us
         </button>
 

@@ -86,18 +86,20 @@ export default function ListLayoutWithTags({
     <SectionContainer>
       <div className="p-6">
         <div className="flex sm:space-x-12">
-          <div className="hidden h-full max-h-screen max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex dark:border-gray-700 dark:bg-gray-900/70 dark:shadow-gray-800/40">
+          <div className="hidden max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex">
             <div className="px-6 py-4">
+              <div className="text-center">
               {pathname.startsWith('/blog') ? (
-                <h4 className="text-primary-500 mb-4 font-semibold">All Posts</h4>
+                <h4 className="text-primary-500 mb-4  font-semibold">All Posts</h4>
               ) : (
                 <Link
                   href={`/blog`}
-                  className="hover:text-primary-500 dark:hover:text-primary-500 font-semibold text-gray-700 dark:text-gray-300"
+                  className="hover:text-primary-500  font-semibold text-gray-700 "
                 >
                   All Posts
                 </Link>
               )}
+              </div>
 
               <ul className="mt-4 space-y-3">
                 {sortedTags.map((t) => {

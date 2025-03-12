@@ -81,25 +81,13 @@ h3 {
 /* Add this to your custom CSS file */
 button {
   @apply rounded-md p-2 font-bold
-  focus:ring-2 focus:ring-blue-500 focus:outline-none
   transform hover:scale-105 transition-all duration-300
   cursor-pointer;
 }
 
-.button:hover {
+button:hover {
   @apply scale-105; /* Increases size on hover */
 }
-
-
-footer {
-    margin-top: 20px;
-    padding-top: 48px;
-    padding-bottom: 48px;
-    border-top: 1px solid;
-    border-color: rgba(0, 0, 0, 0.12);
-    background-color: #fff;
-}
-
 
 
 /*
