@@ -1,8 +1,69 @@
 ---
 title: 'Spark PDF with Spark Connect'
-date: '2024-12-27'
+date: '2025-03-06'
 tags: ['spark', 'spark-pdf', 'spark-connect']
 draft: false
 authors: ['default']
 summary: 'This blog post introduces Spark PDF, a custom data source for Apache Spark that empowers users to seamlessly integrate PDF data into their Spark workflows.'
+images: ['/static/images/spark-pdf/with-connect1.png']
+layout: PostBanner
 ---
+
+## Spark Connect
+
+The Spark Connect client library is designed to simplify Spark application development. It is a thin API that can be embedded everywhere: in application servers, IDEs, notebooks, and programming languages. The Spark Connect API builds on Spark’s DataFrame API using unresolved logical plans as a language-agnostic protocol between the client and the Spark driver.
+
+More details about Spark Connect you can read on [official documentation](https://spark.apache.org/docs/3.5.4/spark-connect-overview.html).
+
+We have two ways to use Spark PDF with Spark Connect:
+
+- Load Spark PDF jar on the server side
+- Add Spark PDF jar from the client side
+
+## Start Spark Connect with Spark PDF
+
+First way to add [Spark PDF](//stabrise.com/spark-pdf/) package to the Spark Session when starting the Spark Connect server:
+
+```bash
+./sbin/start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:3.5.4,com.stabrise:spark-pdf-spark35_2.12:0.1.15
+```
+
+To use the Spark PDF Datasource with a remote cluster, start a Spark Connect Session:
+
+```python
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.remote("sc://localhost").getOrCreate()
+```
+
+Next, simply read PDF files from any supported source:
+
+```python
+df = spark.read.format("pdf") \
+    .option("imageType", "BINARY") \
+    .option("resolution", "300") \
+    .option("pagePerPartition", "8") \
+    .option("reader", "pdfBox") \
+    .load("s3a://[bucket_name]/*.pdf")
+```
+
+## Add Spark PDF package to the Spark Connect Session
+
+Download the latest version of the Spark PDF jar from Maven Central:
+
+```bash
+wget https://repo1.maven.org/maven2/com/stabrise/spark-pdf-spark35_2.12/0.1.15/spark-pdf-spark35_2.12-0.1.15.jar
+```
+
+Then add it as an artifact:
+
+```python
+spark.addArtifact("spark-pdf-spark35_2.12-0.1.15.jar")
+```
+
+After this, the PDF datasource will be available to read files.
+
+## Links
+
+- [Github repo](https://github.com/StabRise/spark-pdf/tree/main)
+- [Notebook with example](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceSparkConnect.ipynb)
+- [Spark PDF on Maven Central](https://central.sonatype.com/artifact/com.stabrise/spark-pdf-spark35_2.12)

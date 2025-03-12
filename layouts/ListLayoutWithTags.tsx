@@ -83,7 +83,7 @@ export default function ListLayoutWithTags({
 
   return (
     <>
-      <div className="px-6">
+      <div className="p-6">
         <div className="flex sm:space-x-12">
           <div className="hidden h-full max-h-screen max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex dark:border-gray-700 dark:bg-gray-900/70 dark:shadow-gray-800/40">
             <div className="px-6 py-4">

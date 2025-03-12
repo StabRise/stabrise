@@ -27,14 +27,31 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
       <ScrollTopAndComment />
       <article>
         <div>
-          <div className="space-y-1 pb-10 text-center dark:border-gray-700">
+          <div className="px-2 space-y-1 pb-10 text-center dark:border-gray-700">
             <div className="w-full">
               <Bleed>
                 <div className="relative aspect-2/1 w-full">
-                  <Image src={displayImage} alt={title} fill className="object-cover" />
+                  <Image src={displayImage} alt={title} fill className="object-cover rounded-t-lg" />
                 </div>
               </Bleed>
             </div>
+
+
+            {/*<div className="w-full p-6">*/}
+            {/*  <Bleed>*/}
+            {/*    <div className="relative w-full max-w-[800px] h-[400px] mx-auto overflow-hidden">*/}
+            {/*      <Image*/}
+            {/*        src={displayImage}*/}
+            {/*        alt={title}*/}
+            {/*        layout="fill"*/}
+            {/*        objectFit="contain"*/}
+            {/*        className="absolute top-0 left-0"*/}
+            {/*      />*/}
+            {/*    </div>*/}
+            {/*  </Bleed>*/}
+            {/*</div>*/}
+
+
             <div className="relative pt-10">
               <PageTitle>{title}</PageTitle>
             </div>
