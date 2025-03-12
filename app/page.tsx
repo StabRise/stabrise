@@ -19,9 +19,9 @@ export default async function Page() {
   // const posts = allCoreContent(sortedPosts);
 
   return (
-    <SectionContainer className="mx-auto p-8">
-      <section className="mb-8 text-center">
-        <h1 className="p-6 text-3xl font-semibold text-gray-900">
+    <SectionContainer>
+      <section className="p-12">
+        <h1 className="my-6 text-3xl text-center font-semibold text-gray-800">
           Scalable Document Processing Solutions
         </h1>
         <p className="mx-auto mt-6 max-w-3xl pb-6 text-lg text-gray-600">
@@ -113,59 +113,59 @@ export default async function Page() {
       <hr className="mb-6" />
 
       {/* Call to Action */}
-      <section className="mb-3">
-        {/* Form Section */}
-        <div className="bg-primary-100 mx-auto max-w-lg rounded-lg p-6 shadow-lg">
-          <h2 className="mb-4 text-3xl font-bold">Get Started with StabRise Today!</h2>
-          <p className="mb-6 text-lg">
-            Discover how StabRise can help you build scalable and compliant document processing
-            solutions. Let's explore how we can transform your document workflows.
-          </p>
-          <form action="#" method="POST">
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label htmlFor="company-name" className="block text-sm font-medium text-gray-700">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  id="company-name"
-                  name="company-name"
-                  className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="mt-4 bg-[var(--color-secondary-400)] p-3 font-bold text-white hover:bg-[var(--color-secondary-500)]"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+      {/*<section className="mb-3">*/}
+      {/*  /!* Form Section *!/*/}
+      {/*  <div className="bg-primary-100 mx-auto max-w-lg rounded-lg p-6 shadow-lg">*/}
+      {/*    <h2 className="mb-4 text-3xl font-bold">Get Started with StabRise Today!</h2>*/}
+      {/*    <p className="mb-6 text-lg">*/}
+      {/*      Discover how StabRise can help you build scalable and compliant document processing*/}
+      {/*      solutions. Let's explore how we can transform your document workflows.*/}
+      {/*    </p>*/}
+      {/*    <form action="#" method="POST">*/}
+      {/*      <div className="space-y-4">*/}
+      {/*        <div>*/}
+      {/*          <label htmlFor="name" className="block text-sm font-medium text-gray-700">*/}
+      {/*            Name*/}
+      {/*          </label>*/}
+      {/*          <input*/}
+      {/*            type="text"*/}
+      {/*            id="name"*/}
+      {/*            name="name"*/}
+      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div>*/}
+      {/*          <label htmlFor="company-name" className="block text-sm font-medium text-gray-700">*/}
+      {/*            Company Name*/}
+      {/*          </label>*/}
+      {/*          <input*/}
+      {/*            type="text"*/}
+      {/*            id="company-name"*/}
+      {/*            name="company-name"*/}
+      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div>*/}
+      {/*          <label htmlFor="email" className="block text-sm font-medium text-gray-700">*/}
+      {/*            Email*/}
+      {/*          </label>*/}
+      {/*          <input*/}
+      {/*            type="email"*/}
+      {/*            id="email"*/}
+      {/*            name="email"*/}
+      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <button*/}
+      {/*          type="submit"*/}
+      {/*          className="mt-4 bg-[var(--color-secondary-400)] p-3 font-bold text-white hover:bg-[var(--color-secondary-500)]"*/}
+      {/*        >*/}
+      {/*          Submit*/}
+      {/*        </button>*/}
+      {/*      </div>*/}
+      {/*    </form>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       {/* Recent Posts */}
       {/*<section>*/}

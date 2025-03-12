@@ -2,23 +2,24 @@ import projectsData from '@/data/projectsData'
 import { genPageMetadata } from 'app/seo'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
+import SectionContainer from "@/components/SectionContainer";
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
 export default function Projects() {
   return (
-    <div className="bg-white px-6 py-12 dark:bg-gray-900">
+    <div className=" px-6 py-12">
       <div className="mx-auto max-w-4xl">
-        <div className="mb-12 text-center">
+        <div className="mb-6 text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Our Projects</h1>
         </div>
 
         <div className="space-y-8">
           {projectsData.map((d) => (
-            <div
+            <SectionContainer
               key={d.title}
-              className="rounded-lg border border-gray-100 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800"
-            >
+              addMinHeight={false}
+             >
               <Link href={d.href} aria-label={`Link to ${d.title}`}>
                 <div className="p-6">
                   <div className="flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
@@ -42,7 +43,7 @@ export default function Projects() {
                   </div>
                 </div>
               </Link>
-            </div>
+            </SectionContainer>
           ))}
         </div>
       </div>

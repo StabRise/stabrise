@@ -1,17 +1,19 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
+  className?: string // Optional className prop
+  addMinHeight?: boolean // Optional prop to control min-height
 }
 
-export default function SectionContainer({ children }: Props) {
+export default function SectionContainer({ children, className, addMinHeight = true }: Props) {
   return (
-    <section className="min-h-screen">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="bg-white rounded-lg shadow-sm sm:shadow-lg ">
-          {children}
-        </div>
+    <section className={`${addMinHeight ? 'min-h-screen' : ''} ${className}`}>
+      <div
+        className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${addMinHeight ? 'py-6 sm:py-8' : 'py-0'}`}
+      >
+        <div className="rounded-lg bg-white shadow-sm sm:shadow-lg">{children}</div>
       </div>
     </section>
-  );
+  )
 }
