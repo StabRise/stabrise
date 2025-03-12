@@ -38,7 +38,7 @@ const projectsData: Project[] = [
   {
     title: "PDF Redaction",
     description: "At PDF Redaction, we help you protect sensitive information with our fast, AI-powered, easy-to-use, and 100% free online PDF redaction tool. Whether you're redacting names, dates, addresses, or confidential data, our AI ensures your documents stay secure and compliant with privacy regulations like GDPR, HIPAA, and CCPA.",
-    //imgSrc: '/static/images/projects/pdf-redaction.webp',
+    imgSrc: '/static/images/projects/pdf-redaction.webp',
     href: "https://pdf-redaction.com/",
     features: ["AI Powered", "Free Web-Based Tool", "API", "Scalable"]
   }
