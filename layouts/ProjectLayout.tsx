@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import type { Project } from 'contentlayer/generated'
 import Image from '@/components/Image'
 import BadgeLinks from '@/components/BadgeLinks'
-import Link from '@/components/Link'
+import SectionContainer from '@/components/SectionContainer'
 import SocialIcon from '@/components/social-icons'
 
 interface Props {
@@ -14,8 +14,8 @@ export default function ProjectLayout({ children, content }: Props) {
   const { title, description, href, imgSrc, colab, test, maven, license, codacy, pypi, pStabRise, github } = content
 
   return (
-    <div className="px-12">
-      <section className="mb-6 text-center">
+    <SectionContainer>
+      <section className="mb-6 text-center py-6 px-6">
         <h3>
           <Image
             src={imgSrc}
@@ -46,11 +46,11 @@ export default function ProjectLayout({ children, content }: Props) {
         </div>
       </section>
       <hr />
-      <section>
-        <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
+      <section className="px-6">
+        <div className="prose max-w-none pt-8 pb-8 xl:col-span-2">
           {children}
         </div>
       </section>
-    </div>
+    </SectionContainer>
   )
 }

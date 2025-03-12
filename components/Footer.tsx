@@ -12,7 +12,9 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             {/* Logo and Description */}
             <div className="col-span-1">
-              <Logo className="mb-1 h-12 w-32 text-gray-800" />
+              <Link href="/">
+               <Logo className="mb-1 h-12 w-32 text-gray-800" />
+              </Link>
               <p className="mb-4 text-sm text-gray-600">Document Processing Solutions</p>
               <p className="text-sm text-gray-600 italic">
                 Scalable by the Spark. Process structured and unstructured data with ease.
@@ -21,7 +23,7 @@ export default function Footer() {
 
             {/* Product Links */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Products</div>
+              <div className="my-3 text-lg font-semibold text-gray-800">Project</div>
               <div className="space-y-2">
                 {projectsData.map((d) => (
                   <Link href={d.href} className="block text-sm text-gray-600 hover:text-gray-800">

@@ -28,9 +28,4 @@ export const components: MDXComponents = {
       {children}
     </h3>
   ),
-  p: ({children}) => (
-    <p className="my-3">
-      {children}
-    </p>
-  ),
 }
