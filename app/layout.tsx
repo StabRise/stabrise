@@ -99,11 +99,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <Header />
-            <SectionContainer>
-              <div className="mx-auto max-w-8xl rounded-lg bg-white my-8 shadow-lg">
-                <main className="mb-auto">{children}</main>
-              </div>
-            </SectionContainer>
+            <main>
+              {children}
+            </main>
           </SearchProvider>
           <Footer />
         </ThemeProviders>

@@ -6,6 +6,7 @@ import FeaturesList from '@/components/FeaturesList'
 import Card from '@/components/Card'
 import Image from '@/components/Image'
 import SimpleCard from '@/components/SimpleCard'
+import SectionContainer from '@/components/SectionContainer'
 
 import projectsData from '@/data/projectsData'
 import useCases from '@/data/useCases'
@@ -18,7 +19,7 @@ export default async function Page() {
   // const posts = allCoreContent(sortedPosts);
 
   return (
-    <main className="mx-auto p-8">
+    <SectionContainer className="mx-auto p-8">
       <section className="mb-8 text-center">
         <h1 className="p-6 text-3xl font-semibold text-gray-900">
           Scalable Document Processing Solutions
@@ -109,7 +110,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <hr className="my-6" />
+      <hr className="mb-6" />
 
       {/* Call to Action */}
       <section className="mb-3">
@@ -184,6 +185,6 @@ export default async function Page() {
       {/*    ))}*/}
       {/*  </div>*/}
       {/*</section>*/}
-    </main>
+    </SectionContainer>
   )
 }
