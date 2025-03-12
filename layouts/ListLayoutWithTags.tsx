@@ -7,6 +7,7 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
 import { FaCalendar, FaUser } from 'react-icons/fa'
@@ -82,7 +83,7 @@ export default function ListLayoutWithTags({
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   return (
-    <>
+    <SectionContainer>
       <div className="p-6">
         <div className="flex sm:space-x-12">
           <div className="hidden h-full max-h-screen max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex dark:border-gray-700 dark:bg-gray-900/70 dark:shadow-gray-800/40">
@@ -183,6 +184,6 @@ export default function ListLayoutWithTags({
           </div>
         </div>
       </div>
-    </>
+    </SectionContainer>
   )
 }
