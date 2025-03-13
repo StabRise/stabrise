@@ -1,6 +1,6 @@
 {
   "spark": 3,
   "spark-pdf": 3,
-  "spark-connect": 1,
-  "databricks": 1
+  "databricks": 1,
+  "spark-connect": 1
 }

@@ -4,6 +4,7 @@ import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
+import CalendlyWidget from "@/components/CalendlyWidget";
 
 const Header = () => {
   const headerClass = siteMetadata.stickyNav
@@ -48,6 +49,7 @@ const Header = () => {
         <button className="bg-secondary-400 hover:bg-secondary-600 rounded-md px-6 py-2 text-white transition-colors">
           Contact Us
         </button>
+        <CalendlyWidget />
 
         {/* Mobile Navigation */}
         <MobileNav />
