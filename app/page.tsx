@@ -32,7 +32,7 @@ export default async function Page() {
         </p>
         <div>
           <Image
-            src="/static/images/banner.svg"
+            src="/static/images/landing/banner.svg"
             alt="Banner image"
             layout="intrinsic"
             width={1200}

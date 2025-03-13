@@ -1,15 +1,15 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'StabRise - Document Processing Solutions.',
-  author: '',
-  headerTitle: '',
+  author: 'Mykola Melnik, Olga Druchek, Svitoslav Melnyk',
+  headerTitle: 'StabRise - Document Processing Solutions',
   description: 'StabRise - Document Processing and De-Identification Solutions',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://https://stabrise.com',
   siteRepo: 'https://github.com/StabRise',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'info@stabrise.com',
   phone: '+48-790-844-156',

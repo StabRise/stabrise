@@ -30,7 +30,7 @@ export default function Projects() {
                           src={d.img2Src}
                           className="h-32 w-32 rounded-lg object-cover"
                           width={54}
-                          height={30}
+                          height={54}
                         />
                       </div>
                     ) : null}

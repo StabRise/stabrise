@@ -26,7 +26,7 @@ I tested on Databricks runtime **15.4** and **16.0**.
 
 Let's create small single node cluster using **15.4** runtime:
 
-![](/static/images/spark-pdf/on-databricks/img1.webp)
+![](/static/images/blog/spark-pdf/on-databricks/img1.webp)
 
 ## Install library
 
@@ -34,13 +34,13 @@ Need manually install Spark Pdf to the cluster.
 
 Maven coordinates: **com.stabrise:spark-pdf-spark35_2.12:0.1.14**
 
-![](/static/images/spark-pdf/on-databricks/img2.webp)
+![](/static/images/blog/spark-pdf/on-databricks/img2.webp)
 
 ## Load example notebook
 
 I prepared [notebook](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricks.ipynb) adapted and tested on the Databricks.
 
-![](/static/images/spark-pdf/on-databricks/img3.webp)
+![](/static/images/blog/spark-pdf/on-databricks/img3.webp)
 
 ## Run example
 
@@ -65,11 +65,11 @@ df = spark.read.format("pdf") \
     .load([f"file:{os.getcwd()}/{f}"for f in filenames])
 ```
 
-![](/static/images/spark-pdf/on-databricks/img4.webp)
+![](/static/images/blog/spark-pdf/on-databricks/img4.webp)
 
 And here output:
 
-![](/static/images/spark-pdf/on-databricks/img5.webp)
+![](/static/images/blog/spark-pdf/on-databricks/img5.webp)
 
 ## Links
  - [Github repo](https://github.com/StabRise/spark-pdf/tree/main)

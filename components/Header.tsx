@@ -17,7 +17,7 @@ const headerClass = siteMetadata.stickyNav
         <div className="flex items-center">
           <Logo className="mx-3 h-8 w-auto" />
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden sm:block text-2xl font-semibold">{siteMetadata.headerTitle}</div>
+            <h1 className="hidden  text-gray-700 mt-1 font-semibold">{siteMetadata.headerTitle}</h1>
           ) : (
             siteMetadata.headerTitle
           )}

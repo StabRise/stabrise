@@ -3,6 +3,7 @@ interface Project {
   description: string;
   href?: string;
   imgSrc?: string;
+  img2Src?: string;
 }
 
 // TODO: a hero image (16 x 9)
