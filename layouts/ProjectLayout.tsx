@@ -44,7 +44,7 @@ export default function ProjectLayout({ children, content }: Props) {
           <div className="flex items-center space-x-3">
             {gettingStarted && (
                 <Link href={gettingStarted}>
-                  <Button className="bg-primary-400 text-white hover:bg-primary-500 px-6 py-2 text-sm">
+                  <Button className="bg-primary-500 text-white hover:bg-primary-600 px-6 py-2 text-sm">
                     Getting Started
                   </Button>
                 </Link>
