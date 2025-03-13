@@ -10,18 +10,26 @@
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
+  /*Logo colors */
+  /*--color1: #137DC5;*/
+  /*--color1: #ffffff;*/
+  /*--color1: #b3d4f7;*/
+  /*--color1: #2199ea;*/
+  /*--color1: #0f5f96;*/
+  /*--color1: #e1eefc;*/
+
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
- --color-primary-50: oklch(0.97 0.014 254.604);
---color-primary-100: oklch(0.932 0.032 255.585);
---color-primary-200: oklch(0.882 0.059 254.128);
---color-primary-300: oklch(0.809 0.105 251.813);
---color-primary-400: rgb(33, 150, 243);
---color-primary-500: oklch(0.623 0.214 259.815);
---color-primary-600: oklch(0.546 0.245 262.881);
---color-primary-700: oklch(0.488 0.243 264.376);
---color-primary-800: oklch(0.424 0.199 265.638);
---color-primary-900: oklch(0.379 0.146 265.522);
+ --color-primary-50: #ecf4fd;
+--color-primary-100: #e1eefc;
+--color-primary-200: #b3d4f7;
+--color-primary-300: #99c7f8;
+--color-primary-400: #7eb1e6;
+--color-primary-500: #2199ea;
+--color-primary-600: #158bdc;
+--color-primary-700: #137DC5;
+--color-primary-800: #1169a5;
+--color-primary-900: #0f5f96;
 --color-primary-950: oklch(0.282 0.091 267.935);
 
   /* Secondary Color Palette based on oklch(0.759 0.177 60.637) */
