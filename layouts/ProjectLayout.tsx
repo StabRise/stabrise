@@ -17,7 +17,7 @@ export default function ProjectLayout({ children, content }: Props) {
 
   return (
     <SectionContainer>
-      <section className="mb-6 text-center pt-6 pb-3 px-6">
+      <section className="mb-6 text-center pt-6 pb-3 px-6 md:px-12 lg:px-18">
         <Image
           src={imgSrc}
           alt={title}
@@ -38,7 +38,7 @@ export default function ProjectLayout({ children, content }: Props) {
         />
       </section>
       <hr />
-      <section className=" text-center py-3 px-6">
+      <section className=" text-center py-3 px-6 md:px-12 lg:px-18">
         <div className="flex flex-col items-center space-y-4 sm:items-center sm:space-y-0 sm:space-x-4 sm:flex-row justify-center">
           {/* GitHub Section */}
           <div className="flex items-center space-x-3">
@@ -59,7 +59,7 @@ export default function ProjectLayout({ children, content }: Props) {
       </section>
 
       <hr />
-      <section className="px-6">
+      <section className="px-6 md:px-12 lg:px-18">
         <div className="prose max-w-none pt-8 pb-8 xl:col-span-2">
           {children}
         </div>

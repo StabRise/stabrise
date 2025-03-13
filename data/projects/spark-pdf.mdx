@@ -11,82 +11,113 @@ codacy: https://app.codacy.com/gh/StabRise/spark-pdf/dashboard?utm_source=gh&amp
 pypi:
 pStabRise:
 github: https://github.com/StabRise/spark-pdf
-gettingStarted: https://github.com/StabRise/ScaleDP-Tutorials/blob/master/1.QuickStart.ipynb
+gettingStarted: https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSource.ipynb
 ---
 
-The project provides a custom data source for the Apache Spark that allows you to read PDF files into the Spark DataFrame.
+# PDF to Spark DataFrame: A Custom Data Source for Apache Spark
 
-👉 Works on Databricks now. See the Databricks example.
+This project provides a custom data source for Apache Spark, enabling you to read PDF files directly
+into Spark DataFrames. It’s designed to simplify the process of working with PDFs in distributed
+data pipelines, whether you're dealing with text-based documents, scanned PDFs, or large files
+with thousands of pages.
 
-### Key features:
+import Note from "@/components/Note";
 
-✅ Read PDF documents to the Spark DataFrame
+<Note
+  title="Databricks Integration"
+  icon="🚀"
+>
+  <div
+  >
+    <span class="inline">This project now works on Databricks. Check out the </span>
+    <a
+      href="https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricks.ipynb"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline">Databricks example</a>
+    <span class="inline"> for more details.</span>
+  </div>
+</Note>
 
-✅ Works with Scala and Python (PySpark)
+## Key Features
 
-✅ Support read PDF files lazy per page
+- **Read PDFs into DataFrames**: Directly load PDF files into Spark DataFrames
+- **Lazy Loading**: Process PDFs page by page to optimize memory usage and handle large files efficiently.
+- **Scala and Python Support**: Use the library with both Scala and PySpark APIs.
+- **Built-in OCR**: Extract text from scanned PDFs using integrated OCR—no need to install or configure Tesseract separately.
+- **Large File Support**: Handle PDFs with up to 10,000 pages without performance bottlenecks.
+- **Spark Connect Compatibility**: Works seamlessly with Spark Connect for distributed processing.
 
-✅ Support big files, up to 10k pages
+<Note
+  title="ScaleDP Compatibility"
+  icon="👉"
+>
+  <div>
+    <span class="inline">Compatible with </span>
+    <a
+      href="/projects/scale-dp"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline">ScaleDP, an Open-Source Library</a>
+    <span class="inline">  for Processing Documents using AI/ML in Apache Spark.</span>
+  </div>
+</Note>
+>
 
-✅ Support scanned PDF files (call OCR)
+## How It Works
 
-✅ No need to install Tesseract OCR, it's included in the package
+The library extends Apache Spark’s data source API, allowing you to treat PDFs as a native data source.
+For text-based PDFs, it extracts content directly.
+For scanned PDFs, the built-in OCR engine processes the images and extracts text.
+The lazy loading feature ensures that only the required pages are loaded into memory, making it efficient for
+large files.
 
-✅ Works with Spark Connect
+## Getting Started
 
-> 👉 Compatible with ScaleDP, an Open-Source Library for Processing Documents using AI/ML in Apache Spark.
+### Requirements:
 
-### Requirements
+- `Java` 8, 11, 17
+- `Apache Spark` 3.3.2, 3.4.1, 3.5.0, 4.0.0
+- `Ghostscript` 9.50 or later (only for the GhostScript reader)
 
-🔹 Java 8, 11, 17
+`Spark` 4.0.0 is supported in the version 0.1.15 and later (requires Java 17 and Scala 2.13).
 
-🔹 Apache Spark 3.3.2, 3.4.1, 3.5.0, 4.0.0
+## Installation
 
-🔹 Ghostscript 9.50 or later (only for the GhostScript reader)
+The binary package is available in the Maven Central Repository.
+To install the package for your version of Apache Spark, use the
+following Maven coordinates:
 
-🔹 Spark 4.0.0 is supported in the version 0.1.15 and later (need Java 17 and Scala 2.13).
+- **For Spark 3.5**: `com.stabrise:spark-pdf-spark35_2.12:0.1.15`
+- **For Spark 3.4**: `com.stabrise:spark-pdf-spark34_2.12:0.1.11`
+- **For Spark 3.3**: `com.stabrise:spark-pdf-spark33_2.12:0.1.15`
+- **For Spark 4.0**: `com.stabrise:spark-pdf-spark40_2.13:0.1.15`
 
-### Installation
-
-*Binary package is available in the Maven Central Repository.*
-
-**Spark 3.5.*:** com.stabrise:spark-pdf-spark35_2.12:0.1.15
-
-**Spark 3.4.*:** com.stabrise:spark-pdf-spark34_2.12:0.1.11
-
-**Spark 3.3.*:** com.stabrise:spark-pdf-spark33_2.12:0.1.15
-
-**Spark 4.0.*:** com.stabrise:spark-pdf-spark40_2.13:0.1.15
+Simply add the corresponding dependency to your project’s `pom.xml` or build configuration.
 
 ### Options for the data source:
 
-`imageType`: Oputput image type. Can be: "BINARY", "GREY", "RGB". Default: "RGB".
+- `imageType`: Oputput image type. Can be: *"BINARY", "GREY", "RGB"*. Default: *"RGB".
+- `resolution`: Resolution for rendering PDF page to the image. Default: "300" dpi.
+- `pagePerPartition`: Number pages per partition in Spark DataFrame. Default: "5".
+- `reader:` Supports: pdfBox - based on PdfBox java lib, gs - based on GhostScript (need installation GhostScipt to the system)
 
-`resolution`: Resolution for rendering PDF page to the image. Default: "300" dpi.
+### Output Columns in the DataFrame
 
-`pagePerPartition`: Number pages per partition in Spark DataFrame. Default: "5".
+The DataFrame contains the following columns:
 
-`reader:` Supports: pdfBox - based on PdfBox java lib, gs - based on GhostScript (need installation GhostScipt to the system)
-
-### Output Columns in the DataFrame:
-
-*The DataFrame contains the following columns:*
-
-`path:` path to the file
-
-`page_number`: page number of the document
-
-`text`: extracted text from the text layer of the PDF page
-
-`image`: image representation of the page
-
-`document`: the OCR-extracted text from the rendered image (calls Tesseract OCR)
-
-`partition_number`: partition number
-
+- **`path`**: The path to the PDF file.
+- **`page_number`**: The page number within the document.
+- **`text`**: The extracted text from the text layer of the PDF page.
+- **`image`**: The image representation of the page.
+- **`document`**: The OCR-extracted text from the rendered image (calls Tesseract OCR).
+- **`partition_number`**: The partition number.
 
 ### Example of usage
 
+#### Scala Example
+
+The following Scala code demonstrates how to read a PDF file into a Spark DataFrame. It sets various options like image type, resolution, pages per partition, and the reader to use (PdfBox in this case):
 
 ```scala:Scala
 import org.apache.spark.sql.SparkSession
@@ -107,7 +138,10 @@ val df = spark.read.format("pdf")
 df.select("path", "document").show()
 ```
 
+#### Python Example
 
+In the Python example, the process is similar, where we use PySpark to load a PDF into a DataFrame.
+This code shows how to configure the same options for the pdf data source:
 
 ```python:Python
 from pyspark.sql import SparkSession
