@@ -59,7 +59,7 @@ export default function ProjectLayout({ children, content }: Props) {
       </section>
 
       <hr />
-      <section className="px-6 md:px-12 lg:px-18">
+      <section className="px-6 md:px-12 lg:px-18 pb-12">
         <div className="prose max-w-none pt-8 pb-8 xl:col-span-2">
           {children}
         </div>

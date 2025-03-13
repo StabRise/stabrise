@@ -14,39 +14,67 @@ github: https://github.com/StabRise/ScaleDP
 gettingStarted: https://github.com/StabRise/ScaleDP-Tutorials/blob/master/1.QuickStart.ipynb
 ---
 
-# Welcome to the ScaleDP library
+# ScaleDP: An Open-Source Library for Document Processing with AI in Apache Spark
 
-ScaleDP is library allows you to process documents using AI/ML capabilities and scale it using Apache Spark.
+ScaleDP is an open-source library designed to simplify document processing
+using AI models while leveraging the scalability of Apache Spark. It enables
+developers to extract structured data from unstructured documents (PDFs,
+images, etc.) using pre-trained models like LLMs (Large Language Models)
+and VLMs (Vision Language Models), combined with OCR engines.
 
-**LLM** (Large Language Models) and **VLM** (Vision Language Models) models are used to extract data from text and images in combination with **OCR** engines. Discover
-pretrained models for your projects or play with the thousands of models hosted on the [Hugging Face Hub](https://huggingface.co/)
+Whether you're processing invoices, extracting data from scanned documents, or
+building real-time pipelines, ScaleDP provides the tools to handle it efficiently
+and at scale.
 
-## Key features
+---
 
- - ✅ Loading **PDF** documents/**Images** to the Spark DataFrame (using [Spark PDF DataSource](https://stabrise.com/spark-pdf/)  and as `binaryFile`)
- - ✅ Extraction text/images from **PDF** documents/Images
- - ✅ Zero-Shot extraction **structured data** from Text/Images/Pdf's using LLM and ML models
- - ✅ Possibility run as **REST API** service without Spark Session for have minimum processing latency
- - ✅ Support **Streaming** mode for processing documents in real-time and integrate to event based architecture
+## Key Features
 
-# Quick Start
+- **Load PDFs and Images into Spark DataFrames**:
+Use the built-in Spark PDF DataSource or load files as `binaryFile` for flexible document handling.
 
-## Installation
+- **Extract Text and Images**:
+Extract text and images from PDFs and image files for further processing.
 
-Prerequisites:
- - **Python** 3.10 or higher
+- **Zero-Shot Data Extraction**:
+Use pre-trained LLMs and VLMs to extract structured data from text, images, and PDFs without custom training.
 
-In case to run with Spark:
+- **REST API Support**:
+Run ScaleDP as a lightweight REST API for low-latency processing, even without a Spark session.
 
- - **Apache Spark** 3.5 or higher
- - **Java** 8
+- **Streaming Mode**:
+Process documents in real-time and integrate with event-driven architectures.
+
+- **Hugging Face Integration**:
+Access thousands of pre-trained models from the Hugging Face Hub or use your own custom models.
+
+---
+
+
+
+## Quick Start
+
+### Installation
+
+**Prerequisites:**
+
+- `Python` 3.10 or higher
+
+In case to run with `Spark`:
+
+- `Apache Spark` 3.5 or higher
+- `Java` 8
+
 
 Install the `ScaleDP` package with pip. Python package on pypi is scaledp:
-```shell
+
+```bash
 pip install scaledp
 ```
 
-## Start a Spark session with ScaleDP
+### Start a Spark session with ScaleDP
+
+To begin using ScaleDP, start a Spark session with the following code:
 
 ```python
 from scaledp import *
@@ -54,7 +82,11 @@ spark = ScaleDPSession(with_spark_pdf=True)
 spark
 ```
 
-## Read PDF file to the DataFrame
+This initializes a Spark session with ScaleDP's PDF processing capabilities enabled.
+
+### Load a PDF File
+
+Once your Spark session is ready, you can load a PDF file into a Spark DataFrame:
 
 ```python
 pdf_example = files('resources/pdfs/Invoice.pdf')
@@ -64,39 +96,81 @@ df = spark.read.format("pdf") \
 
 df.show()
 ```
+---
 
-# Generative AI capabilities
+## Generative AI Capabilities
 
-LLM based OCR
+import Note from "@/components/Note";
+
+<Note
+  title="Gen AI"
+  icon="🚀"
+>
+  <div>
+    ScaleDP leverages advanced AI/ML models to enhance document processing.
+  </div>
+</Note>
+
+Here are some of its key capabilities:
+
+**LLM based OCR**
  - Accurate
  - Multilingual
 
-LLM Data Extraction
+**LLM Data Extraction**
  - Zero-shot data extraction
  - Declarative (possibility to define schema)
  - Scalable
 
-Visual LLM data extraction
+**Visual LLM data extraction**
  - Extract data from the images
  - Zero shot
  - Accurate
  - Declarative
 
-LLM Ner
+**LLM Ner**
  - Zero-shot NER
 
-# Supported OCR engines
+## Supported OCR engines
 
-Tesseract OCR
+**Tesseract OCR**
  - Fast
  - Most popular
 
-Easy OCR
+**Easy OCR**
  - Ready-to-use OCR with 80+ languages support.
 
-Surya OCR
+**Surya OCR**
  - OCR in 90+ languages that benchmarks favorably vs cloud services
  - Line-level text detection in any language
 
-DocTR OCR
+**DocTR OCR**
  - Optical Character Recognition made seamless & accessible to anyone, powered by TensorFlow 2 & PyTorch
+
+
+## Use Cases
+
+**Data Extraction**
+
+Extract structured data from invoices, receipts, or contracts. ScaleDP makes it easy to pull key information from unstructured documents, enabling automation of data entry and analysis workflows.
+
+**Real-Time Processing**
+
+Stream and process documents in real-time for event-driven applications. ScaleDP's streaming mode allows you to integrate document processing into real-time pipelines, perfect for applications like fraud detection or live data enrichment.
+
+**Research and Experimentation**
+
+Experiment with pre-trained models or fine-tune them for specific tasks. Whether you're testing new AI/ML models or customizing workflows, ScaleDP provides the flexibility to support your research and development efforts.
+
+---
+
+## Why Choose ScaleDP?
+
+- **Scalability**: Built on Apache Spark, ScaleDP handles large-scale document processing with ease, making it ideal for enterprise-level workloads.
+- **Flexibility**: Supports multiple OCR engines and AI/ML models, allowing you to tailor the library to your specific use case.
+- **Ease of Use**: Simple APIs and declarative workflows make it easy for developers to integrate and use ScaleDP in their projects.
+- **Open Source**: Fully open-source and community-driven, ScaleDP is free to use and encourages collaboration and innovation.
+- **Advanced AI/ML Capabilities**: Leverage state-of-the-art LLMs, VLMs, and OCR engines to extract, process, and analyze data with high accuracy.
+- **Real-Time and Batch Processing**: Whether you need real-time streaming or batch processing, ScaleDP has you covered.
+- **Extensible**: Easily integrate custom models or extend functionality to meet your unique requirements.
+
