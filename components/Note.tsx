@@ -1,18 +1,22 @@
-import React from "react";
+import React from 'react'
 
 interface NoteProps {
-  title?: string;
-  description?: string; // Description can be optional as it's not being used here.
-  icon?: string;
-  className?: string;
-  children?: React.ReactNode; // To accept any JSX elements passed as children.
+  title?: string
+  description?: string // Description can be optional as it's not being used here.
+  icon?: string
+  className?: string
+  children?: React.ReactNode // To accept any JSX elements passed as children.
 }
 
-const Note: React.FC<NoteProps> = ({ title, description = "", icon = "ℹ️", className = "", children }) => {
+const Note: React.FC<NoteProps> = ({
+  title,
+  description = '',
+  icon = 'ℹ️',
+  className = '',
+  children,
+}) => {
   return (
-    <div
-      className={`p-3 border-l-3 bg-primary-50 border-blue-800 shadow-sm text-sm ${className}`}
-    >
+    <div className={`bg-primary-50 border-l-3 border-blue-800 p-3 text-sm shadow-sm ${className}`}>
       <div className="flex items-start space-x-3">
         <span className="text-xl">{icon}</span> {/* Increased icon size */}
         <div>
@@ -24,7 +28,7 @@ const Note: React.FC<NoteProps> = ({ title, description = "", icon = "ℹ️", c
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Note;
+export default Note

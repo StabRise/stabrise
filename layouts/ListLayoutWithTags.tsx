@@ -89,16 +89,16 @@ export default function ListLayoutWithTags({
           <div className="hidden max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex">
             <div className="px-6 py-4">
               <div className="text-center">
-              {pathname.startsWith('/blog') ? (
-                <h4 className="text-primary-500 mb-4  font-semibold">All Posts</h4>
-              ) : (
-                <Link
-                  href={`/blog`}
-                  className="hover:text-primary-500  font-semibold text-gray-700 "
-                >
-                  All Posts
-                </Link>
-              )}
+                {pathname.startsWith('/blog') ? (
+                  <h4 className="text-primary-500 mb-4 font-semibold">All Posts</h4>
+                ) : (
+                  <Link
+                    href={`/blog`}
+                    className="hover:text-primary-500 font-semibold text-gray-700"
+                  >
+                    All Posts
+                  </Link>
+                )}
               </div>
 
               <ul className="mt-4 space-y-3">
@@ -123,7 +123,7 @@ export default function ListLayoutWithTags({
           <div className="pr-6">
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags, author, smallImage } = post
+                const { path, date, title, summary, tags, authors, smallImage } = post
                 return (
                   <li key={path} className="border-b border-gray-200 py-8 dark:border-gray-700">
                     <article className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
@@ -171,7 +171,7 @@ export default function ListLayoutWithTags({
                           </div>
                           <div className="flex items-center space-x-1">
                             <FaUser className="text-sm" />
-                            <span>StabRise Team</span>
+                            <span>{authors}</span>
                           </div>
                         </div>
                       </div>

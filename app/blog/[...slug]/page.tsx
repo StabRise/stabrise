@@ -21,7 +21,7 @@ const layouts = {
   PostSimple,
   PostLayout,
   PostBanner,
-  DefaultPostLayout
+  DefaultPostLayout,
 }
 
 export async function generateMetadata(props: {

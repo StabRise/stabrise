@@ -1,7 +1,7 @@
 // components/FeatureList.tsx
 
 interface UlWithTicksProps {
-  features: string[];
+  features: string[]
 }
 
 const FeaturesList: React.FC<UlWithTicksProps> = ({ features }) => {
@@ -14,7 +14,7 @@ const FeaturesList: React.FC<UlWithTicksProps> = ({ features }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default FeaturesList;
+export default FeaturesList

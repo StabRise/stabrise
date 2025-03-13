@@ -27,15 +27,19 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
       <ScrollTopAndComment />
       <article>
         <div>
-          <div className="px-2 space-y-1 pb-10 text-center dark:border-gray-700">
+          <div className="space-y-1 px-2 pb-10 text-center dark:border-gray-700">
             <div className="w-full">
               <Bleed>
                 <div className="relative aspect-2/1 w-full">
-                  <Image src={displayImage} alt={title} fill className="object-cover rounded-t-lg" />
+                  <Image
+                    src={displayImage}
+                    alt={title}
+                    fill
+                    className="rounded-t-lg object-cover"
+                  />
                 </div>
               </Bleed>
             </div>
-
 
             {/*<div className="w-full p-6">*/}
             {/*  <Bleed>*/}
@@ -50,7 +54,6 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             {/*    </div>*/}
             {/*  </Bleed>*/}
             {/*</div>*/}
-
 
             <div className="relative pt-10">
               <PageTitle>{title}</PageTitle>
