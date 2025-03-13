@@ -4,8 +4,8 @@ import Image from '@/components/Image'
 import Link from '@/components/Link'
 import BadgeLinks from '@/components/BadgeLinks'
 import SectionContainer from '@/components/SectionContainer'
-import SocialIcon from '@/components/social-icons'
 import { Button } from "@headlessui/react";
+import Card from "@/components/Card";
 
 interface Props {
   children: ReactNode
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ProjectLayout({ children, content }: Props) {
-  const { title, description, href, imgSrc, colab, test, maven, license, codacy, pypi, pStabRise, github, gettingStarted } = content
+  const { title, description, href, imgSrc, colab, test, maven, license, codacy, pypi, pStabRise, github, gettingStarted, recentPosts } = content
 
   return (
     <SectionContainer>
@@ -59,11 +59,33 @@ export default function ProjectLayout({ children, content }: Props) {
       </section>
 
       <hr />
-      <section className="px-6 md:px-12 lg:px-18 pb-12">
+      <section className="px-6 md:px-12 lg:px-18 pb-6">
         <div className="prose max-w-none pt-8 pb-8 xl:col-span-2">
           {children}
         </div>
       </section>
+
+      {recentPosts.length > 0 && (
+        <section className="bg-primary-100 py-12">
+          <div className="mx-auto max-w-screen-xl px-6">
+            <h2 className="text-grey-900 mb-8 text-center text-3xl font-semibold">
+              Recent Posts
+            </h2>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {recentPosts.map((post) => (
+                <Card
+                  key={post.slug}
+                  title={post.title}
+                  description={post.title}
+                  imgSrc={post.displayImage}
+                  href={`/blog/${post.slug}`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
     </SectionContainer>
   )
 }

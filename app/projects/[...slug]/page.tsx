@@ -13,6 +13,10 @@ import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import AuthorLayout from "@/layouts/AuthorLayout";
 import { genPageMetadata } from "../../seo";
+import { sortPosts, allCoreContent } from "pliny/utils/contentlayer";
+import { allBlogs } from "contentlayer/generated";
+import SectionContainer from "@/components/SectionContainer";
+import { slug } from "github-slugger";
 
 const defaultLayout = 'ProjectLayout'
 const layouts = {
@@ -67,7 +71,20 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const slug = decodeURI(params.slug.join('/'))
   const project = allProjects.find((p) => p.slug === slug) as Projects
   const Layout = layouts[project.layout || defaultLayout]
+
+  // Recent projects posts
+  const filteredPosts = allCoreContent(
+    sortPosts(
+      allBlogs.filter((post) => post.project && post.project === project.slug)
+    )
+  );
+
+  project.recentPosts = filteredPosts;
+
   const mainContent = coreContent(project)
+
+
+
 
   return (
     <>
