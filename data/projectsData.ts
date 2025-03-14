@@ -1,12 +1,12 @@
 interface Project {
   title: string
   description: string
-  href?: string
+  href: string
   imgSrc?: string
   img2Src?: string
+  features?: string[]
 }
 
-// TODO: a hero image (16 x 9)
 const projectsData: Project[] = [
   {
     title: 'PDF Datasource',

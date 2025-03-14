@@ -12,7 +12,7 @@ interface Props {
   content: Omit<Project, '_id' | '_raw' | 'body'>
 }
 
-export default function ProjectLayout({ children, content }: Props) {
+export default function ProjectLayout({ children, content, recentPosts }: Props) {
   const {
     title,
     description,
@@ -27,7 +27,6 @@ export default function ProjectLayout({ children, content }: Props) {
     pStabRise,
     github,
     gettingStarted,
-    recentPosts,
   } = content
 
   return (

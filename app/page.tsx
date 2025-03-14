@@ -1,8 +1,3 @@
-// import { sortPosts, allCoreContent } from "pliny/utils/contentlayer";
-// import { allBlogs } from "contentlayer/generated";
-// import Main from "./Main";
-
-import FeaturesList from '@/components/FeaturesList'
 import Card from '@/components/Card'
 import Image from '@/components/Image'
 import SimpleCard from '@/components/SimpleCard'
@@ -12,19 +7,14 @@ import projectsData from '@/data/projectsData'
 import useCases from '@/data/useCases'
 import whyChooseUs from '@/data/whyChooseUs'
 
-import { FaRegFileAlt, FaRegSmile } from 'react-icons/fa'
-
 export default async function Page() {
-  // const sortedPosts = sortPosts(allBlogs);
-  // const posts = allCoreContent(sortedPosts);
-
   return (
     <SectionContainer>
       <section className="">
-        <h1 className="my-6 pt-18 px-6  text-3xl text-center font-semibold text-gray-800">
+        <h1 className="my-6 px-6 pt-18 text-center text-3xl font-semibold text-gray-800">
           Scalable Document Processing Solutions
         </h1>
-        <p className="text-center px-6 mx-auto mt-6 max-w-5xl pb-6 text-lg text-gray-600">
+        <p className="mx-auto mt-6 max-w-5xl px-6 pb-6 text-center text-lg text-gray-600">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
           efficiency. Powered by Spark, we help you scale your document processing smoothly and
@@ -34,29 +24,12 @@ export default async function Page() {
           <Image
             src="/static/images/landing/banner.svg"
             alt="Banner image"
-            layout="intrinsic"
             width={1200}
             height={600}
-            className="w-full sm:block hidden"
+            className="hidden w-full sm:block"
           />
         </div>
       </section>
-      {/* Video Section */}
-      {/*<section className="mb-8 text-center">*/}
-      {/*  <div className="relative">*/}
-      {/*    <video*/}
-      {/*      controls*/}
-      {/*      className="mx-auto w-full max-w-4xl rounded-lg shadow-md"*/}
-      {/*      src="/static/videos/demo-small.mp4"*/}
-      {/*      type="video/mp4"*/}
-      {/*      autoPlay*/}
-      {/*      loop*/}
-      {/*      muted*/}
-      {/*    >*/}
-      {/*      Your browser does not support the video tag.*/}
-      {/*    </video>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
       <hr className="" />
       <section id="projects" className="bg-gray-50 px-6 py-6 text-center">
         <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
@@ -111,80 +84,6 @@ export default async function Page() {
         </div>
       </section>
       <hr className="mb-6" />
-
-      {/* Call to Action */}
-      {/*<section className="mb-3">*/}
-      {/*  /!* Form Section *!/*/}
-      {/*  <div className="bg-primary-100 mx-auto max-w-lg rounded-lg p-6 shadow-lg">*/}
-      {/*    <h2 className="mb-4 text-3xl font-bold">Get Started with StabRise Today!</h2>*/}
-      {/*    <p className="mb-6 text-lg">*/}
-      {/*      Discover how StabRise can help you build scalable and compliant document processing*/}
-      {/*      solutions. Let's explore how we can transform your document workflows.*/}
-      {/*    </p>*/}
-      {/*    <form action="#" method="POST">*/}
-      {/*      <div className="space-y-4">*/}
-      {/*        <div>*/}
-      {/*          <label htmlFor="name" className="block text-sm font-medium text-gray-700">*/}
-      {/*            Name*/}
-      {/*          </label>*/}
-      {/*          <input*/}
-      {/*            type="text"*/}
-      {/*            id="name"*/}
-      {/*            name="name"*/}
-      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
-      {/*          />*/}
-      {/*        </div>*/}
-      {/*        <div>*/}
-      {/*          <label htmlFor="company-name" className="block text-sm font-medium text-gray-700">*/}
-      {/*            Company Name*/}
-      {/*          </label>*/}
-      {/*          <input*/}
-      {/*            type="text"*/}
-      {/*            id="company-name"*/}
-      {/*            name="company-name"*/}
-      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
-      {/*          />*/}
-      {/*        </div>*/}
-      {/*        <div>*/}
-      {/*          <label htmlFor="email" className="block text-sm font-medium text-gray-700">*/}
-      {/*            Email*/}
-      {/*          </label>*/}
-      {/*          <input*/}
-      {/*            type="email"*/}
-      {/*            id="email"*/}
-      {/*            name="email"*/}
-      {/*            className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"*/}
-      {/*          />*/}
-      {/*        </div>*/}
-      {/*        <button*/}
-      {/*          type="submit"*/}
-      {/*          className="mt-4 bg-[var(--color-secondary-400)] p-3 font-bold text-white hover:bg-[var(--color-secondary-500)]"*/}
-      {/*        >*/}
-      {/*          Submit*/}
-      {/*        </button>*/}
-      {/*      </div>*/}
-      {/*    </form>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
-
-      {/* Recent Posts */}
-      {/*<section>*/}
-      {/*  <h2 className="mb-8 text-3xl font-bold text-gray-900">Recent Posts</h2>*/}
-      {/*  <div className="space-y-8">*/}
-      {/*    {posts.map((post) => (*/}
-      {/*      <div key={post.slug} className="rounded-lg bg-white p-6 shadow-md">*/}
-      {/*        <h3 className="mb-2 text-2xl font-semibold text-gray-800">{post.title}</h3>*/}
-      {/*        <p className="text-gray-600">{post.excerpt}</p>*/}
-      {/*        <a*/}
-      {/*          href={`/blog/${post.slug}`}*/}
-      {/*          className="mt-2 inline-block text-blue-600 hover:text-blue-800"*/}
-      {/*        >*/}
-      {/*          Read More*/}
-      {/*        </a>*/}
-      {/*      </div>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*</section>*/}
     </SectionContainer>
   )
 }

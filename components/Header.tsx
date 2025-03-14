@@ -4,8 +4,6 @@ import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
-import CalendlyWidget from '@/components/CalendlyWidget'
-import { Button } from '@headlessui/react'
 
 const Header = () => {
   const headerClass = siteMetadata.stickyNav
