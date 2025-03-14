@@ -1,25 +1,16 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
+import { formatDate } from 'pliny/utils/formatDate'
 import type { Blog, Authors } from 'contentlayer/generated'
+import siteMetadata from '@/data/siteMetadata'
+
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { formatDate } from 'pliny/utils/formatDate'
-import Bleed from 'pliny/ui/Bleed'
 import Tags from '@/components/Tags'
-import AuthorCard from "@/components/AuthorCard";
-
-const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}
+import AuthorCard from '@/components/AuthorCard'
 
 interface LayoutProps {
   content: CoreContent<Blog>
@@ -36,15 +27,14 @@ export default function DefaultPostLayout({
   prev,
   children,
 }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags, displayImage, project } = content
-  const basePath = path.split('/')[0]
+  const { slug, date, title, tags, displayImage } = content
 
   return (
     <SectionContainer>
       <ScrollTopAndComment />
       <article>
         {displayImage && (
-          <div className="w-full h-64 sm:h-80 md:h-96 lg:h-112 relative">
+          <div className="relative h-64 w-full sm:h-80 md:h-96 lg:h-112">
             <Image
               src={displayImage}
               alt={title}

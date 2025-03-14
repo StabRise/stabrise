@@ -1,7 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const withMDX = require('@next/mdx')({
   // You can add any MDX-related plugins or configuration here
 })
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { withContentlayer } = require('next-contentlayer2')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -20,7 +23,6 @@ const ContentSecurityPolicy = `
   font-src 'self';
   frame-src 'self' giscus.app assets.calendly.com calendly.com;
 `
-
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -81,10 +83,14 @@ module.exports = () => {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'picsum.photos',
+          hostname: 'picsum.photos', // Add the remote image domain here
+        },
+        {
+          protocol: 'https',
+          hostname: 'img.shields.io', // Add img.shields.io domain as well
         },
       ],
-      unoptimized,
+      unoptimized: true, // This disables Next.js image optimization
     },
     async headers() {
       return [

@@ -14,7 +14,10 @@ const layouts = {
   ProjectLayout,
 }
 
-// TODO:
+export const generateStaticParams = async () => {
+  return allProjects.map((p) => ({ slug: p.slug.split('/').map((name) => decodeURI(name)) }))
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>
 }): Promise<Metadata | undefined> {
@@ -46,7 +49,7 @@ export async function generateMetadata(props: {
       type: 'article',
       url: './',
       images: ogImages,
-      authors: project.length > 0 ? project : [siteMetadata.author],
+      authors: [siteMetadata.author],
     },
     twitter: {
       card: 'summary_large_image',
