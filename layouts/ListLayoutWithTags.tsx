@@ -10,7 +10,9 @@ import Tag from '@/components/Tag'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
-import { FaCalendar, FaUser } from 'react-icons/fa'
+import { FaCalendar } from 'react-icons/fa'
+import AuthorCard from '@/components/AuthorCard'
+import { getAuthorsByPost } from '@/components/utils/authorsHelper'
 
 interface PaginationProps {
   totalPages: number
@@ -30,8 +32,6 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const basePath = pathname
     .replace(/^\//, '') // Remove leading slash
     .replace(/\/page\/\d+$/, '') // Remove any trailing /page
-  console.log(pathname)
-  console.log(basePath)
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
@@ -69,12 +69,13 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
+
 export default function ListLayoutWithTags({
-  posts,
-  title,
-  initialDisplayPosts = [],
-  pagination,
-}: ListLayoutProps) {
+                                             posts,
+                                             title,
+                                             initialDisplayPosts = [],
+                                             pagination,
+                                           }: ListLayoutProps) {
   const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
@@ -84,10 +85,12 @@ export default function ListLayoutWithTags({
 
   return (
     <SectionContainer>
-      <div className="p-6">
-        <div className="flex sm:space-x-12">
-          <div className="hidden max-w-[200px] min-w-[200px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex">
-            <div className="px-6 py-4">
+      <div className="">
+        <div className="flex sm:space-x-0 md:space-x-3">
+          {/* Left Panel (No rounded corners) */}
+          <div className="pl-1 md:pl-6 xl:pl-12 hidden sm:flex sm:w-1/4
+          flex-wrap overflow-auto  border-r border-gray-200 pt-5 ">
+            <div className="py-4">
               <div className="text-center">
                 {pathname.startsWith('/blog') ? (
                   <h4 className="text-primary-500 mb-4 font-semibold">All Posts</h4>
@@ -120,15 +123,16 @@ export default function ListLayoutWithTags({
             </div>
           </div>
 
-          <div className="pr-6">
+          {/* Right Content Panel */}
+          <div className="flex-1 mt-3">
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags, authors, smallImage } = post
+                const authorDetails = getAuthorsByPost(post.authors)
                 return (
                   <li key={path} className="border-b border-gray-200 py-8 dark:border-gray-700">
-                    <article className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
+                    <article className="px-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
                       {/* Image Section */}
-
                       {smallImage && (
                         <div className="flex-shrink-0">
                           <img
@@ -157,21 +161,28 @@ export default function ListLayoutWithTags({
                           <p>{summary}</p>
                         </div>
 
-                        {/* Date & Author */}
-                        <div className="mt-4 flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">
-                          <div className="flex items-center space-x-1">
-                            <span className="material-icons text-sm">
-                              <FaCalendar className="text-sm" />
+                        <div className="mt-4 flex flex-col sm:items-center justify-between space-y-4 text-xs sm:mt-6 sm:flex-row sm:space-y-0 sm:space-x-4">
+                          {/* Author Info */}
+                          <div className="flex sm:items-center space-x-4">
+                            {authorDetails.map((author) => (
+                              <AuthorCard
+                                key={author.name}
+                                name={author.name}
+                                avatar={author.avatar}
+                                occupation={author.occupation}
+                                linkedin={author.linkedin}
+                              />
+                            ))}
+                          </div>
+                          <div className="flex sm:items-center space-x-1 text-xs text-gray-500">
+                            <span className="material-icons">
+                              <FaCalendar />
                             </span>
                             <span>
                               <time dateTime={date} suppressHydrationWarning>
                                 {formatDate(date, siteMetadata.locale)}
                               </time>
                             </span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <FaUser className="text-sm" />
-                            <span>{authors}</span>
                           </div>
                         </div>
                       </div>

@@ -12,6 +12,7 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { formatDate } from 'pliny/utils/formatDate'
 import Bleed from 'pliny/ui/Bleed'
 import Tags from '@/components/Tags'
+import AuthorCard from "@/components/AuthorCard";
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -51,22 +52,6 @@ export default function DefaultPostLayout({
               className="rounded-t-lg object-cover" // Rounded top corners and ensures the image covers the area
             />
           </div>
-
-          // TODO: px-2 on middle size problem
-  //         <div className="space-y-1 px-2 text-center">
-  //           <div className="w-full">
-  //             <Bleed>
-  //               <div className="relative aspect-4/1 w-full">
-  //                 <Image
-  //                   src={displayImage}
-  //                   alt={title}
-  //                   fill
-  //                   className="rounded-t-lg object-cover"
-  //                 />
-  //               </div>
-  //             </Bleed>
-  //           </div>
-  // </div>
         )}
         <div className="px-6 py-12">
           <header className="border-b border-gray-200 py-4 sm:py-6">
@@ -86,26 +71,13 @@ export default function DefaultPostLayout({
                 {/* Author Info */}
                 <div className="flex items-center space-x-4">
                   {authorDetails.map((author) => (
-                    <div key={author.name} className="flex items-center">
-                      {author.avatar && (
-                        <Image
-                          src={author.avatar}
-                          width={40}
-                          height={40}
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
-                        />
-                      )}
-                      <div className="ml-2">
-                        <Link
-                          href={author.linkedin}
-                          className="font-medium text-gray-900 hover:text-gray-700"
-                        >
-                          {author.name}
-                        </Link>
-                        <p className="text-sm text-gray-500">{author.occupation}</p>
-                      </div>
-                    </div>
+                    <AuthorCard
+                      key={author.name}
+                      name={author.name}
+                      avatar={author.avatar}
+                      occupation={author.occupation}
+                      linkedin={author.linkedin}
+                    />
                   ))}
                 </div>
 
