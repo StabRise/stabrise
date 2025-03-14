@@ -1,43 +1,27 @@
-"use client"
+'use client'
 
-import { useEffect } from 'react';
-import Head from 'next/head';
+import { useEffect } from 'react'
 
-const CalendlyWidget: React.FC = () => {
+const CalendlyWidget = () => {
   useEffect(() => {
-    // Dynamically load the Calendly widget JS
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
+    // Dynamically load Calendly's script
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.body.appendChild(script)
 
     return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    // Ensure the Calendly widget is initialized correctly
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/stabrise' });
+      document.body.removeChild(script)
     }
-  };
+  }, [])
 
   return (
-    <>
-      <Head>
-        <link
-          href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
-        />
-      </Head>
+    <div
+      className="calendly-inline-widget"
+      data-url="https://calendly.com/stabrise"
+      style={{ minWidth: '320px', height: '630px' }}
+    ></div>
+  )
+}
 
-      <a href="" onClick={handleClick}>
-        Schedule time with me
-      </a>
-    </>
-  );
-};
-
-export default CalendlyWidget;
+export default CalendlyWidget
