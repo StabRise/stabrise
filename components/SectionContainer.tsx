@@ -10,7 +10,7 @@ export default function SectionContainer({ children, className, addMinHeight = t
   return (
     <section className={`${addMinHeight ? 'min-h-screen' : ''} ${className}`}>
       <div
-        className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${addMinHeight ? 'py-6 sm:py-8' : 'py-0'}`}
+        className={`mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 ${addMinHeight ? 'py-6 sm:py-8' : 'py-0'}`}
       >
         <div className="rounded-lg bg-white shadow-sm sm:shadow-lg">{children}</div>
       </div>

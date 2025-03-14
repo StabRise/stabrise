@@ -69,12 +69,13 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
+
 export default function ListLayoutWithTags({
-  posts,
-  title,
-  initialDisplayPosts = [],
-  pagination,
-}: ListLayoutProps) {
+                                             posts,
+                                             title,
+                                             initialDisplayPosts = [],
+                                             pagination,
+                                           }: ListLayoutProps) {
   const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
@@ -84,9 +85,11 @@ export default function ListLayoutWithTags({
 
   return (
     <SectionContainer>
-      <div className="p-6">
-        <div className="flex sm:space-x-12">
-          <div className="hidden max-w-[200px] min-w-[150px] flex-wrap overflow-auto rounded-sm border-r border-gray-200 bg-gray-50 pt-5 shadow-md sm:flex">
+      <div className="">
+        <div className="flex sm:space-x-0 md:space-x-3">
+          {/* Left Panel (No rounded corners) */}
+          <div className="pl-1 md:pl-6 xl:pl-12 hidden sm:flex sm:w-1/4
+          flex-wrap overflow-auto  border-r border-gray-200 pt-5 ">
             <div className="py-4">
               <div className="text-center">
                 {pathname.startsWith('/blog') ? (
@@ -120,14 +123,15 @@ export default function ListLayoutWithTags({
             </div>
           </div>
 
-          <div className="pr-6">
+          {/* Right Content Panel */}
+          <div className="flex-1 mt-3">
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags, authors, smallImage } = post
                 const authorDetails = getAuthorsByPost(post.authors)
                 return (
                   <li key={path} className="border-b border-gray-200 py-8 dark:border-gray-700">
-                    <article className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
+                    <article className="px-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
                       {/* Image Section */}
                       {smallImage && (
                         <div className="flex-shrink-0">
