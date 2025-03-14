@@ -16,10 +16,10 @@ export default function Projects() {
         {projectsData.map((d) => (
           <SectionContainer key={d.title} addMinHeight={false}>
             <Link href={d.href} aria-label={`Link to ${d.title}`}>
-              <div className="p-6">
-                <div className="flex flex-col items-start space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
+              <div className="p-6 m-3">
+                <div className="flex flex-col items-center sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
                   {d.img2Src ? (
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 sm:flex-none">
                       <Image
                         alt={d.title}
                         src={d.img2Src}
@@ -29,8 +29,10 @@ export default function Projects() {
                       />
                     </div>
                   ) : null}
-                  <div className="flex-1">
-                    <H3>{d.title}</H3>
+                  <div className="flex-1 text-center sm:text-left">
+                    <H3 withPadding={false} className="pb-3">
+                      {d.title}
+                    </H3>
                     <p className="mb-4 text-gray-600 dark:text-gray-300">{d.description}</p>
                   </div>
                 </div>
