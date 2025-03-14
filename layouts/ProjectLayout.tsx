@@ -1,22 +1,23 @@
 import { ReactNode } from 'react'
-import type { Project } from 'contentlayer/generated'
+import type { Blog, Projects } from 'contentlayer/generated'
 import Image from '@/components/Image'
 import Link from '@/components/Link'
 import BadgeLinks from '@/components/BadgeLinks'
 import SectionContainer from '@/components/SectionContainer'
 import { Button } from '@headlessui/react'
 import Card from '@/components/Card'
+import { CoreContent } from 'pliny/utils/contentlayer'
 
 interface Props {
   children: ReactNode
-  content: Omit<Project, '_id' | '_raw' | 'body'>
+  content: CoreContent<Projects>
+  recentPosts: Blog[]
 }
 
 export default function ProjectLayout({ children, content, recentPosts }: Props) {
   const {
     title,
     description,
-    href,
     imgSrc,
     colab,
     test,
@@ -32,14 +33,7 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
   return (
     <SectionContainer>
       <section className="mb-6 px-6 pt-6 pb-3 text-center md:px-12 lg:px-18">
-        <Image
-          src={imgSrc}
-          alt={title}
-          layout="intrinsic"
-          width={1200}
-          height={600}
-          className="w-full"
-        />
+        {imgSrc && <Image src={imgSrc} alt={title} width={1200} height={600} className="w-full" />}
         <p className="mx-auto max-w-3xl pb-3 text-lg text-gray-600 italic">{description}</p>
         <BadgeLinks
           colabLink={colab}
@@ -63,11 +57,13 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
                 </Button>
               </Link>
             )}
-            <Link href={github}>
-              <Button className="bg-secondary-400 hover:bg-secondary-500 px-6 py-2 text-sm text-white">
-                GitHub
-              </Button>
-            </Link>
+            {github && (
+              <Link href={github}>
+                <button className="bg-secondary-400 hover:bg-secondary-500 px-6 py-2 text-sm text-white">
+                  GitHub
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </section>
