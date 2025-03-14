@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from '@/components/Link'
-import Image from '@/components/Image'
+import NextImage from 'next/image'
 
 interface BadgeProps {
   link: string
@@ -18,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({
   rel = 'noopener noreferrer',
 }) => (
   <Link href={link} target={target} rel={rel} className="flex items-center">
-    <Image width={100} height={25} alt={altText} src={imgSrc} className="h-4" />
+    <NextImage width={100} height={25} alt={altText} src={imgSrc} className="h-4" />
   </Link>
 )
 
