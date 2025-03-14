@@ -1,6 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 import FeaturesList from '@/components/FeaturesList'
+import H3 from '@/components/H3'
 
 interface CardProps {
   title: string
@@ -25,9 +26,9 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features 
           />
         </div>
       ) : (
-        <h3 className="bg-primary-100 rounded-t-lg px-6 pt-3 text-xl font-semibold">
+        <H3 className="bg-primary-100 rounded-t-lg">
           <p className="px-4 py-10">{title}</p>
-        </h3>
+        </H3>
       )}
 
       {/* Divider */}

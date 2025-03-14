@@ -13,6 +13,7 @@ import tagData from 'app/tag-data.json'
 import { FaCalendar } from 'react-icons/fa'
 import AuthorCard from '@/components/AuthorCard'
 import { getAuthorsByPost } from '@/components/utils/authorsHelper'
+import H2 from '@/components/H2'
 
 interface PaginationProps {
   totalPages: number
@@ -123,21 +124,21 @@ export default function ListLayoutWithTags({
           </div>
 
           {/* Right Content Panel */}
-          <div className="mt-3 flex-1">
+          <div className="mt-12 flex-1">
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags, authors } = post
                 const authorDetails = getAuthorsByPost(post.authors || [])
                 return (
-                  <li key={path} className="border-b border-gray-200 py-8 dark:border-gray-700">
+                  <li key={path} className="border-b border-gray-200 pb-8">
                     <article className="flex flex-col space-y-4 px-8 md:flex-row md:space-y-0 md:space-x-6">
                       {/* Content Section */}
-                      <div className="flex-1">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                      <div className="mb-3 flex-1">
+                        <H2>
                           <Link href={`/${path}`} className="hover:text-primary-500">
                             {title}
                           </Link>
-                        </h2>
+                        </H2>
 
                         {/* Tags */}
                         <div className="text-primary-500 mt-2 flex flex-wrap space-x-2 text-sm">

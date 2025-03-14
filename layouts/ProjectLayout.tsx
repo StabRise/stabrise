@@ -7,6 +7,7 @@ import SectionContainer from '@/components/SectionContainer'
 import { Button } from '@headlessui/react'
 import Card from '@/components/Card'
 import { CoreContent } from 'pliny/utils/contentlayer'
+import H3 from '@/components/H3'
 
 interface Props {
   children: ReactNode
@@ -70,13 +71,13 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
 
       <hr />
       <section className="px-6 pb-6 md:px-12 lg:px-18">
-        <div className="prose max-w-none pt-8 pb-8 xl:col-span-2">{children}</div>
+        <div className="prose max-w-none pb-8 xl:col-span-2">{children}</div>
       </section>
 
       {recentPosts.length > 0 && (
-        <section className="bg-primary-100 py-12">
+        <section className="bg-primary-100 pb-12">
           <div className="mx-auto max-w-screen-xl px-6">
-            <h2 className="text-grey-900 mb-8 text-center text-3xl font-semibold">Recent Posts</h2>
+            <H3>Recent Posts</H3>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {recentPosts.map((post) => (
                 <Card

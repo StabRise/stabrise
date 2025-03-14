@@ -7,6 +7,7 @@ import projectsData from '@/data/projectsData'
 import useCases from '@/data/useCases'
 import whyChooseUs from '@/data/whyChooseUs'
 import PageTitle from '@/components/PageTitle'
+import H2 from '@/components/H2'
 
 export default async function Page() {
   return (
@@ -30,8 +31,8 @@ export default async function Page() {
         </div>
       </section>
       <hr />
-      <section id="projects" className="bg-gray-50 px-6 py-6 text-center">
-        <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
+      <section id="projects" className="bg-gray-50 px-6 pb-6 text-center">
+        <H2>Our Projects</H2>
         <div className="grid gap-6 md:grid-cols-2">
           {projectsData.map((d) => (
             <Card
@@ -48,28 +49,24 @@ export default async function Page() {
       <hr className="" />
       <section className="py-6">
         <div className="mx-auto max-w-screen-xl px-6">
-          <h2 className="my-6 text-center">Use Cases</h2>
-          <div className="">
-            <div className="usage-cases-list">
-              {useCases.map((item, index) => (
-                <div key={index} className="usage-case-item mb-5">
-                  <div className="usage-case-header mb-2.5 flex items-center">
-                    <div className="usage-case-icon text-primary mr-2.5">{item.icon}</div>
-                    <p className="text-xl text-gray-800">{item.title}</p>
-                  </div>
-                  <p className="text-base text-gray-700">{item.description}</p>
+          <H2>Use Cases</H2>
+          <div className="usage-cases-list">
+            {useCases.map((item, index) => (
+              <div key={index} className="usage-case-item mb-5">
+                <div className="usage-case-header mb-2.5 flex items-center">
+                  <div className="usage-case-icon text-primary mr-2.5">{item.icon}</div>
+                  <p className="text-xl text-gray-800">{item.title}</p>
                 </div>
-              ))}
-            </div>
+                <p className="text-base text-gray-700">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <hr className="" />
-      <section className="bg-primary-100 py-16">
+      <hr />
+      <section className="bg-primary-100 pb-16">
         <div className="mx-auto max-w-screen-xl px-6">
-          <h2 className="text-grey-900 mb-8 text-center text-3xl font-semibold">
-            Why Choose StabRise?
-          </h2>
+          <H2>Why Choose StabRise?</H2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {whyChooseUs.map((card, index) => (
               <SimpleCard

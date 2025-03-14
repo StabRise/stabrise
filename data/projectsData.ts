@@ -9,7 +9,7 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'PDF Datasource',
+    title: 'Spark PDF',
     description: `A powerful, open-source data source for processing and handling PDF files in Apache Spark. Designed to efficiently manage large PDF files with minimal memory usage and scalable performance.`,
     imgSrc: '/static/images/projects/sparkpdf.webp',
     img2Src: '/static/images/projects/spark-pdf-800x600.png',

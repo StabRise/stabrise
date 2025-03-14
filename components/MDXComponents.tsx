@@ -6,6 +6,8 @@ import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import PageTitle from '@/components/PageTitle'
+import H2 from '@/components/H2'
+import H3 from '@/components/H3'
 
 export const components: MDXComponents = {
   Image,
@@ -15,6 +17,6 @@ export const components: MDXComponents = {
   table: TableWrapper,
   BlogNewsletterForm,
   h1: ({ children }) => <PageTitle>{children}</PageTitle>,
-  h2: ({ children }) => <h2 className="my-6 text-center">{children}</h2>,
-  h3: ({ children }) => <h3 className="my-6 text-center">{children}</h3>,
+  h2: ({ children }) => <H2>{children}</H2>,
+  h3: ({ children }) => <H3>{children}</H3>,
 }

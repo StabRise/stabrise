@@ -7,7 +7,7 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /*Logo colors */
@@ -72,15 +72,6 @@
 body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
-
-h2 {
-  @apply font-bold text-4xl tracking-tight leading-tight;
-}
-
-h3 {
-  @apply font-bold text-3xl tracking-tight leading-tight;
-}
-
 
 /* Add this to your custom CSS file */
 button {

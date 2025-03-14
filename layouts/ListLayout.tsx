@@ -9,6 +9,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import PageTitle from '@/components/PageTitle'
 import siteMetadata from '@/data/siteMetadata'
+import H3 from '@/components/H3'
 
 interface PaginationProps {
   totalPages: number
@@ -128,11 +129,11 @@ export default function ListLayout({
                   </dl>
                   <div className="space-y-3 xl:col-span-3">
                     <div>
-                      <h3 className="text-2xl leading-8 font-bold tracking-tight">
+                      <H3 className="text-2xl leading-8 font-bold tracking-tight">
                         <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
                           {title}
                         </Link>
-                      </h3>
+                      </H3>
                       <div className="flex flex-wrap">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       </div>

@@ -54,7 +54,7 @@ export default function DefaultPostLayout({
                 <p className="text-sm text-gray-500">
                   <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                 </p>
-                <PageTitle>{title}</PageTitle>
+                <PageTitle withPadding={false}>{title}</PageTitle>
               </div>
 
               {/* Author Details and Tags */}

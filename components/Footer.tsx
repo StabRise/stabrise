@@ -9,7 +9,7 @@ export default function Footer() {
     <div>
       <footer className="border-t border-gray-300 bg-white py-6">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4">
             {/* Logo and Description */}
             <div className="col-span-1">
               <Link href="/">
