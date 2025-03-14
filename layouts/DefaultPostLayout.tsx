@@ -11,6 +11,7 @@ import Image from '@/components/Image'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import Tags from '@/components/Tags'
 import AuthorCard from '@/components/AuthorCard'
+import PageTitle from '@/components/PageTitle'
 
 interface LayoutProps {
   content: CoreContent<Blog>
@@ -53,7 +54,7 @@ export default function DefaultPostLayout({
                 <p className="text-sm text-gray-500">
                   <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                 </p>
-                <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
+                <PageTitle>{title}</PageTitle>
               </div>
 
               {/* Author Details and Tags */}

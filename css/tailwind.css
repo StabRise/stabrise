@@ -73,10 +73,6 @@ body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
-h1 {
-  @apply font-bold text-5xl tracking-tight leading-tight;
-}
-
 h2 {
   @apply font-bold text-4xl tracking-tight leading-tight;
 }

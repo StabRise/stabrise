@@ -6,14 +6,13 @@ import SectionContainer from '@/components/SectionContainer'
 import projectsData from '@/data/projectsData'
 import useCases from '@/data/useCases'
 import whyChooseUs from '@/data/whyChooseUs'
+import PageTitle from '@/components/PageTitle'
 
 export default async function Page() {
   return (
     <SectionContainer>
-      <section className="">
-        <h1 className="my-6 px-6 pt-18 text-center text-3xl font-semibold text-gray-800">
-          Scalable Document Processing Solutions
-        </h1>
+      <section>
+        <PageTitle>Scalable Document Processing Solutions</PageTitle>
         <p className="mx-auto mt-6 max-w-5xl px-6 pb-6 text-center text-lg text-gray-600">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
@@ -30,7 +29,7 @@ export default async function Page() {
           />
         </div>
       </section>
-      <hr className="" />
+      <hr />
       <section id="projects" className="bg-gray-50 px-6 py-6 text-center">
         <h2 className="text-grey-900 mb-6 p-6">Our Projects</h2>
         <div className="grid gap-6 md:grid-cols-2">

@@ -17,7 +17,9 @@ const Header = () => {
         <div className="flex items-center">
           <Logo className="mx-3 h-8 w-auto" />
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <h1 className="mt-1 hidden font-semibold text-gray-700">{siteMetadata.headerTitle}</h1>
+            <span className="mt-1 hidden font-semibold text-gray-700">
+              {siteMetadata.headerTitle}
+            </span>
           ) : (
             siteMetadata.headerTitle
           )}
@@ -47,7 +49,7 @@ const Header = () => {
         {/* Call-to-action Button */}
         <Link href="/schedule-meeting/">
           <button className="bg-secondary-400 hover:bg-secondary-600 rounded-md px-6 py-2 text-white transition-colors">
-            Schedule Meeting
+            Contact Us
           </button>
         </Link>
 

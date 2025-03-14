@@ -3,17 +3,15 @@ import { genPageMetadata } from 'app/seo'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
 import SectionContainer from '@/components/SectionContainer'
+import PageTitle from '@/components/PageTitle'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
 export default function Projects() {
   return (
-    <div className="px-6 py-12">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Our Projects</h1>
-        </div>
-
+    <div>
+      <div>
+        <PageTitle>Our Projects</PageTitle>
         <div className="space-y-8">
           {projectsData.map((d) => (
             <SectionContainer key={d.title} addMinHeight={false}>
