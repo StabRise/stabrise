@@ -16,7 +16,7 @@ export default function Projects() {
         {projectsData.map((d) => (
           <SectionContainer key={d.title} addMinHeight={false}>
             <Link href={d.href} aria-label={`Link to ${d.title}`}>
-              <div className="p-6 m-3">
+              <div className="m-3 p-6">
                 <div className="flex flex-col items-center sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
                   {d.img2Src ? (
                     <div className="flex-shrink-0 sm:flex-none">
