@@ -2,6 +2,7 @@ import 'css/prism.css'
 import 'katex/dist/katex.css'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
+import { notFound } from 'next/navigation'
 
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
@@ -63,7 +64,12 @@ export async function generateMetadata(props: {
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
+
   const project = allProjects.find((p) => p.slug === slug) as Projects
+  if (!project) {
+    notFound()
+  }
+
   const Layout = layouts[project.layout || defaultLayout]
 
   // Recent projects posts
