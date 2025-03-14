@@ -13,19 +13,7 @@ export const components: MDXComponents = {
   pre: Pre,
   table: TableWrapper,
   BlogNewsletterForm,
-  h1: ({children}) => (
-    <h1 className="text-center my-6">
-      {children}
-    </h1>
-  ),
-  h2: ({children}) => (
-    <h2 className="text-center my-6">
-      {children}
-    </h2>
-  ),
-  h3: ({ children }) => (
-    <h3 className="text-center my-6">
-      {children}
-    </h3>
-  ),
+  h1: ({ children }) => <h1 className="my-6 text-center">{children}</h1>,
+  h2: ({ children }) => <h2 className="my-6 text-center">{children}</h2>,
+  h3: ({ children }) => <h3 className="my-6 text-center">{children}</h3>,
 }

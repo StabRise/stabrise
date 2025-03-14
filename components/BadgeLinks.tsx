@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from '@/components/Link'
+import Image from '@/components/Image'
 
 interface BadgeProps {
   link: string
@@ -17,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({
   rel = 'noopener noreferrer',
 }) => (
   <Link href={link} target={target} rel={rel} className="flex items-center">
-    <img alt={altText} src={imgSrc} className="h-4" />
+    <Image alt={altText} src={imgSrc} className="h-4" />
   </Link>
 )
 
