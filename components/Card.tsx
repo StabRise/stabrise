@@ -2,7 +2,15 @@ import Image from './Image'
 import Link from './Link'
 import FeaturesList from '@/components/FeaturesList'
 
-const Card = ({ title, description, imgSrc, href, features }) => (
+interface CardProps {
+  title: string
+  description: string
+  imgSrc?: string // Optional image source
+  href: string
+  features?: string[] // Optional features list
+}
+
+const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features }) => (
   <div className="mx-auto rounded-lg bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl">
     <Link href={href} aria-label={`Link to ${title}`}>
       {/* If there is an image, display it */}

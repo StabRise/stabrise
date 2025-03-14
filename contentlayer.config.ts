@@ -168,6 +168,7 @@ export const Projects = defineDocumentType(() => ({
     layout: { type: 'string' },
     github: { type: 'string' },
     gettingStarted: { type: 'string' },
+    images: { type: 'json' },
   },
   computedFields,
 }))

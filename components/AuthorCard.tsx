@@ -4,7 +4,7 @@ import Link from '@/components/Link'
 type AuthorProps = {
   name: string
   avatar?: string // Avatar is optional
-  occupation: string
+  occupation?: string
   linkedin?: string // LinkedIn is optional
   github?: string // GitHub is optional
 }

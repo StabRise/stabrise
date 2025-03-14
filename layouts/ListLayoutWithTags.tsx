@@ -18,6 +18,7 @@ interface PaginationProps {
   totalPages: number
   currentPage: number
 }
+
 interface ListLayoutProps {
   posts: CoreContent<Blog>[]
   title: string
@@ -69,13 +70,12 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
-
 export default function ListLayoutWithTags({
-                                             posts,
-                                             title,
-                                             initialDisplayPosts = [],
-                                             pagination,
-                                           }: ListLayoutProps) {
+  posts,
+  title,
+  initialDisplayPosts = [],
+  pagination,
+}: ListLayoutProps) {
   const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
@@ -88,8 +88,7 @@ export default function ListLayoutWithTags({
       <div className="">
         <div className="flex sm:space-x-0 md:space-x-3">
           {/* Left Panel (No rounded corners) */}
-          <div className="pl-1 md:pl-6 xl:pl-12 hidden sm:flex sm:w-1/4
-          flex-wrap overflow-auto  border-r border-gray-200 pt-5 ">
+          <div className="hidden flex-wrap overflow-auto border-r border-gray-200 pt-5 pl-1 sm:flex sm:w-1/4 md:pl-6 xl:pl-12">
             <div className="py-4">
               <div className="text-center">
                 {pathname.startsWith('/blog') ? (
@@ -124,25 +123,14 @@ export default function ListLayoutWithTags({
           </div>
 
           {/* Right Content Panel */}
-          <div className="flex-1 mt-3">
+          <div className="mt-3 flex-1">
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags, authors, smallImage } = post
-                const authorDetails = getAuthorsByPost(post.authors)
+                const { path, date, title, summary, tags, authors } = post
+                const authorDetails = getAuthorsByPost(post.authors || [])
                 return (
                   <li key={path} className="border-b border-gray-200 py-8 dark:border-gray-700">
-                    <article className="px-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
-                      {/* Image Section */}
-                      {smallImage && (
-                        <div className="flex-shrink-0">
-                          <img
-                            src={smallImage}
-                            alt={title}
-                            className="h-16 w-16 rounded-md object-cover"
-                          />
-                        </div>
-                      )}
-
+                    <article className="flex flex-col space-y-4 px-8 md:flex-row md:space-y-0 md:space-x-6">
                       {/* Content Section */}
                       <div className="flex-1">
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -161,9 +149,9 @@ export default function ListLayoutWithTags({
                           <p>{summary}</p>
                         </div>
 
-                        <div className="mt-4 flex flex-col sm:items-center justify-between space-y-4 text-xs sm:mt-6 sm:flex-row sm:space-y-0 sm:space-x-4">
+                        <div className="mt-4 flex flex-col justify-between space-y-4 text-xs sm:mt-6 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
                           {/* Author Info */}
-                          <div className="flex sm:items-center space-x-4">
+                          <div className="flex space-x-4 sm:items-center">
                             {authorDetails.map((author) => (
                               <AuthorCard
                                 key={author.name}
@@ -174,7 +162,7 @@ export default function ListLayoutWithTags({
                               />
                             ))}
                           </div>
-                          <div className="flex sm:items-center space-x-1 text-xs text-gray-500">
+                          <div className="flex space-x-1 text-xs text-gray-500 sm:items-center">
                             <span className="material-icons">
                               <FaCalendar />
                             </span>

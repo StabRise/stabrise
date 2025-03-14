@@ -1,14 +1,15 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
+import siteMetadata from '@/data/siteMetadata'
+
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
 import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import AuthorCard from "@/components/AuthorCard";
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -61,26 +62,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <dd>
                 <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
                   {authorDetails.map((author) => (
-                    <div key={author.name} className="flex items-center space-x-2">
-                      {author.avatar && (
-                        <Image
-                          src={author.avatar}
-                          width={38}
-                          height={38}
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
-                        />
-                      )}
-                      <div className="text-sm leading-5">
-                        <Link
-                          href={author.linkedin}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-medium"
-                        >
-                          {author.name}
-                        </Link>
-                        <p className="text-gray-600 dark:text-gray-400">{author.occupation}</p>
-                      </div>
-                    </div>
+                    <AuthorCard
+                      key={author.name}
+                      name={author.name}
+                      avatar={author.avatar}
+                      occupation={author.occupation}
+                      linkedin={author.linkedin}
+                    />
                   ))}
                 </ul>
               </dd>
