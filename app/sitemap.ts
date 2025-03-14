@@ -12,12 +12,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .map((post) => ({
       url: `${siteUrl}/${post.path}`,
       lastModified: post.lastmod || post.date,
+      changeFrequency: 'weekly',
+      priority: 0.7,
     }))
 
-  const routes = ['', 'blog', 'projects', 'tags'].map((route) => ({
-    url: `${siteUrl}/${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+  const staticRoutes = siteMetadata.routes.map((route) => ({
+    url: `${siteUrl}/${route.name}`,
+    lastModified: new Date(),
+    changeFrequency: route.changeF || 'weekly',
+    priority: route.priority,
   }))
 
-  return [...routes, ...blogRoutes]
+  return [
+    {
+      url: `${siteUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    ...staticRoutes,
+    ...blogRoutes,
+  ]
 }
