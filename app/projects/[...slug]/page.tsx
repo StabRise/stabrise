@@ -14,6 +14,10 @@ const layouts = {
   ProjectLayout,
 }
 
+export const generateStaticParams = async () => {
+  return allProjects.map((p) => ({ slug: p.slug.split('/').map((name) => decodeURI(name)) }))
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>
 }): Promise<Metadata | undefined> {

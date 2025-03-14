@@ -18,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({
   rel = 'noopener noreferrer',
 }) => (
   <Link href={link} target={target} rel={rel} className="flex items-center">
-    <Image alt={altText} src={imgSrc} className="h-4" />
+    <Image width={100} height={25} alt={altText} src={imgSrc} className="h-4" />
   </Link>
 )
 
