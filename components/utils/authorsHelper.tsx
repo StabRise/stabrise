@@ -1,5 +1,6 @@
 import { Authors, allAuthors } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
+import { coreContent, CoreContent } from 'pliny/utils/contentlayer'
 
 // const getAuthorData = (slug: string): Author | null => {
 //   const author = allAuthors.find((author) => author.slug === slug);
@@ -29,8 +30,17 @@ export const getAuthorData = (
 }
 
 // Function to fetch multiple authors for a post, given an array of author slugs
-export const getAuthorsByPost = (authorSlugs: string[]): Authors[] => {
-  return authorSlugs
-    .map((slug) => getAuthorData(slug)) // Fetch each author by slug
-    .filter(Boolean) as Authors[] // Remove any null values in case an author is not found
+export const getAuthorsByPost = (authorList: string[]): CoreContent<Authors>[] => {
+  const authorDetails = authorList
+    .map((authorSlug) => {
+      const authorResults = allAuthors.find((author) => author.slug === authorSlug)
+
+      if (authorResults) {
+        return coreContent(authorResults as Authors)
+      }
+      return null // In case there's no match
+    })
+    .filter((author) => author !== null) // Filter out any null values
+
+  return authorDetails || []
 }

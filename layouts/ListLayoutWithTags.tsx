@@ -128,7 +128,7 @@ export default function ListLayoutWithTags({
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags, authors } = post
-                const authorDetails = getAuthorsByPost(post.authors || [])
+                const authorDetails = getAuthorsByPost(post.authors || ['default'])
                 return (
                   <li key={path} className="border-b border-gray-200 pb-8">
                     <article className="flex flex-col space-y-4 px-8 md:flex-row md:space-y-0 md:space-x-6">

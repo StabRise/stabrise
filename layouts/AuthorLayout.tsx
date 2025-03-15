@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
-import H3 from '@/components/H3'
+import PageTitle from '@/components/PageTitle'
 
 interface Props {
   children: ReactNode
@@ -26,7 +26,9 @@ export default function AuthorLayout({ children, content }: Props) {
                 className="h-32 w-32 rounded-full border-2 border-gray-300"
               />
             )}
-            <H3>{name}</H3>
+            <PageTitle cssClass="mt-6 mb-1" withPadding={false}>
+              {name}
+            </PageTitle>
             <div className="text-gray-500">{occupation}</div>
             <div className="text-gray-500">{company}</div>
             <div className="flex items-center space-x-4 pt-3">
