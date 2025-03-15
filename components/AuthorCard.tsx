@@ -5,13 +5,10 @@ type AuthorProps = {
   name: string
   avatar?: string // Avatar is optional
   occupation?: string
-  linkedin?: string // LinkedIn is optional
-  github?: string // GitHub is optional
+  profileLink?: string // profileLink is optional
 }
 
-const AuthorCard = ({ name, avatar, occupation, linkedin, github }: AuthorProps) => {
-  const profileLink = linkedin || github // If linkedin exists, use it, otherwise fallback to github
-
+const AuthorCard = ({ name, avatar, occupation, profileLink }: AuthorProps) => {
   return (
     <div key={name} className="flex items-center">
       {avatar && (
