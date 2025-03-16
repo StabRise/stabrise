@@ -3,6 +3,7 @@ import 'katex/dist/katex.css'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import { getCardUrl } from '@/data/utils'
 
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
@@ -31,7 +32,7 @@ export async function generateMetadata(props: {
     return
   }
 
-  let imageList = [siteMetadata.socialBanner]
+  let imageList = [getCardUrl(project.banner)]
   if (project.images) {
     imageList = typeof project.images === 'string' ? [project.images] : project.images
   }
@@ -87,7 +88,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         title={`${project.title}`}
         description={project.description}
         keywords={project.keywords}
-        image={`${siteMetadata.siteUrl}${process.env.BASE_PATH || ''}${project.banner}`}
+        image={getCardUrl(project.banner)}
       />
       <ProjectJsonLd project={project} />
       <Layout content={mainContent} recentPosts={filteredPosts}>
