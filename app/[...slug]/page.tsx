@@ -10,6 +10,7 @@ import { sortPosts, allCoreContent, coreContent } from 'pliny/utils/contentlayer
 import { allProjects, Projects, allBlogs } from 'contentlayer/generated'
 import ProjectLayout from '@/layouts/ProjectLayout'
 import ProjectJsonLd from '@/components/jsonLd/ProjectJsonLd'
+import WebPageJsonLd from '@/components/jsonLd/WebPageJsonLd'
 
 const defaultLayout = 'ProjectLayout'
 const layouts = {
@@ -81,6 +82,12 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   return (
     <>
+      <WebPageJsonLd
+        pageUrl={`/${project.slug}/`}
+        title={`${project.title}`}
+        description={project.description}
+        keywords={project.keywords}
+      />
       <ProjectJsonLd project={project} />
       <Layout content={mainContent} recentPosts={filteredPosts}>
         <MDXLayoutRenderer code={project.body.code} components={components} />

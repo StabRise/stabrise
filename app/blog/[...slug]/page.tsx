@@ -16,6 +16,7 @@ import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import PostJsonLd from '@/components/jsonLd/PostJsonLd'
+import WebPageJsonLd from '@/components/jsonLd/WebPageJsonLd'
 
 const defaultLayout = 'DefaultPostLayout'
 const layouts = {
@@ -103,6 +104,12 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const Layout = layouts[post.layout || defaultLayout]
   return (
     <>
+      <WebPageJsonLd
+        pageUrl={`/${post.slug}/`}
+        title={`${post.title}`}
+        description={post.summary}
+        keywords={post.keywords}
+      />
       <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
         <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
       </Layout>
