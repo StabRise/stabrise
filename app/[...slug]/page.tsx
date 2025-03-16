@@ -87,6 +87,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         title={`${project.title}`}
         description={project.description}
         keywords={project.keywords}
+        image={`${siteMetadata.siteUrl}${project.banner}`}
       />
       <ProjectJsonLd project={project} />
       <Layout content={mainContent} recentPosts={filteredPosts}>
