@@ -9,6 +9,7 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, allCoreContent, coreContent } from 'pliny/utils/contentlayer'
 import { allProjects, Projects, allBlogs } from 'contentlayer/generated'
 import ProjectLayout from '@/layouts/ProjectLayout'
+import ProjectJsonLd from '@/components/jsonLd/ProjectJsonLd'
 
 const defaultLayout = 'ProjectLayout'
 const layouts = {
@@ -80,6 +81,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   return (
     <>
+      <ProjectJsonLd project={project} />
       <Layout content={mainContent} recentPosts={filteredPosts}>
         <MDXLayoutRenderer code={project.body.code} components={components} />
       </Layout>

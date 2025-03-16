@@ -146,7 +146,18 @@ export const Authors = defineDocumentType(() => ({
     github: { type: 'string' },
     layout: { type: 'string' },
   },
-  computedFields,
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: doc.name,
+        occupation: doc.occupation,
+      }),
+    },
+  },
 }))
 
 export const Projects = defineDocumentType(() => ({
@@ -170,7 +181,53 @@ export const Projects = defineDocumentType(() => ({
     gettingStarted: { type: 'string' },
     images: { type: 'json' },
   },
-  computedFields,
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: doc.title,
+        description: doc.description,
+        url: `${siteMetadata.siteUrl}/${doc.href}`,
+        image: `${siteMetadata.siteUrl}/${doc.imgSrc}`,
+        license: `${doc.github}/blob/master/LICENSE`,
+        // softwareVersion: '0.1.15',
+        operatingSystem: 'Java 8, 11, 17, Apache Spark 3.x, 4.x',
+        applicationCategory: 'SoftwareApplication',
+        downloadUrl: doc.maven,
+        offers: {
+          '@type': 'Offer',
+          price: '0.00',
+          priceCurrency: 'USD',
+          url: doc.maven,
+        },
+        // TODO:
+        // aggregateRating: {
+        //   '@type': 'AggregateRating',
+        //   ratingValue: '5',
+        //   ratingCount: '44',
+        // },
+        githubRepository: doc.github,
+        colab: doc.colab,
+        documentation: doc.gettingStarted,
+        codeRepository: doc.github,
+        databricksIntegration: `${doc.github}/blob/main/examples/PdfDataSourceDatabricks.ipynb`,
+        // TODO:
+        // keywords: [
+        //   'Apache Spark',
+        //   'PDF',
+        //   'Open Source',
+        //   'Data Source',
+        //   'OCR',
+        //   'PySpark',
+        //   'Scala',
+        //   'Spark Connect',
+        // ],
+      }),
+    },
+  },
 }))
 
 export default makeSource({
