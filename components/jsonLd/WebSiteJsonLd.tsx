@@ -27,7 +27,7 @@ const organizationJsonLd = {
   // },
   description:
     'At StabRise, we’re passionate about creating open-source tools that transform the way businesses process documents. Our projects, from Spark-powered PDF processing to AI-driven data de-identification, offer flexible and secure solutions that scale with your needs. Designed with privacy regulations like HIPAA and GDPR in mind, our open-source libraries enable organizations to handle sensitive data with confidence - boosting efficiency, security, and scalability along the way.',
-  image: siteMetadata.socialBanner,
+  //image: siteMetadata.socialBanner,
 }
 
 export const webSiteJsonLd = {
