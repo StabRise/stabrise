@@ -3,10 +3,11 @@ const siteUrl = 'https://stabrise.github.io'
 
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'StabRise - Document Processing Solutions.',
+  title: 'StabRise - Document Processing and De-Identification Solutions.',
   author: 'Mykola Melnik, Olga Druchek, Svitoslav Melnyk',
   headerTitle: 'StabRise',
-  description: 'StabRise - Document Processing and De-Identification Solutions',
+  description:
+    'Powered by AI, scaled with Apache Spark, and offering open-source products for scalable and secure processing. Led by enthusiasts with 20+ years of expertise.',
   language: 'en-us',
   routes: [
     // { name: 'page', priority: 1, changeF: 'yearly' },

@@ -13,7 +13,7 @@ import whyChooseUs from '@/data/whyChooseUs'
 export default async function Page() {
   return (
     <>
-      <WebPageJsonLd pageUrl="/" />
+      <WebPageJsonLd pageUrl="/" title="Home" />
       <SectionContainer>
         <section>
           <PageTitle>Scalable Document Processing Solutions</PageTitle>
@@ -21,7 +21,8 @@ export default async function Page() {
             Effortlessly manage both structured and unstructured data with solutions that grow with
             your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
             efficiency. Powered by Spark, we help you scale your document processing smoothly and
-            securely.
+            securely. Powered by Spark and AI, we make it easy to scale your document processing
+            securely and smoothly, so you can focus on what matters most.
           </p>
           <div>
             <Image
