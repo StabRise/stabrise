@@ -29,7 +29,7 @@ const organizationJsonLd = {
   image: siteMetadata.socialBanner,
 }
 
-const webSiteJsonLd = {
+export const webSiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: siteMetadata.headerTitle,
