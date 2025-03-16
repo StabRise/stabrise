@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'StabRise - Document Processing Solutions.',
   author: 'Mykola Melnik, Olga Druchek, Svitoslav Melnyk',
-  headerTitle: 'StabRise - Document Processing Solutions',
+  headerTitle: 'StabRise',
   description: 'StabRise - Document Processing and De-Identification Solutions',
   language: 'en-us',
   routes: [
