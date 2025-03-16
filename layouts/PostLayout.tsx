@@ -67,7 +67,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       name={author.name}
                       avatar={author.avatar}
                       occupation={author.occupation}
-                      linkedin={author.linkedin}
+                      profileLink={author.linkedin || author.github}
                     />
                   ))}
                 </ul>
