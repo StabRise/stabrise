@@ -1,5 +1,5 @@
-const siteUrl = 'https://stabrise.github.io'
-// const siteUrl = 'https://stabrise.com'
+//const siteUrl = 'https://stabrise.github.io'
+const siteUrl = 'https://stabrise.com'
 
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {

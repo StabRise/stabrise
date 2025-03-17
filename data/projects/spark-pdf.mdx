@@ -16,8 +16,8 @@ keywords: ['spark pdf', 'spark read pdf', 'pyspark read pdf', 'spark pdf data so
 banner: /static/images/projects/sparkpdf-card.png
 ---
 
-This project provides a custom data source for Apache Spark, enabling you to read PDF files directly
-into Spark DataFrames. It’s designed to simplify the process of working with PDFs in distributed
+This project provides a custom data source for **Apache Spark**, enabling you to read **PDF** files directly
+into **Spark DataFrames**. It’s designed to simplify the process of working with PDFs in distributed
 data pipelines, whether you're dealing with text-based documents, scanned PDFs, or large files
 with thousands of pages.
 
@@ -35,9 +35,9 @@ import Note from "@/components/Note";
 
 - **Read PDFs into DataFrames**: Directly load PDF files into Spark DataFrames
 - **Lazy Loading**: Process PDFs page by page to optimize memory usage and handle large files efficiently.
-- **Scala and Python Support**: Use the library with both Scala and PySpark APIs.
+- **Scala and Python Support**: Use the library with both **Scala** and **PySpark** APIs.
 - **Built-in OCR**: Extract text from scanned PDFs using integrated OCR—no need to install or configure Tesseract separately.
-- **Large File Support**: Handle PDFs with up to 10,000 pages without performance bottlenecks.
+- **Large File Support**: Handle PDFs with up to **10,000 pages** without performance bottlenecks.
 - **Spark Connect Compatibility**: Works seamlessly with Spark Connect for distributed processing.
 
 <Note
@@ -53,7 +53,7 @@ import Note from "@/components/Note";
 
 The library extends Apache Spark’s data source API, allowing you to treat PDFs as a native data source.
 For text-based PDFs, it extracts content directly.
-For scanned PDFs, the built-in OCR engine processes the images and extracts text.
+For scanned PDFs, the built-in **OCR** engine processes the images and extracts text.
 The lazy loading feature ensures that only the required pages are loaded into memory, making it efficient for
 large files.
 
@@ -88,10 +88,10 @@ Simply add the corresponding dependency to your project’s `pom.xml` or build c
 
 ### Options for the data source:
 
-- `imageType`: Oputput image type. Can be: *"BINARY", "GREY", "RGB"*. Default: *"RGB".
+- `imageType`: Oputput image type. Can be: *"BINARY", "GREY", "RGB"*. Default: "RGB".
 - `resolution`: Resolution for rendering PDF page to the image. Default: "300" dpi.
 - `pagePerPartition`: Number pages per partition in Spark DataFrame. Default: "5".
-- `reader:` Supports: pdfBox - based on PdfBox java lib, gs - based on GhostScript (need installation GhostScipt to the system)
+- `reader:` Supports: pdfBox - based on **PdfBox** java lib, gs - based on **GhostScript** (need installation GhostScipt to the system)
 
 ### Output Columns in the DataFrame
 

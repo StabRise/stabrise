@@ -19,10 +19,10 @@ export default async function Page() {
           <PageTitle>Scalable Document Processing Solutions</PageTitle>
           <p className="mx-auto mt-6 max-w-5xl px-6 pb-6 text-center text-lg text-gray-600">
             Effortlessly manage both structured and unstructured data with solutions that grow with
-            your business. Stay compliant with HIPAA, GDPR, and other regulations while improving
-            efficiency. Powered by Spark, we help you scale your document processing smoothly and
-            securely. Powered by Spark and AI, we make it easy to scale your document processing
-            securely and smoothly, so you can focus on what matters most.
+            your business. Stay compliant with <strong>HIPAA</strong>, <strong>GDPR</strong>, and
+            other regulations while improving efficiency. Powered by <strong>Spark</strong> and{' '}
+            <strong>AI</strong>, we make it easy to scale your document processing securely and
+            smoothly, so you can focus on what matters most.
           </p>
           <div>
             <Image
