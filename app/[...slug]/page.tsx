@@ -66,8 +66,8 @@ export async function generateMetadata(props: {
 
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
-  const slug = decodeURI(params.slug.join('/'))
-
+  let slug = decodeURI(params.slug.join('/'))
+  slug = slug.endsWith('/') ? slug.slice(0, -1) : slug
   const project = allProjects.find((p) => p.slug === slug) as Projects
   if (!project) {
     notFound()
