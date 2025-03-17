@@ -12,11 +12,11 @@ pypi:
 pStabRise:
 github: https://github.com/StabRise/spark-pdf
 gettingStarted: https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSource.ipynb
-keywords: ['spark pdf', 'spark read pdf', 'pyspark read pdf', 'spark pdf data source']
+keywords: ['spark pdf', 'spark read pdf', 'pyspark read pdf', 'spark pdf data source', "Apache Spark PDF Integration", "Spark PDF Data Source", "Read PDF in Spark", "PySpark PDF Processing", "PDF to DataFrame in Spark", "OCR PDF Spark", "Scanned PDF OCR Spark", "Text Extraction from PDFs Spark", "Distributed PDF Processing", "Large File PDF Processing Spark", "PDF File Handling in Spark", "Apache Spark OCR Support", "Spark DataSource API", "PDF Image Rendering Spark", "Spark PDF Lazy Loading", "Efficient Spark PDF Processing", "Spark Read PDF", "PySpark Read PDF", "Spark PDF Data Source"]
 banner: /static/images/projects/sparkpdf-card.png
 ---
 
-This project provides a custom data source for **Apache Spark**, enabling you to read **PDF** files directly
+This project provides a custom **data source** for **Apache Spark**, enabling you to read **PDF** files directly
 into **Spark DataFrames**. It’s designed to simplify the process of working with PDFs in distributed
 data pipelines, whether you're dealing with text-based documents, scanned PDFs, or large files
 with thousands of pages.
@@ -44,16 +44,17 @@ import Note from "@/components/Note";
   title="ScaleDP Compatibility"
   icon="👉"
 >
-  Compatible with [ScaleDP, an Open-Source Library](/projects/scale-dp) for Processing
-  Documents using AI/ML in Apache Spark.
+  Compatible with **[ScaleDP, an Open-Source Library](/projects/scale-dp)** for Processing
+  Documents using **AI/ML** in Apache Spark.
 </Note>
 >
 
 ## How It Works
 
-The library extends Apache Spark’s data source API, allowing you to treat PDFs as a native data source.
+The library extends Apache Spark’s **Data Source API**, allowing you to treat PDFs as a native data source.
 For text-based PDFs, it extracts content directly.
 For scanned PDFs, the built-in **OCR** engine processes the images and extracts text.
+
 The lazy loading feature ensures that only the required pages are loaded into memory, making it efficient for
 large files.
 
@@ -75,7 +76,7 @@ large files.
 
 ## Installation
 
-The binary package is available in the Maven Central Repository.
+The binary package is available in the **Maven Central Repository**.
 To install the package for your version of Apache Spark, use the
 following Maven coordinates:
 
@@ -86,14 +87,14 @@ following Maven coordinates:
 
 Simply add the corresponding dependency to your project’s `pom.xml` or build configuration.
 
-### Options for the data source:
+### Configuration Options
 
 - `imageType`: Oputput image type. Can be: *"BINARY", "GREY", "RGB"*. Default: "RGB".
 - `resolution`: Resolution for rendering PDF page to the image. Default: "300" dpi.
 - `pagePerPartition`: Number pages per partition in Spark DataFrame. Default: "5".
 - `reader:` Supports: pdfBox - based on **PdfBox** java lib, gs - based on **GhostScript** (need installation GhostScipt to the system)
 
-### Output Columns in the DataFrame
+### DataFrame Output Columns
 
 The DataFrame contains the following columns:
 
@@ -104,7 +105,7 @@ The DataFrame contains the following columns:
 - **`document`**: The OCR-extracted text from the rendered image (calls Tesseract OCR).
 - **`partition_number`**: The partition number.
 
-### Example of usage
+### Usage Examples
 
 #### Scala Example
 

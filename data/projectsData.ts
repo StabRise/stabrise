@@ -17,7 +17,7 @@ const projectsData: Project[] = [
     features: ['Open-source', 'Supports large files', 'Optimized for performance'],
   },
   {
-    title: 'Scale DP',
+    title: 'ScaleDP',
     description: `An Open-Source Library for Processing Documents using AI/ML in Apache Spark.`,
     imgSrc: '/static/images/projects/scaledp.webp',
     img2Src: '/static/images/projects/scale-dp-800x600.png',

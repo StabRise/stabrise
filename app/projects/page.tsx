@@ -12,7 +12,7 @@ const keywords = [
   'open-source projects',
   'Apache Spark',
   'Spark PDF',
-  'Scale DP',
+  'ScaleDP',
   'PDF redaction',
   'data de-identification',
   'AI-powered document processing',

@@ -15,16 +15,17 @@ gettingStarted: https://github.com/StabRise/ScaleDP-Tutorials/blob/master/1.Quic
 keywords: ['scaledp', 'spark document processing']
 banner: /static/images/projects/scaledp-card.png
 ---
+## ScaleDP: Streamlined Document Processing with AI and Apache Spark
 
-**ScaleDP** is an open-source library designed to simplify document processing
-using **AI** models while leveraging the scalability of **Apache Spark**. It enables
-developers to extract structured data from unstructured documents (**PDFs**,
-**images**, etc.) using pre-trained models like **LLMs** (Large Language Models)
-and **VLMs** (Vision Language Models), combined with **OCR** engines.
+**ScaleDP** is an open-source library designed to simplify extracting structured data from unstructured documents using cutting-edge **AI models**. By leveraging the power of **Apache Spark**, ScaleDP provides **scalable, high-performance document processing** for tasks such as invoice extraction, scanned document processing, and real-time pipeline integration.
 
-Whether you're processing invoices, extracting data from scanned documents, or
-building real-time pipelines, **ScaleDP** provides the tools to handle it efficiently
-and at scale.
+### AI-Powered Document Processing
+
+ScaleDP combines advanced **pre-trained models** like **Large Language Models (LLMs)**, **Vision Language Models (VLMs)**, and **OCR engines** to offer accurate and efficient data extraction from a variety of document types, including **PDFs** and **images**.
+
+### Scalable and High-Performance Processing
+
+With its foundation built on **Apache Spark**, ScaleDP is capable of handling large-scale document processing. Whether you're working with thousands of invoices or need to process documents in real-time, ScaleDP scales effortlessly to meet your needs.
 
 ---
 
@@ -94,9 +95,60 @@ pdf_example = files('resources/pdfs/Invoice.pdf')
 df = spark.read.format("pdf") \
     .load(pdf_example)
 
-df.show()
+df.show_image()
 ```
 ---
+
+Output:
+
+![](/static/images/blog/scaledp/invoice.png)
+
+
+### Zero-Shot data Extraction from the Image
+
+```python
+from pydantic import BaseModel
+import json
+
+class Items(BaseModel):
+    date: str
+    item: str
+    note: str
+    debit: str
+
+class InvoiceSchema(BaseModel):
+    hospital: str
+    tax_id: str
+    address: str
+    email: str
+    phone: str
+    items: list[Items]
+    total: str
+
+
+pipeline = PipelineModel(stages=[
+    DataToImage(
+        inputCol="content",
+        outputCol="image"
+    ),
+    LLMVisualExtractor(
+        inputCol="image",
+        outputCol="invoice",
+        model="gemini-1.5-flash",
+        apiKey="",
+        apiBase="https://generativelanguage.googleapis.com/v1beta/",
+        schema=json.dumps(InvoiceSchema.model_json_schema())
+    )
+])
+
+result = pipeline.transform(df).cache()
+```
+
+Show the extracted json:
+
+```python
+result.show_json("invoice")
+```
 
 ## Generative AI Capabilities
 
