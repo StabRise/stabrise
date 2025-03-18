@@ -93,7 +93,9 @@ export default function ListLayoutWithTags({
             <div className="py-4">
               <div className="text-center">
                 {pathname.startsWith('/blog') ? (
-                  <h4 className="text-primary-500 mb-4 font-semibold">All Posts</h4>
+                  <h4 className="text-primary-500 border-primary-500 mb-4 rounded-lg border px-3 py-2 font-semibold">
+                    All Posts
+                  </h4>
                 ) : (
                   <Link
                     href={`/blog`}
@@ -106,12 +108,12 @@ export default function ListLayoutWithTags({
 
               <ul className="mt-4 space-y-3">
                 {sortedTags.map((t) => {
-                  const isSelected = decodeURI(pathname.split('/tags/')[1]) === slug(t)
+                  const isSelected = decodeURI(pathname.split('/tags/')[1]) === `${slug(t)}/`
                   return (
                     <li key={t}>
                       <Link
                         href={`/tags/${slug(t)}`}
-                        className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ease-in-out ${isSelected ? 'bg-primary-500 text-white' : 'hover:bg-primary-100 dark:hover:bg-primary-500 hover:text-primary-500 text-gray-500 dark:text-gray-300'}`}
+                        className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ease-in-out ${isSelected ? 'bg-primary-200 text-grey-900' : 'hover:bg-primary-100 dark:hover:bg-primary-500 hover:text-primary-500 text-gray-500 dark:text-gray-300'}`}
                         aria-label={`View posts tagged ${t}`}
                       >
                         {`${t} (${tagCounts[t]})`}
@@ -141,18 +143,18 @@ export default function ListLayoutWithTags({
                         </H2>
 
                         {/* Tags */}
-                        <div className="text-primary-500 mt-2 flex flex-wrap space-x-2 text-sm">
+                        <div className="text-primary-500 mt-2 flex flex-wrap space-x-2 text-sm text-xs">
                           {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                         </div>
 
                         {/* Summary/Description */}
-                        <div className="mt-3 text-justify text-gray-500 dark:text-gray-400">
+                        <div className="mt-3 text-justify text-gray-800 dark:text-gray-400">
                           <p>{summary}</p>
                         </div>
 
                         <div className="mt-4 flex flex-col justify-between space-y-4 text-xs sm:mt-6 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
                           {/* Author Info */}
-                          <div className="flex space-x-4 sm:items-center">
+                          <div className="flex space-x-2 sm:items-center sm:space-x-4">
                             {authorDetails.map((author) => (
                               <AuthorCard
                                 key={author.name}

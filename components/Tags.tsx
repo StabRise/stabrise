@@ -7,9 +7,9 @@ const Tags = ({ tags }) => {
   if (!tags || tags.length === 0) return null
 
   return (
-    <div className="flex items-center space-x-2">
-      <FaTag className="h-4 w-4 text-gray-500" />
-      <div className="flex flex-wrap gap-2">
+    <div className="flex pl-2 text-xs">
+      <div className="flex flex-wrap gap-1">
+        <FaTag className="text-primary-500 mt-1 h-4 w-4 pt-1" />
         {tags.map((tag) => (
           <Tag key={tag} text={tag} />
         ))}

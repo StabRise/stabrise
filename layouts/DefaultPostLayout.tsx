@@ -58,10 +58,9 @@ export default function DefaultPostLayout({
               </div>
 
               {/* Author Details and Tags */}
-              <div className="mt-4 flex flex-col items-center justify-between space-y-4 sm:mt-6 sm:flex-row sm:space-y-0 sm:space-x-4">
-                {/* Author Info */}
-                <div className="flex items-center space-x-4">
-                  {authorDetails.map((author) => (
+              <div className="mt-4 flex flex-col items-center space-y-3 md:flex-row md:justify-center md:space-y-0">
+                {authorDetails.map((author) => (
+                  <div key={author.name} className="w-full flex-col justify-center">
                     <AuthorCard
                       key={author.name}
                       name={author.name}
@@ -69,10 +68,11 @@ export default function DefaultPostLayout({
                       occupation={author.occupation}
                       profileLink={author.linkedin || author.github}
                     />
-                  ))}
+                  </div>
+                ))}
+                <div className="flex w-full md:flex-grow">
+                  <Tags tags={tags} />
                 </div>
-
-                <Tags tags={tags} />
               </div>
             </div>
           </header>

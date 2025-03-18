@@ -1,7 +1,6 @@
 import 'css/prism.css'
 import 'katex/dist/katex.css'
 
-import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
@@ -13,8 +12,9 @@ import PostBanner from '@/layouts/PostBanner'
 import DefaultPostLayout from '@/layouts/DefaultPostLayout'
 
 import { Metadata } from 'next'
-import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import siteMetadata from '@/data/siteMetadata'
+import { getCardUrl } from '@/data/utils'
 import PostJsonLd from '@/components/jsonLd/PostJsonLd'
 import WebPageJsonLd from '@/components/jsonLd/WebPageJsonLd'
 
@@ -44,7 +44,7 @@ export async function generateMetadata(props: {
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
-  let imageList = [siteMetadata.socialBanner]
+  let imageList = [getCardUrl(post.displayImage)]
   if (post.images) {
     imageList = typeof post.images === 'string' ? [post.images] : post.images
   }
@@ -109,6 +109,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         title={`${post.title}`}
         description={post.summary}
         keywords={post.keywords}
+        image={getCardUrl(post.displayImage)}
       />
       <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
         <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />

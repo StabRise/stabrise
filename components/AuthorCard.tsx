@@ -22,7 +22,7 @@ const AuthorCard = ({ name, avatar, occupation, profileLink }: AuthorProps) => {
       )}
       <div className="ml-2">
         {profileLink ? (
-          <Link href={profileLink} className="text-sm text-gray-800 hover:text-gray-700">
+          <Link href={profileLink} className="hover:text-primary-500 text-sm text-gray-800">
             {name}
           </Link>
         ) : (
