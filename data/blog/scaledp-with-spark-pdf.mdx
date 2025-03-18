@@ -1,0 +1,194 @@
+---
+title: 'Introduction to Structured Data Extraction from PDFs with AI'
+date: '2025-03-19'
+tags: ['spark', 'spark-pdf', 'scaleDP', 'LLM', 'data extraction', 'AI']
+draft: false
+authors: ['nmelnik', 'olchikd']
+summary: 'Learn how ScaleDP and Spark-PDF can streamline your document processing with AI-powered structured data extraction. Automate workflows and save time today!'
+keywords: ['ScaleDP', 'Spark-PDF', 'AI document processing', 'PDF extraction', 'data processing']
+---
+![](/static/images/blog/scaledp/extract-with-scaledp.png)
+
+Working with PDFs can be a real challenge, especially when you need to extract valuable data at scale. Whether you're processing invoices, contracts, or reports, manually parsing through documents is time-consuming and error-prone. If you’re already using **Spark-PDF** to read and process PDFs in Spark, you’re halfway there. But what if you could take it a step further by adding AI to automatically extract and structure the data? That's where **ScaleDP** comes in.
+
+In this post, we’ll show you how [**ScaleDP**](https://stabrise.com/scaledp/) can elevate your [**Spark-PDF**](https://stabrise.com/spark-pdf/) workflow by making document processing smarter and faster. We’ll specifically focus on how to get started with **structured data extraction**, which can save you hours of manual work.
+
+---
+
+## What is ScaleDP? AI-Powered Document Processing Framework
+
+[**ScaleDP**](https://stabrise.com/scaledp/) is a powerful AI-driven framework designed to automate document processing workflows. It integrates seamlessly with Spark to help you extract structured data from PDFs like names, dates, addresses, items, totals, and more - without needing to write complex code or manually tag data.
+
+If you’re already familiar with [**Spark-PDF**](https://stabrise.com/spark-pdf/), you know it’s great for reading PDFs and converting them into Spark DataFrames. But when you need to extract structured data, **ScaleDP** takes the process a step further by leveraging AI to automatically identify and structure data points in your documents.
+
+---
+
+## Why ScaleDP and Spark-PDF Are Essential for AI Document Processing
+
+While **Spark-PDF** is excellent at reading PDFs into Spark DataFrames, it doesn’t offer a solution for extracting meaningful, structured data from the document. That’s where **ScaleDP** comes in.
+
+By using **ScaleDP**, you gain access to pre-trained AI models that automatically extract and structure important pieces of information from your documents - whether you’re processing invoices, contracts, or forms. This allows you to focus on higher-level tasks while automating the repetitive work.
+
+---
+
+## How to Use ScaleDP for Efficient Structured Data Extraction from PDFs
+
+Using **ScaleDP** with **Spark-PDF** simplifies the process of extracting structured data from PDFs. Here’s how to get started:
+
+### 1. Define Your Data Schema for Document Processing
+
+The first step is to define the schema for the data you want to extract from the PDF. For example, if you’re processing invoices, your schema might include fields like hospital name, tax ID, items, and the total amount.
+
+Here's an example of how you can define your schema for an invoice:
+
+```python
+class Items(BaseModel):
+    date: str
+    item: str
+    note: str
+    debit: str
+
+class InvoiceSchema(BaseModel):
+    hospital: str
+    tax_id: str
+    address: str
+    email: str
+    phone: str
+    items: list[Items]
+    total: str
+```
+
+Defining this structure allows **ScaleDP**'s AI models to automatically identify the relevant fields in your document and extract the data accordingly.
+
+### 2. Create the Spark Pipeline for AI-Powered Data Extraction
+
+Next, set up the Spark pipeline to process the document using AI models. This pipeline defines how to extract data from the PDF and map it to the schema you've defined.
+
+
+
+```python
+pipeline = PipelineModel(stages=[
+    LLMVisualExtractor(
+        model="gemini-1.5-flash",
+        apiKey="your_key",
+        apiBase="https://generativelanguage.googleapis.com/v1beta/",
+        schema=InvoiceSchema,
+        outputCol="invoice"
+    )
+])
+```
+
+To connect to an AI model provider like **Gemini** or **OpenAI**, ensure that you have the correct API key and base URL. Once the connection is made, the pipeline will automatically extract the data from your PDFs.
+
+### 3. Process Your PDFs with ScaleDP and Spark-PDF
+
+Once your pipeline is set up, you can process your document through **ScaleDP** to extract the data:
+
+
+```python
+result = pipeline.transform(df).cache()
+```
+
+**ScaleDP** uses **zero-shot AI models**, which means you don’t have to manually tag or label data. Define the schema, and the AI will do the rest.
+
+### 4. View Your Structured Data in Spark DataFrames or JSON Format
+
+One of the key benefits of **ScaleDP** is how quickly and easily you can get started. Thanks to the zero-shot nature of the AI models, there's no need to spend time labeling or tagging data manually. Simply define your data structure, and let the AI handle the extraction and structuring.
+
+Once the document is processed, the extracted data will be displayed in a structured format, such as a **Spark DataFrame** or **JSON**, for easy analysis or integration with other systems.
+
+**Here’s an example of how the data might appear in a DataFrame:**
+
+```python
+result.select("invoice.data.*").show()
+```
+
+The output might look like this:
+
+
+| hospital           | tax_id   | address            | email                | phone        | items                | total   |
+|--------------------|----------|--------------------|----------------------|--------------|----------------------|---------|
+| Hope Haven Hospital| 26-123123| 855 Howard Stree...| hopedutton@hopeha... |(123) 456-1238| \[\{10/21/2022, App... | 1024.50 |
+
+
+**Alternatively, you can display the data in JSON format:**
+
+
+```
+result.show_json("invoice")
+```
+
+
+
+This will provide structured, easy-to-read data ready for further analysis:
+
+
+
+```json
+{
+    "hospital": "Hope Haven Hospital",
+    "tax_id": "26-123123",
+    "address": "855 Howard Street\nDutton, MI 49316",
+    "email": "hopedutton@hopehaven.com",
+    "phone": "(123) 456-1238",
+    "items": [
+        {
+            "date": "10/21/2022",
+            "item": "Appointment",
+            "note": "October 2022",
+            "debit": "1,056.25"
+        },
+        {
+            "date": "10/21/2022",
+            "item": "Insurance",
+            "note": "October 2022",
+            "debit": "($105.63)"
+        },
+        {
+            "date": "10/21/2022",
+            "item": "Medical Record Request",
+            "note": "October 2022",
+            "debit": "73.87"
+        },
+        {
+            "date": "10/21/2022",
+            "item": "Insurance",
+            "note": "October 2022",
+            "debit": "00.00"
+        }
+    ],
+    "total": "1024.50"
+}
+```
+
+
+
+
+## Conclusion
+
+Using **ScaleDP** and **Spark-PDF** together allows you to effortlessly extract structured data from PDFs. The key steps include defining your data schema, setting up the Spark pipeline, processing the document, and viewing the extracted data. This process is fast, accurate, and doesn't require manual data tagging, making it ideal for a wide range of applications.
+
+Because ScaleDP is built on top of **Apache Spark**, it’s also great for processing large datasets. Whether you’re dealing with hundreds or thousands of PDFs, ScaleDP can process them in parallel, making your workflow faster and more efficient.
+
+---
+
+## Links
+
+- [Learn more about ScaleDP](https://stabrise.com/scaledp/)
+- [Spark-PDF Project](https://stabrise.com/spark-pdf/)
+- [ScaleDP QuickStart Tutorial](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/1.QuickStart.ipynb)
+- [ScaleDP with Spark-PDF Tutorial](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb)
+
+---
+
+## Explore More:
+
+Ready to see ScaleDP in action? The [Colab Notebook](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb) is a great place to get started. In this tutorial, you’ll:
+
+- Load PDFs into Spark DataFrames using **Spark-PDF**.
+- Define your own schema for structured data extraction.
+- Automatically extract and display structured data from documents.
+
+It’s a hands-on way to see how easy it is to integrate **ScaleDP** with **Spark-PDF** and start extracting structured data from your documents right away.
+
+
