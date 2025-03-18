@@ -26,7 +26,7 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features 
           />
         </div>
       ) : (
-        <H3 className="bg-primary-100 rounded-t-lg">
+        <H3 className="bg-gray-50 rounded-t-lg">
           <p className="px-4 py-10">{title}</p>
         </H3>
       )}
