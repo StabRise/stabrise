@@ -1,13 +1,12 @@
 import { ReactNode } from 'react'
 import type { Blog, Projects } from 'contentlayer/generated'
 import Image from '@/components/Image'
-import Link from '@/components/Link'
 import BadgeLinks from '@/components/BadgeLinks'
 import SectionContainer from '@/components/SectionContainer'
-import { Button } from '@headlessui/react'
 import Card from '@/components/Card'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import H3 from '@/components/H3'
+import NavigationButton from '@/components/NavigationButton'
 
 interface Props {
   children: ReactNode
@@ -53,25 +52,27 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
       <section className="px-6 py-3 text-center sm:py-6 md:px-12 lg:px-18">
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
           {/* GitHub Section */}
-          <div className="flex items-center">
+
+          <div className="flex items-center text-sm">
             {gettingStarted && (
-              <Link href={gettingStarted}>
-                <Button className="bg-primary-500 hover:bg-primary-600 mr-3 py-2 pr-6 text-sm text-white">
-                  Getting Started
-                </Button>
-              </Link>
+              <NavigationButton
+                href={gettingStarted}
+                className="bg-primary-500 hover:bg-primary-600 mr-2 text-white"
+              >
+                Getting Started
+              </NavigationButton>
             )}
             {github && (
-              <Link href={github}>
-                <button className="bg-secondary-400 hover:bg-secondary-500 px-6 py-2 text-sm text-white">
-                  GitHub
-                </button>
-              </Link>
+              <NavigationButton
+                href={github}
+                className="bg-secondary-400 hover:bg-secondary-500 text-white"
+              >
+                GitHub
+              </NavigationButton>
             )}
           </div>
         </div>
       </section>
-
       <hr />
       <section className="px-6 py-6 sm:px-8 md:px-12 lg:px-18">
         <div className="prose max-w-none pb-8 xl:col-span-2">{children}</div>
