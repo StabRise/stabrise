@@ -1,7 +1,7 @@
 import Link from '@/components/Link'
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/data/siteMetadata'
-import Logo from '@/data/logo.svg'
+import FooterLogo from '@/data/logoFooter.svg'
 import projectsData from '@/data/projectsData'
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Logo and Description */}
             <div className="col-span-1">
               <Link href="/">
-                <Logo className="mb-1 h-12 w-32 text-gray-800" />
+                <FooterLogo className="mb-1 h-12 w-32 text-gray-800" />
               </Link>
               <p className="mb-4 text-sm text-gray-600">Document Processing Solutions</p>
               <p className="text-sm text-gray-600 italic">
