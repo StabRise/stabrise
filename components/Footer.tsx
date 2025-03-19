@@ -50,6 +50,13 @@ export default function Footer() {
                 >
                   Terms of Service
                 </Link>
+                <Link
+                  href="/blog/"
+                  className="mt-6 block text-sm text-gray-600 hover:text-gray-800"
+                  itemProp="url"
+                >
+                  Blog
+                </Link>
               </div>
             </div>
 
