@@ -13,9 +13,12 @@ import whyChooseUs from '@/data/whyChooseUs'
 export default async function Page() {
   return (
     <>
-      <WebPageJsonLd pageUrl="/" title="Home" />
+      <WebPageJsonLd
+        pageUrl="/"
+        title="StabRise: Document Processing & Data De-Identification Solutions"
+      />
       <SectionContainer>
-        <PageTitle>Scalable Document Processing Solutions</PageTitle>
+        <PageTitle>Scalable AI-Powered Document Processing Solutions</PageTitle>
         <p className="mx-auto max-w-5xl px-6 pb-6 text-center text-lg text-gray-600">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with <strong>HIPAA</strong>, <strong>GDPR</strong>, and

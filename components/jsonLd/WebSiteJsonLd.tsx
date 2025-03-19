@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata' // Import siteMetadata
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'StabRise',
+  name: siteMetadata.headerTitle,
   url: siteMetadata.siteUrl,
   logo: siteMetadata.siteLogo,
   contactPoint: {
@@ -25,40 +25,27 @@ const organizationJsonLd = {
   //   'addressLocality': 'Global', // Replace with your real address if needed
   //   'addressCountry': 'Worldwide', // Replace with your real country
   // },
-  description:
-    'At StabRise, we’re passionate about creating open-source tools that transform the way businesses process documents. Our projects, from Spark-powered PDF processing to AI-driven data de-identification, offer flexible and secure solutions that scale with your needs. Designed with privacy regulations like HIPAA and GDPR in mind, our open-source libraries enable organizations to handle sensitive data with confidence - boosting efficiency, security, and scalability along the way.',
+  description: siteMetadata.longDescription,
   //image: siteMetadata.socialBanner,
 }
 
 export const webSiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: siteMetadata.headerTitle,
-  description: siteMetadata.description,
+  name: siteMetadata.title,
+  description: siteMetadata.longDescription,
   url: siteMetadata.siteUrl,
   image: siteMetadata.siteLogo,
   publisher: {
     '@type': 'Organization',
-    name: 'StabRise',
+    name: siteMetadata.headerTitle,
   },
-  keywords: [
-    'Document Processing',
-    'Open Source',
-    'PDF Data Processing',
-    'Big Data',
-    'Data Pipeline',
-    'Distributed Processing',
-    'Data Extraction',
-  ],
+  keywords: siteMetadata.keywords,
   author: {
     '@type': 'Organization',
-    name: 'StabRise',
+    name: siteMetadata.headerTitle,
   },
   mainEntityOfPage: siteMetadata.siteUrl,
-  // TODO: Maybe we can add applications here?
-  // softwareApplication: {
-  //
-  // },
 }
 
 const combinedJsonLd = {

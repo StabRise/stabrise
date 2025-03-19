@@ -12,7 +12,7 @@ const generateWebPageJsonLd = (
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   url: `${siteMetadata.siteUrl}${pageUrl}`,
-  name: `${title} | ${siteMetadata.headerTitle}`,
+  name: title || siteMetadata.headerTitle,
   description: description || siteMetadata.description, // Fallback to site description if description is not provided
   publisher: {
     '@type': 'Organization',
