@@ -40,7 +40,7 @@ export default function DefaultPostLayout({
               src={displayImage}
               alt={title}
               fill // Makes the image fill the container
-              className="rounded-t-lg object-cover" // Rounded top corners and ensures the image covers the area
+              className="object-cover sm:rounded-t-lg" // Rounded top corners and ensures the image covers the area
             />
           </div>
         )}

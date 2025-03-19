@@ -17,7 +17,7 @@ const CalendlyWidget = () => {
 
   return (
     <div
-      className="calendly-inline-widget"
+      className="calendly-inline-widget my-6"
       data-url="https://calendly.com/stabrise"
       style={{ minWidth: '320px', height: '630px' }}
     ></div>
