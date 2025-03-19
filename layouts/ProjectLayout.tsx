@@ -32,8 +32,8 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
 
   return (
     <SectionContainer>
-      <section className="mb-6 px-6 pt-6 text-center sm:px-8 md:px-12 lg:px-18">
-        <h1 className="mx-auto max-w-3xl pb-3 text-lg text-gray-600 italic">
+      <div className="px-6 text-center sm:px-8 md:px-12 lg:px-18">
+        <h1 className="mx-auto max-w-3xl pb-3 text-center text-lg text-gray-600 italic">
           {imgSrc && (
             <Image src={imgSrc} alt={title} width={1200} height={600} className="w-full" />
           )}
@@ -48,11 +48,10 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
           pypiLink={pypi}
           pStabRiseLink={pStabRise}
         />
-      </section>
-      <section className="px-6 py-3 text-center sm:py-6 md:px-12 lg:px-18">
+      </div>
+      <div className="px-6 pt-6 pb-3 text-center sm:py-6 md:px-12 lg:px-18">
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
           {/* GitHub Section */}
-
           <div className="flex items-center text-sm">
             {gettingStarted && (
               <NavigationButton
@@ -72,7 +71,7 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
             )}
           </div>
         </div>
-      </section>
+      </div>
       <hr />
       <section className="px-6 py-6 sm:px-8 md:px-12 lg:px-18">
         <div className="prose max-w-none pb-8 xl:col-span-2">{children}</div>

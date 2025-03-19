@@ -3,11 +3,11 @@ const siteUrl = 'https://stabrise.com'
 
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'StabRise: Scalable & Open-Source AI-Powered Document Processing Solutions.',
+  title: 'StabRise: Scalable AI-Powered Document Processing Solutions.',
   author: 'Mykola Melnik, Olga Druchek, Svitoslav Melnyk',
   headerTitle: 'StabRise',
   description:
-    'Powered by AI, scaled with Apache Spark, and StabRise offering open-source products for scalable and secure processing. Led by enthusiasts with 15+ years of expertise.',
+    'Powered by AI, scaled with Apache Spark, and StabRise offering open-source products for scalable and secure processing. Team members with 15y+ of expertise.',
   longDescription:
     'StabRise is an innovative software company specializing in open-source, AI-powered solutions for document processing, scaled by Apache Spark. Our core projects, Spark-PDF and ScaleDP, efficiently handle a wide range of document types, including PDFs and image files, while ScaleDP leverages LLM (Large Language Models) to extract structured data from unstructured documents. Powered by Apache Spark, ScaleDP maintains scalability while utilizing advanced LLM techniques for high-performance data processing. These scalable, high-performance solutions enable businesses to automate and optimize their document processing workflows. StabRise provides secure, efficient tools that ensure compliance with GDPR, HIPAA, and other data protection regulations, empowering organizations to process sensitive information safely and effectively.',
   language: 'en-us',

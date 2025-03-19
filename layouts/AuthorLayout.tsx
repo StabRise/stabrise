@@ -20,7 +20,7 @@ export default function AuthorLayout({ children, content }: Props) {
             {avatar && (
               <Image
                 src={avatar}
-                alt="avatar"
+                alt={name}
                 width={192}
                 height={192}
                 className="h-32 w-32 rounded-full border-2 border-gray-300"

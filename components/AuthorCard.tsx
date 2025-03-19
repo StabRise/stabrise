@@ -12,13 +12,7 @@ const AuthorCard = ({ name, avatar, occupation, profileLink }: AuthorProps) => {
   return (
     <div key={name} className="flex items-center">
       {avatar && (
-        <Image
-          src={avatar}
-          width={40}
-          height={40}
-          alt="avatar"
-          className="h-10 w-10 rounded-full"
-        />
+        <Image src={avatar} width={40} height={40} alt={name} className="h-10 w-10 rounded-full" />
       )}
       <div className="ml-2">
         {profileLink ? (
