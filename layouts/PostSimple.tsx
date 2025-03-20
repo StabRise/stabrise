@@ -21,7 +21,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
 
   return (
     <SectionContainer>
-      <ScrollTopAndComment />
+      <ScrollTopAndComment toc={content.toc} />
       <article>
         <div className="px-6 py-12">
           <header>

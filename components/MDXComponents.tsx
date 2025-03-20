@@ -16,8 +16,8 @@ export const components: MDXComponents = {
   pre: Pre,
   table: TableWrapper,
   BlogNewsletterForm,
-  h1: ({ children }) => <PageTitle>{children}</PageTitle>,
-  h2: ({ children }) => <H2>{children}</H2>,
-  h3: ({ children }) => <H3>{children}</H3>,
+  // h1: ({ children }) => <PageTitle>{children}</PageTitle>,
+  // h2: ({ children }) => <H2>{children}</H2>,
+  // h3: ({ children }) => <H3>{children}</H3>,
   li: ({ children }) => <li className="mb-3">{children}</li>,
 }

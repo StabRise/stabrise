@@ -244,7 +244,7 @@ export default makeSource({
         {
           behavior: 'prepend',
           headingProperties: {
-            className: ['content-header'],
+            className: ['content-header', 'scroll-mt-20'],
           },
           content: icon,
         },

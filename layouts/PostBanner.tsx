@@ -24,7 +24,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
 
   return (
     <SectionContainer>
-      <ScrollTopAndComment />
+      <ScrollTopAndComment toc={content.toc} />
       <article>
         <div>
           <div className="space-y-1 px-2 pb-10 text-center dark:border-gray-700">
