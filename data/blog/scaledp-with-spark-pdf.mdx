@@ -9,30 +9,25 @@ displayImage: /static/images/blog/scaledp/extract-with-scaledp.png
 summary: 'Discover how ScaleDP and Spark-PDF simplify document processing with AI-driven structured data extraction, all powered by the scalability of Apache Spark.'
 keywords: ['ScaleDP', 'Spark-PDF', 'AI document processing', 'PDF extraction', 'data processing']
 ---
-
-Working with PDFs can be a real challenge, especially when you need to extract valuable data at scale. Whether you're processing invoices, contracts, or reports, manually parsing through documents is time-consuming and error-prone. If you’re already using **Spark-PDF** to read and process PDFs in Spark, you’re halfway there. But what if you could take it a step further by adding AI to automatically extract and structure the data? That's where **ScaleDP** comes in.
-
-In this post, we’ll show you how [**ScaleDP**](https://stabrise.com/scaledp/) can elevate your [**Spark-PDF**](https://stabrise.com/spark-pdf/) workflow by making document processing smarter and faster. We’ll specifically focus on how to get started with **structured data extraction**, which can save you hours of manual work.
+In this post, we’ll show you how [ScaleDP](https://github.com/StabRise/scaledp) can elevate your [Spark-PDF](https://github.com/StabRise/spark-pdf) workflow by making document processing smarter and faster. We’ll specifically focus on how to get started with **structured data extraction**, which can save you hours of manual work.
 
 ---
 
-## What is ScaleDP? AI-Powered Document Processing Framework
+## What is ScaleDP?
 
-[**ScaleDP**](https://stabrise.com/scaledp/) is a powerful AI-driven framework designed to automate document processing workflows. It integrates seamlessly with Spark to help you extract structured data from PDFs like names, dates, addresses, items, totals, and more - without needing to write complex code or manually tag data.
+[ScaleDP](https://github.com/StabRise/scaledp) is library allows you to process documents using AI/ML capabilities and scale it using Apache Spark.
 
-If you’re already familiar with [**Spark-PDF**](https://stabrise.com/spark-pdf/), you know it’s great for reading PDFs and converting them into Spark DataFrames. But when you need to extract structured data, **ScaleDP** takes the process a step further by leveraging AI to automatically identify and structure data points in your documents.
-
----
-
-## Why ScaleDP and Spark-PDF Are Essential for AI Document Processing
-
-While **Spark-PDF** is excellent at reading PDFs into Spark DataFrames, it doesn’t offer a solution for extracting meaningful, structured data from the document. That’s where **ScaleDP** comes in.
-
-By using **ScaleDP**, you gain access to pre-trained AI models that automatically extract and structure important pieces of information from your documents - whether you’re processing invoices, contracts, or forms. This allows you to focus on higher-level tasks while automating the repetitive work.
+**More Links:**
+- [ScaleDP GitHub Repository](https://github.com/StabRise/scaledp)
+- [ScaleDP Tutorials GitHub Repository](https://github.com/StabRise/ScaleDP-Tutorials)
+- [ScaleDP QuickStart Colab Notebook](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/1.QuickStart.ipynb)
+- [ScaleDP with Spark-PDF Notebook](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb)
 
 ---
 
 ## How to Use ScaleDP for Efficient Structured Data Extraction from PDFs
+
+While Spark-PDF reads PDFs into Spark DataFrames, it doesn't extract structured data. ScaleDP solves this by using pre-trained AI models to automatically extract key information from documents like invoices, contracts, or forms, freeing you to focus on higher-level tasks.
 
 Using **ScaleDP** with **Spark-PDF** simplifies the process of extracting structured data from PDFs. Here’s how to get started:
 
@@ -186,17 +181,4 @@ Because ScaleDP is built on top of **Apache Spark**, it’s also great for proce
 **Colab Jupyter Notebooks with Usage Samples:**
 - [ScaleDP QuickStart](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/1.QuickStart.ipynb)
 - [ScaleDP with Spark-PDF Tutorial](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb)
-
----
-
-## Explore More:
-
-Ready to see ScaleDP in action? The [ScaleDP with Spark-PDF Colab Notebook](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb) is a great place to get started. In this tutorial, you’ll:
-
-- Load PDFs into Spark DataFrames using **Spark-PDF**.
-- Define your own schema for structured data extraction.
-- Automatically extract and display structured data from documents.
-
-It’s a hands-on way to see how easy it is to integrate **ScaleDP** with **Spark-PDF** and start extracting structured data from your documents right away.
-
 
