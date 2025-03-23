@@ -39,12 +39,12 @@ export default function DefaultPostLayout({
           {content.toc.length > 0 && (
             <div className="pl-1bg-white sticky top-20 overflow-y-auto border-r border-b border-gray-200 p-4 pt-5">
               <h3 className="text-lg font-semibold text-gray-800">Table of Contents</h3>
-              <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+              <ul className="text-primary-700 mt-4 space-y-2">
                 {content.toc.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.url}
-                      className={`hover:text-primary-500 block py-1 pl-2 text-sm ${
+                      className={`hover:text-primary-950 block py-1 pl-2 text-sm ${
                         item.depth === 3 ? 'pl-4' : ''
                       }`}
                     >
