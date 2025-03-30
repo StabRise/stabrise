@@ -21,3 +21,17 @@ export const components: MDXComponents = {
   // h3: ({ children }) => <H3>{children}</H3>,
   li: ({ children }) => <li className="mb-3">{children}</li>,
 }
+
+export const componentsPages: MDXComponents = {
+  Image,
+  TOCInline,
+  a: CustomLink,
+  pre: Pre,
+  table: TableWrapper,
+  BlogNewsletterForm,
+  h1: ({ children }) => <PageTitle>{children}</PageTitle>,
+  h2: ({ children }) => <H2>{children}</H2>,
+  h3: ({ children }) => <H3>{children}</H3>,
+  p: ({ children }) => <p className="mb-3">{children}</p>,
+  li: ({ children }) => <li className="mb-3">{children}</li>,
+}
