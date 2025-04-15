@@ -1,0 +1,62 @@
+---
+title: Read PDF files from the Databricks Unity Catalog volumes using Spark PDF Datasource
+date: '2025-04-15'
+tags: ['spark', 'spark-pdf', 'databricks']
+draft: false
+summary: We improved support for the Databricks by adding support for the Unity Catalog in the Spark PDF Datasource
+authors: ['nmelnik']
+displayImage: '/static/images/post-banners/12.png'
+project: 'spark-pdf'
+keywords: ['spark', 'spark pdf', 'pdf', databricks]
+---
+
+We improved support for the Databricks by adding support for the Unity Catalog in the [Spark PDF Data Source](https://stabrise.com/spark-pdf/).
+
+So for now you can read PDF files from the Volumes in the Unity Catalog using Spark PDF Data Source.
+
+## Create Cluster
+
+Spark PDF supports Databricks runtime **15.4** and above.
+
+![Creating the cluster](/static/images/blog/spark-pdf/on-databricks/img1.webp)
+
+## Install library
+
+Need manually install Spark PDF library to the cluster.
+
+Maven coordinates: **[com.stabrise:spark-pdf-spark35_2.12:0.1.16](https://central.sonatype.com/artifact/com.stabrise/spark-pdf-spark35_2.12/0.1.16)**
+
+## Upload example files
+
+Upload example files to the Databricks [Unity Catalog Volume](https://docs.databricks.com/aws/en/ingestion/file-upload/upload-to-volume).
+
+## Read the PDF files using PDF DataSource
+
+You can use both Scala and Python API(PySpark) to read PDF files from the Unity Catalog Volume.
+
+Please specify your catalog and volume names in the code below:
+
+```python:Python
+df = spark.read.format("pdf") \
+    .option("imageType", "BINARY") \
+    .option("resolution", "300") \
+    .option("pagePerPartition", "8") \
+    .option("reader", "pdfBox") \
+    .load(["/Volumes/{CATALOG_NAME}/default/{VOLUME_NAME}/*.pdf")
+
+df.show()
+```
+
+Example output:
+
+![Reading PDF files on Databricks](/static/images/blog/spark-pdf/unity-catalog/databricks-sparkpdf-unity-catalog.png)
+
+
+You can found full example in the [notebook](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricksUnityCatalog.ipynb).
+
+
+## Links
+ - [Github repo](https://github.com/StabRise/spark-pdf/tree/main)
+ - [Notebook with reading from the Unity Catalog vlume](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricksUnityCatalog.ipynb)
+ - [Notebook with another example of using PDF Datasource on Databricks](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricks.ipynb)
+ - [Spark PDF on the Maven Central](https://central.sonatype.com/artifact/com.stabrise/spark-pdf-spark35_2.12)
