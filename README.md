@@ -46,6 +46,15 @@ Our Data De-Identification Tools are designed to anonymize sensitive data with o
 - ✔ Structured and unstructured data support
 - ✔ HIPAA, GDPR compliance
 
+### ScaleDP-Pro
+
+Paid extantion to the ScaleDP library which included:
+
+ - support Dicom format
+ - de-identification/anonimization capabilities
+ - access to the paid pretrained models (OCR, NER, LLM etc)
+ - and other things related to the document processing
+
 ---
 
 ## Use Cases
