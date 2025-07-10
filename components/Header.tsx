@@ -1,3 +1,4 @@
+import React from 'react'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -5,11 +6,12 @@ import Link from './Link'
 import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
 import NavigationButton from '@/components/NavigationButton'
+import ThemeSwitch from './ThemeSwitch'
 
-const Header = () => {
+const Header: React.FC = () => {
   const headerClass = siteMetadata.stickyNav
-    ? 'flex items-center w-full bg-primary-100 justify-between py-2 sticky top-0 z-50 shadow-md'
-    : 'flex items-center w-full bg-primary-100 justify-between py-2 shadow-md'
+    ? 'flex items-center w-full bg-primary-100 dark:bg-gray-900 justify-between py-2 sticky top-0 z-50 shadow-md'
+    : 'flex items-center w-full bg-primary-100 dark:bg-gray-900 justify-between py-2 shadow-md'
 
   return (
     <header className={headerClass}>
@@ -18,7 +20,7 @@ const Header = () => {
         <div className="flex items-center">
           <Logo className="mx-3 h-8 w-auto" />
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <span className="mt-1 hidden font-semibold text-gray-700">
+            <span className="mt-1 hidden font-semibold text-gray-700 dark:text-gray-200">
               {siteMetadata.headerTitle}
             </span>
           ) : (
@@ -30,7 +32,7 @@ const Header = () => {
       {/* Right-side items: Navigation, Search, and Button */}
       <div className="flex items-center space-x-4">
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-x-6 overflow-x-auto sm:flex">
+        <nav className="hidden items-center gap-x-6 overflow-x-auto sm:flex">
           {headerNavLinks
             .filter((link) => link.href !== '/')
             .map((link) => (
@@ -42,15 +44,18 @@ const Header = () => {
                 {link.title}
               </Link>
             ))}
-        </div>
+        </nav>
 
         {/* Search Button */}
         <SearchButton />
 
+        {/* Theme Switch */}
+        <ThemeSwitch />
+
         {/* Call-to-action Button */}
         <NavigationButton
           href="/schedule-meeting/"
-          className="bg-secondary-400 hover:bg-secondary-600 text-white"
+          className="bg-secondary-400 hover:bg-secondary-600 dark:bg-secondary-700 dark:hover:bg-secondary-900 text-white"
         >
           Contact Us
         </NavigationButton>

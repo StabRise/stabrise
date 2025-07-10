@@ -16,14 +16,28 @@ const Note: React.FC<NoteProps> = ({
   children,
 }) => {
   return (
-    <div className={`bg-primary-50 text-md border-l-3 border-blue-800 p-3 shadow-sm ${className}`}>
+    <div
+      className={`
+        bg-primary-50 border-l-4 border-blue-800 p-3 shadow-sm
+        text-md
+        text-gray-800
+        dark:bg-gray-900
+        dark:border-blue-600
+        dark:text-gray-200
+        ${className}
+      `}
+    >
       <div className="flex items-start space-x-3">
-        <span className="text-xl">{icon}</span> {/* Increased icon size */}
+        <span className="text-xl">{icon}</span>
         <div>
-          {title && <span className="font-semibold text-gray-800">{title}</span>}
-          {/* Use description if available */}
-          {description && <p className="text-gray-600">{description}</p>}
-          {/* Render children passed into the component */}
+          {title && (
+            <span className="font-semibold text-gray-800 dark:text-gray-100">
+              {title}
+            </span>
+          )}
+          {description && (
+            <p className="text-gray-600 dark:text-gray-300">{description}</p>
+          )}
           <div>{children}</div>
         </div>
       </div>

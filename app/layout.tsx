@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {env == 'production' && <GoogleTagManager gtmId="GTM-WH3KZ5KX" />}
         <WebSiteJsonLd />
       </head>
-      <body className="bg-gray-100 text-black antialiased">
+      <body className="bg-gray-100 text-black antialiased dark:bg-gray-900 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>

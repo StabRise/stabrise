@@ -19,7 +19,7 @@ export default async function Page() {
       />
       <SectionContainer>
         <PageTitle>Scalable AI-Powered Document Processing Solutions</PageTitle>
-        <p className="mx-auto max-w-5xl px-6 pb-6 text-center text-lg text-gray-600">
+        <p className="mx-auto max-w-5xl px-6 pb-6 text-center text-lg text-gray-600 dark:text-gray-200">
           Effortlessly manage both structured and unstructured data with solutions that grow with
           your business. Stay compliant with <strong>HIPAA</strong>, <strong>GDPR</strong>, and
           other regulations while improving efficiency. Powered by <strong>Spark</strong> and{' '}
@@ -35,9 +35,13 @@ export default async function Page() {
             className="hidden w-full sm:block"
           />
         </div>
-        <hr />
-        <section id="projects" className="bg-gray-50 px-6 py-8 text-center sm:py-12">
-          <H2>Our Projects</H2>
+        <hr className="border-gray-200 dark:border-gray-700" />
+
+        <section
+          id="projects"
+          className="bg-gray-50 px-6 py-8 text-center sm:py-12 dark:bg-gray-900"
+        >
+          <H2 className="dark:text-gray-300">Our Projects</H2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {projectsData.map((d) => (
               <Card
@@ -51,31 +55,35 @@ export default async function Page() {
             ))}
           </div>
         </section>
-        <hr />
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
         <section className="mx-auto max-w-screen-xl px-6 pt-6 sm:px-12 sm:pt-12">
-          <H2>Use Cases</H2>
+          <H2 className="dark:text-gray-100">Use Cases</H2>
           <div className="usage-cases-list mt-6">
             {useCases.map((item, index) => (
               <div key={index} className="usage-case-item mb-8">
                 <div className="usage-case-header mb-2.5 flex items-center">
                   <div className="usage-case-icon text-primary mr-2.5">{item.icon}</div>
-                  <p className="text-xl text-gray-800">{item.title}</p>
+                  <p className="text-xl text-gray-800 dark:text-gray-200">{item.title}</p>
                 </div>
-                <p className="text-base text-gray-700">{item.description}</p>
+                <p className="text-base text-gray-700 dark:text-gray-400">{item.description}</p>
               </div>
             ))}
           </div>
         </section>
-        <hr />
-        <section className="bg-primary-100 mx-auto max-w-screen-xl px-6 pt-6 pb-16 sm:pt-12">
-          <H2>Why Choose StabRise?</H2>
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
+        <section className="from-primary-100 to-primary-200 dark:from-primary-950 dark:to-primary-900 mx-auto max-w-screen-xl bg-gradient-to-tr px-6 pt-6 pb-16 sm:pt-12 dark:bg-gradient-to-tr">
+          <H2 className="dark:text-gray-100">Why Choose StabRise?</H2>
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {whyChooseUs.map((card, index) => (
               <SimpleCard
                 key={index}
                 title={card.title}
                 description={card.description}
-                icon={card.icon} // Pass the icon prop to the Card component
+                icon={card.icon}
               />
             ))}
           </div>

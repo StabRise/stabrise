@@ -8,7 +8,9 @@ interface Props {
 export default function H2({ children, className }: Props) {
   return (
     <h2
-      className={`sd:text-4xl px-6 pt-4 pb-2 text-center text-3xl font-semibold text-gray-800 sm:pt-4 lg:text-4xl ${className || ''}`}
+      className={`sd:text-4xl px-6 pt-4 pb-2 text-center text-3xl font-semibold text-gray-800 sm:pt-4 lg:text-4xl dark:text-gray-100 ${
+        className || ''
+      }`}
     >
       {children}
     </h2>

@@ -7,29 +7,33 @@ import projectsData from '@/data/projectsData'
 export default function Footer() {
   return (
     <div>
-      <footer className="border-t border-gray-300 bg-white py-6">
+      <footer className="border-t border-gray-300 bg-white py-6 dark:border-gray-700 dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4">
             {/* Logo and Description */}
             <div className="col-span-1">
               <Link href="/">
-                <FooterLogo className="mb-1 h-12 w-32 text-gray-800" />
+                <FooterLogo className="mb-1 h-12 w-32 text-gray-800 dark:text-gray-200" />
               </Link>
-              <p className="mb-4 text-sm text-gray-600">Document Processing Solutions</p>
-              <p className="text-sm text-gray-600 italic">
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                Document Processing Solutions
+              </p>
+              <p className="text-sm text-gray-600 italic dark:text-gray-400">
                 Scalable by the Spark. Process structured and unstructured data with ease.
               </p>
             </div>
 
             {/* Product Links */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Project</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Project
+              </div>
               <div className="space-y-2">
                 {projectsData.map((d) => (
                   <Link
                     key={d.title}
                     href={d.href}
-                    className="block text-sm text-gray-600 hover:text-gray-800"
+                    className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                   >
                     {d.title}
                   </Link>
@@ -39,20 +43,25 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Legal</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Legal
+              </div>
               <div className="space-y-2">
-                <Link href="/privacy" className="block text-sm text-gray-600 hover:text-gray-800">
+                <Link
+                  href="/privacy"
+                  className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+                >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms-of-use"
-                  className="block text-sm text-gray-600 hover:text-gray-800"
+                  className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                 >
                   Terms of Service
                 </Link>
                 <Link
                   href="/blog/"
-                  className="mt-6 block text-sm text-gray-600 hover:text-gray-800"
+                  className="mt-6 block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                   itemProp="url"
                 >
                   Blog
@@ -60,9 +69,11 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Connect With Us */}
+            {/* Contact Us */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Contact Us</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Contact Us
+              </div>
               <div className="space-y-2">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -105,8 +116,9 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
       {/* Footer Bottom */}
-      <div className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700">
+      <div className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700 dark:bg-gray-950">
         <div className="flex flex-col items-center">
           <div className="mb-3 flex space-x-4">
             <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />

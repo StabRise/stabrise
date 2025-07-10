@@ -1,10 +1,10 @@
 {
   "spark": 4,
+  "spark-pdf": 4,
   "data-extraction": 1,
   "ai": 1,
-  "spark-pdf": 4,
   "scaledp": 1,
   "llm": 1,
-  "spark-connect": 1,
-  "databricks": 1
+  "databricks": 1,
+  "spark-connect": 1
 }

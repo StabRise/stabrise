@@ -16,13 +16,16 @@ const AuthorCard = ({ name, avatar, occupation, profileLink }: AuthorProps) => {
       )}
       <div className="ml-2">
         {profileLink ? (
-          <Link href={profileLink} className="hover:text-primary-500 text-sm text-gray-800">
+          <Link
+            href={profileLink}
+            className="hover:text-primary-500 dark:hover:text-primary-400 text-sm text-gray-800 dark:text-gray-300"
+          >
             {name}
           </Link>
         ) : (
-          <p className="text-sm text-gray-800">{name}</p> // Fallback if neither LinkedIn nor GitHub is provided
+          <p className="text-sm text-gray-800 dark:text-gray-300">{name}</p>
         )}
-        <p className="text-xs text-gray-500">{occupation}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">{occupation}</p>
       </div>
     </div>
   )
