@@ -50,11 +50,11 @@ const Header: React.FC = () => {
         <SearchButton />
 
         {/* Theme Switch */}
-        <ThemeSwitch />
+        {/*<ThemeSwitch />*/}
 
         {/* Call-to-action Button */}
         <NavigationButton
-          href="/schedule-meeting/"
+          href="/contact/"
           className="bg-secondary-400 hover:bg-secondary-600 dark:bg-secondary-700 dark:hover:bg-secondary-900 text-white"
         >
           Contact Us
