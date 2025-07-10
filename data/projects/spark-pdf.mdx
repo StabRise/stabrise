@@ -12,7 +12,32 @@ pypi:
 pStabRise:
 github: https://github.com/StabRise/spark-pdf
 gettingStarted: https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSource.ipynb
-keywords: ['spark pdf', 'spark read pdf', 'pyspark read pdf', 'spark pdf data source', "Apache Spark PDF Integration", "Spark PDF Data Source", "Read PDF in Spark", "PySpark PDF Processing", "PDF to DataFrame in Spark", "OCR PDF Spark", "Scanned PDF OCR Spark", "Text Extraction from PDFs Spark", "Distributed PDF Processing", "Large File PDF Processing Spark", "PDF File Handling in Spark", "Apache Spark OCR Support", "Spark DataSource API", "PDF Image Rendering Spark", "Spark PDF Lazy Loading", "Efficient Spark PDF Processing", "Spark Read PDF", "PySpark Read PDF", "Spark PDF Data Source"]
+keywords:
+  [
+    'spark pdf',
+    'spark read pdf',
+    'pyspark read pdf',
+    'spark pdf data source',
+    'Apache Spark PDF Integration',
+    'Spark PDF Data Source',
+    'Read PDF in Spark',
+    'PySpark PDF Processing',
+    'PDF to DataFrame in Spark',
+    'OCR PDF Spark',
+    'Scanned PDF OCR Spark',
+    'Text Extraction from PDFs Spark',
+    'Distributed PDF Processing',
+    'Large File PDF Processing Spark',
+    'PDF File Handling in Spark',
+    'Apache Spark OCR Support',
+    'Spark DataSource API',
+    'PDF Image Rendering Spark',
+    'Spark PDF Lazy Loading',
+    'Efficient Spark PDF Processing',
+    'Spark Read PDF',
+    'PySpark Read PDF',
+    'Spark PDF Data Source',
+  ]
 banner: /static/images/projects/sparkpdf-card.png
 ---
 
@@ -21,14 +46,12 @@ into **Spark DataFrames**. It’s designed to simplify the process of working wi
 data pipelines, whether you're dealing with text-based documents, scanned PDFs, or large files
 with thousands of pages.
 
-import Note from "@/components/Note";
+import Note from '@/components/Note'
 
-<Note
-  title="Databricks Integration"
-  icon="🚀"
->
- This project now works on Databricks. Check out the [Databricks example](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricks.ipynb)
- for more details.
+<Note title="Databricks Integration" icon="🚀">
+  This project now works on Databricks. Check out the [Databricks
+  example](https://github.com/StabRise/spark-pdf/blob/main/examples/PdfDataSourceDatabricks.ipynb)
+  for more details.
 </Note>
 
 ## Key Features
@@ -40,12 +63,9 @@ import Note from "@/components/Note";
 - **Large File Support**: Handle PDFs with up to **10,000 pages** without performance bottlenecks.
 - **Spark Connect Compatibility**: Works seamlessly with Spark Connect for distributed processing.
 
-<Note
-  title="ScaleDP Compatibility"
-  icon="👉"
->
-  Compatible with **[ScaleDP, an Open-Source Library](/projects/scale-dp)** for Processing
-  Documents using **AI/ML** in Apache Spark.
+<Note title="ScaleDP Compatibility" icon="👉">
+  Compatible with **[ScaleDP, an Open-Source Library](/projects/scale-dp)** for Processing Documents
+  using **AI/ML** in Apache Spark.
 </Note>
 >
 
@@ -66,10 +86,7 @@ large files.
 - `Apache Spark` 3.3.2, 3.4.1, 3.5.0, 4.0.0
 - `Ghostscript` 9.50 or later (only for the GhostScript reader)
 
-<Note
-  title="Support of `Spark` 4.0.0"
-  icon="👉"
->
+<Note title="Support of `Spark` 4.0.0" icon="👉">
   `Spark` 4.0.0 is supported in the version 0.1.15 and later (requires Java 17 and Scala 2.13).
 </Note>
 >
@@ -89,7 +106,7 @@ Simply add the corresponding dependency to your project’s `pom.xml` or build c
 
 ### Configuration Options
 
-- `imageType`: Oputput image type. Can be: *"BINARY", "GREY", "RGB"*. Default: "RGB".
+- `imageType`: Oputput image type. Can be: _"BINARY", "GREY", "RGB"_. Default: "RGB".
 - `resolution`: Resolution for rendering PDF page to the image. Default: "300" dpi.
 - `pagePerPartition`: Number pages per partition in Spark DataFrame. Default: "5".
 - `reader:` Supports: pdfBox - based on **PdfBox** java lib, gs - based on **GhostScript** (need installation GhostScipt to the system)
