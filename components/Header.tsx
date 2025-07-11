@@ -50,7 +50,7 @@ const Header: React.FC = () => {
         <SearchButton />
 
         {/* Theme Switch */}
-        {/*<ThemeSwitch />*/}
+        <ThemeSwitch />
 
         {/* Call-to-action Button */}
         <NavigationButton

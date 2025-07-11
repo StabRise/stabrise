@@ -12,11 +12,11 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features }) => (
-  <div className="mx-auto rounded-lg bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl dark:bg-gray-900 dark:shadow-none dark:hover:shadow-xl">
+  <div className="mx-auto transform rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.03] hover:shadow-2xl dark:bg-gray-900 dark:shadow-none dark:hover:shadow-xl">
     <Link href={href} aria-label={`Link to ${title}`}>
       {/* If there is an image, display it */}
       {imgSrc ? (
-        <div className="overflow-hidden rounded-t-lg">
+        <div className="overflow-hidden rounded-t-lg bg-gradient-to-tr dark:from-gray-950 dark:to-gray-800">
           <Image
             alt={title}
             src={imgSrc}

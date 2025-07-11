@@ -18,7 +18,7 @@ export default function SectionContainer({ children, className, addMinHeight = t
       >
         <div
           className={`rounded bg-white sm:shadow-lg dark:bg-gray-900 dark:sm:shadow-md ${
-            addMinHeight ? 'py-6 sm:py-0' : 'py-0'
+            addMinHeight ? 'py-6 sm:py-0' : 'py-3'
           }`}
         >
           {children}
