@@ -1,8 +1,46 @@
+"use client"
 import Link from '@/components/Link'
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/data/siteMetadata'
 import FooterLogo from '@/data/logoFooter.svg'
 import projectsData from '@/data/projectsData'
+import { motion, Variants } from 'framer-motion'
+
+const socialLinks = [
+  { kind: 'mail', href: `mailto:${siteMetadata.email}` },
+  { kind: 'github', href: siteMetadata.github },
+  { kind: 'linkedin', href: siteMetadata.linkedin },
+  { kind: 'facebook', href: siteMetadata.facebook },
+  { kind: 'youtube', href: siteMetadata.youtube },
+  { kind: 'twitter', href: siteMetadata.twitter },
+  { kind: 'bluesky', href: siteMetadata.bluesky },
+  { kind: 'x', href: siteMetadata.x },
+  { kind: 'instagram', href: siteMetadata.instagram },
+  { kind: 'threads', href: siteMetadata.threads },
+  { kind: 'medium', href: siteMetadata.medium },
+] as const
+
+const iconContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const iconItem: Variants = {
+  hidden: { opacity: 0, scale: 0.8, y: 10 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: 'easeOut',
+    },
+  },
+}
 
 export default function Footer() {
   return (
@@ -118,28 +156,30 @@ export default function Footer() {
       </footer>
 
       {/* Footer Bottom */}
-      <div className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700 dark:bg-gray-950">
+      <motion.div
+        className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700 dark:bg-gray-950"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="flex flex-col items-center">
-          <div className="mb-3 flex space-x-4">
-            <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-            <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-            <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-            <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-            <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-            <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-            <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
-            <SocialIcon kind="x" href={siteMetadata.x} size={6} />
-            <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
-            <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
-            <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
-          </div>
+          <motion.div className="mb-3 flex flex-wrap justify-center gap-4" variants={iconContainer}>
+            {socialLinks.map((icon) =>
+              icon.href ? (
+                <motion.div key={icon.kind} variants={iconItem} whileHover={{ scale: 1.15 }}>
+                  <SocialIcon kind={icon.kind} href={icon.href} size={6} />
+                </motion.div>
+              ) : null
+            )}
+          </motion.div>
+
           <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
             <div>{`© ${new Date().getFullYear()}`}</div>
-            <div>{` • `}</div>
+            <div> •</div>
             <Link href="/">{siteMetadata.title}</Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
