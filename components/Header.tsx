@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import { motion } from 'framer-motion'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -9,15 +8,6 @@ import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
 import NavigationButton from '@/components/NavigationButton'
 import ThemeSwitch from './ThemeSwitch'
-import { GradientTypingTitle } from '@/components/TypingTitle'
-
-const navLinkVariants = {
-  hover: {
-    scale: 1.05,
-    textDecoration: 'underline',
-    transition: { duration: 0.3 },
-  },
-}
 
 const Header: React.FC = () => {
   const headerClass = siteMetadata.stickyNav
@@ -35,26 +25,18 @@ const Header: React.FC = () => {
       </Link>
 
       {/* Navigation & controls */}
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-3">
         {/* Desktop Nav */}
-        <nav className="hidden gap-x-8 sm:flex">
-          {headerNavLinks
-            // .filter((link) => link.href !== '/')
-            .map((link) => (
-              <motion.div
-                key={link.title}
-                variants={navLinkVariants}
-                whileHover="hover"
-                className="cursor-pointer"
-              >
-                <Link
-                  href={link.href}
-                  className="hover:text-primary-600 dark:hover:text-primary-400 text-lg font-medium text-gray-700 dark:text-gray-300"
-                >
-                  {link.title}
-                </Link>
-              </motion.div>
-            ))}
+        <nav className="hidden gap-x-6 sm:flex">
+          {headerNavLinks.map((link) => (
+            <Link
+              key={link.title}
+              href={link.href}
+              className="text-md relative font-normal text-black transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:text-blue-500 hover:after:w-full dark:text-gray-300 dark:hover:text-blue-400"
+            >
+              {link.title}
+            </Link>
+          ))}
         </nav>
 
         {/* Search */}
