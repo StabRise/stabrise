@@ -12,7 +12,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features }) => (
-  <div className="mx-auto transform rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.03] hover:shadow-2xl dark:bg-gray-900 dark:shadow-none dark:hover:shadow-xl">
+  <div className="mx-auto h-full transform rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.03] hover:shadow-2xl dark:bg-gray-900 dark:shadow-none dark:hover:shadow-xl">
     <Link href={href} aria-label={`Link to ${title}`}>
       {/* If there is an image, display it */}
       {imgSrc ? (

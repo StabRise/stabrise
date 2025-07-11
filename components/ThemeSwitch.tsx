@@ -51,9 +51,7 @@ const ThemeSwitch = () => {
       onClick={toggleTheme}
       className="group rounded p-2 focus:ring-0 focus:outline-none"
     >
-      <IconWrapper>
-        {mounted ? (resolvedTheme === 'dark' ? <Sun /> : <Moon />) : null}
-      </IconWrapper>
+      <IconWrapper>{mounted ? resolvedTheme === 'dark' ? <Sun /> : <Moon /> : null}</IconWrapper>
     </button>
   )
 }

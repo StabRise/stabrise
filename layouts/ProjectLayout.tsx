@@ -7,6 +7,7 @@ import Card from '@/components/Card'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import H3 from '@/components/H3'
 import NavigationButton from '@/components/NavigationButton'
+import RecentPostsSection from '@/components/RecentPosts'
 
 interface Props {
   children: ReactNode
@@ -41,7 +42,7 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
               alt={title}
               width={1200}
               height={600}
-              className="mb-4 w-full rounded-lg shadow-md dark:shadow-none"
+              className="mb-4 w-full rounded-lg"
             />
           )}
           {description}
@@ -93,24 +94,7 @@ export default function ProjectLayout({ children, content, recentPosts }: Props)
       </section>
 
       {/* Recent Posts */}
-      {recentPosts.length > 0 && (
-        <section className="bg-primary-100 py-12 dark:bg-gray-800">
-          <div className="mx-auto max-w-screen-xl px-6">
-            <H3 className="dark:text-white">Recent Posts</H3>
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {recentPosts.map((post) => (
-                <Card
-                  key={post.slug}
-                  title={post.title}
-                  description={post.title}
-                  imgSrc={post.displayImage}
-                  href={`/blog/${post.slug}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <RecentPostsSection recentPosts={recentPosts} />
     </SectionContainer>
   )
 }

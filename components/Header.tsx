@@ -39,7 +39,7 @@ const Header: React.FC = () => {
         {/* Desktop Nav */}
         <nav className="hidden gap-x-8 sm:flex">
           {headerNavLinks
-            .filter((link) => link.href !== '/')
+            // .filter((link) => link.href !== '/')
             .map((link) => (
               <motion.div
                 key={link.title}

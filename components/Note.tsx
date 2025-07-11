@@ -17,7 +17,7 @@ const Note: React.FC<NoteProps> = ({
 }) => {
   return (
     <div
-      className={`bg-primary-50 text-md border-l-4 border-blue-800 p-3 text-gray-800 shadow-sm dark:border-blue-600 dark:bg-gray-900 dark:text-gray-200 ${className} `}
+      className={`bg-primary-50 text-md border-l-4 border-blue-800 p-3 text-gray-800 shadow-sm dark:border-blue-600 dark:bg-gray-950 dark:text-gray-200 ${className} `}
     >
       <div className="flex items-start space-x-3">
         <span className="text-xl">{icon}</span>
