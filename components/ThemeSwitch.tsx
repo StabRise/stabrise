@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 
+const IconWrapper = ({ children }: { children: React.ReactNode }) => (
+  <div className="h-6 w-6">{children}</div>
+)
+
 const Sun = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -30,14 +34,12 @@ const Moon = () => (
 )
 
 const ThemeSwitch = () => {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  if (!mounted) return null
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
@@ -49,7 +51,9 @@ const ThemeSwitch = () => {
       onClick={toggleTheme}
       className="group rounded p-2 focus:ring-0 focus:outline-none"
     >
-      {resolvedTheme === 'dark' ? <Sun /> : <Moon />}
+      <IconWrapper>
+        {mounted ? (resolvedTheme === 'dark' ? <Sun /> : <Moon />) : null}
+      </IconWrapper>
     </button>
   )
 }

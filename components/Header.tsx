@@ -1,4 +1,6 @@
+'use client'
 import React from 'react'
+import { motion } from 'framer-motion'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -7,60 +9,69 @@ import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
 import NavigationButton from '@/components/NavigationButton'
 import ThemeSwitch from './ThemeSwitch'
+import { GradientTypingTitle } from '@/components/TypingTitle'
+
+const navLinkVariants = {
+  hover: {
+    scale: 1.05,
+    textDecoration: 'underline',
+    transition: { duration: 0.3 },
+  },
+}
 
 const Header: React.FC = () => {
   const headerClass = siteMetadata.stickyNav
-    ? 'flex items-center w-full bg-primary-100 dark:bg-gray-900 justify-between py-2 sticky top-0 z-50 shadow-md'
-    : 'flex items-center w-full bg-primary-100 dark:bg-gray-900 justify-between py-2 shadow-md'
+    ? 'sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md backdrop-blur-md backdrop-saturate-150 transition-colors duration-500 flex items-center justify-between py-4 px-6 sm:px-10'
+    : 'bg-white dark:bg-gray-900 shadow-md flex items-center justify-between py-4 px-6 sm:px-10'
 
   return (
     <header className={headerClass}>
-      {/* Logo and Header Title */}
+      {/* Logo + Title */}
       <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center">
-          <Logo className="mx-3 h-8 w-auto" />
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            <span className="mt-1 hidden font-semibold text-gray-700 dark:text-gray-200">
-              {siteMetadata.headerTitle}
-            </span>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+        <div className="flex items-center space-x-3">
+          <Logo className="h-10 w-auto" />
+          {/*<GradientTypingTitle text={siteMetadata.headerTitle} />*/}
         </div>
       </Link>
 
-      {/* Right-side items: Navigation, Search, and Button */}
-      <div className="flex items-center space-x-4">
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-x-6 overflow-x-auto sm:flex">
+      {/* Navigation & controls */}
+      <div className="flex items-center space-x-6">
+        {/* Desktop Nav */}
+        <nav className="hidden gap-x-8 sm:flex">
           {headerNavLinks
             .filter((link) => link.href !== '/')
             .map((link) => (
-              <Link
+              <motion.div
                 key={link.title}
-                href={link.href}
-                className="hover:text-primary-500 dark:hover:text-primary-400 font-medium text-gray-900 dark:text-gray-100"
+                variants={navLinkVariants}
+                whileHover="hover"
+                className="cursor-pointer"
               >
-                {link.title}
-              </Link>
+                <Link
+                  href={link.href}
+                  className="hover:text-primary-600 dark:hover:text-primary-400 text-lg font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {link.title}
+                </Link>
+              </motion.div>
             ))}
         </nav>
 
-        {/* Search Button */}
+        {/* Search */}
         <SearchButton />
 
         {/* Theme Switch */}
         <ThemeSwitch />
 
-        {/* Call-to-action Button */}
+        {/* CTA */}
         <NavigationButton
           href="/contact/"
-          className="bg-secondary-400 hover:bg-secondary-600 dark:bg-secondary-700 dark:hover:bg-secondary-900 text-white"
+          className="bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 rounded-md px-5 py-2 font-semibold text-white shadow-lg transition"
         >
           Contact Us
         </NavigationButton>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Nav */}
         <MobileNav />
       </div>
     </header>
