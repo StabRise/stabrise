@@ -12,11 +12,11 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features }) => (
-  <div className="mx-auto rounded-lg bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl">
+  <div className="mx-auto h-full transform rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.03] hover:shadow-2xl dark:bg-gray-900 dark:shadow-none dark:hover:shadow-xl">
     <Link href={href} aria-label={`Link to ${title}`}>
       {/* If there is an image, display it */}
       {imgSrc ? (
-        <div className="overflow-hidden rounded-t-lg">
+        <div className="overflow-hidden rounded-t-lg bg-gradient-to-tr dark:from-gray-950 dark:to-gray-800">
           <Image
             alt={title}
             src={imgSrc}
@@ -26,18 +26,20 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc, href, features 
           />
         </div>
       ) : (
-        <H3 className="rounded-t-lg bg-gray-50">
-          <p className="px-4 py-10">{title}</p>
+        <H3 className="rounded-t-lg bg-gray-50 dark:bg-gray-800">
+          <p className="px-4 py-10 text-gray-900 dark:text-gray-100">{title}</p>
         </H3>
       )}
 
       {/* Divider */}
-      <hr className="mb-4 border-gray-300" />
+      <hr className="mb-4 border-gray-300 dark:border-gray-700" />
 
       {/* Content Section */}
-      <div className="grey-700 px-6 pb-6">
+      <div className="px-6 pb-6">
         {/* Description */}
-        <p className="text-justify text-base leading-relaxed text-gray-700 italic">{description}</p>
+        <p className="text-justify text-base leading-relaxed text-gray-700 italic dark:text-gray-300">
+          {description}
+        </p>
 
         {/* Features List */}
         {features && <FeaturesList features={features} />}

@@ -1,7 +1,7 @@
 ---
 title: 'Structured Data Extraction from PDFs with AI'
 date: '2025-03-19'
-tags: ['spark', 'data extraction', 'AI', 'spark-pdf', 'ScaleDP', 'LLM',  ]
+tags: ['spark', 'data extraction', 'AI', 'spark-pdf', 'ScaleDP', 'LLM']
 draft: false
 project: 'scaledp'
 authors: ['nmelnik', 'olchikd']
@@ -9,6 +9,7 @@ displayImage: /static/images/blog/scaledp/extract-with-scaledp.png
 summary: 'Discover how ScaleDP and Spark-PDF simplify document processing with AI-driven structured data extraction, all powered by the scalability of Apache Spark.'
 keywords: ['ScaleDP', 'Spark-PDF', 'AI document processing', 'PDF extraction', 'data processing']
 ---
+
 In this post, we’ll show you how [ScaleDP](https://github.com/StabRise/scaledp) can elevate your [Spark-PDF](https://github.com/StabRise/spark-pdf) workflow by making document processing smarter and faster. We’ll specifically focus on how to get started with **structured data extraction**, which can save you hours of manual work.
 
 ---
@@ -18,6 +19,7 @@ In this post, we’ll show you how [ScaleDP](https://github.com/StabRise/scaledp
 [ScaleDP](https://github.com/StabRise/scaledp) is an open-source library allows you to process documents using AI/ML capabilities and scale it using Apache Spark.
 
 **More Links:**
+
 - [ScaleDP GitHub Repository](https://github.com/StabRise/scaledp)
 - [ScaleDP Tutorials GitHub Repository](https://github.com/StabRise/ScaleDP-Tutorials)
 - [ScaleDP QuickStart Colab Notebook](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/1.QuickStart.ipynb)
@@ -60,8 +62,6 @@ Defining this structure allows **ScaleDP**'s AI models to automatically identify
 
 Next, set up the Spark pipeline to process the document using AI models. This pipeline defines how to extract data from the PDF and map it to the schema you've defined.
 
-
-
 ```python
 pipeline = PipelineModel(stages=[
     LLMVisualExtractor(
@@ -79,7 +79,6 @@ To connect to an AI model provider like **Gemini** or **OpenAI**, ensure that yo
 ### 3. Process Your PDFs with ScaleDP and Spark-PDF
 
 Once your pipeline is set up, you can process your document through **ScaleDP** to extract the data:
-
 
 ```python
 result = pipeline.transform(df).cache()
@@ -101,64 +100,54 @@ result.select("invoice.data.*").show()
 
 The output might look like this:
 
-
-| hospital           | tax_id   | address            | email                | phone        | items                | total   |
-|--------------------|----------|--------------------|----------------------|--------------|----------------------|---------|
-| Hope Haven Hospital| 26-123123| 855 Howard Stree...| hopedutton@hopeha... |(123) 456-1238| \[\{10/21/2022, App... | 1024.50 |
-
+| hospital            | tax_id    | address             | email                | phone          | items                  | total   |
+| ------------------- | --------- | ------------------- | -------------------- | -------------- | ---------------------- | ------- |
+| Hope Haven Hospital | 26-123123 | 855 Howard Stree... | hopedutton@hopeha... | (123) 456-1238 | \[\{10/21/2022, App... | 1024.50 |
 
 **Alternatively, you can display the data in JSON format:**
-
 
 ```
 result.show_json("invoice")
 ```
 
-
-
 This will provide structured, easy-to-read data ready for further analysis:
-
-
 
 ```json
 {
-    "hospital": "Hope Haven Hospital",
-    "tax_id": "26-123123",
-    "address": "855 Howard Street\nDutton, MI 49316",
-    "email": "hopedutton@hopehaven.com",
-    "phone": "(123) 456-1238",
-    "items": [
-        {
-            "date": "10/21/2022",
-            "item": "Appointment",
-            "note": "October 2022",
-            "debit": "1,056.25"
-        },
-        {
-            "date": "10/21/2022",
-            "item": "Insurance",
-            "note": "October 2022",
-            "debit": "($105.63)"
-        },
-        {
-            "date": "10/21/2022",
-            "item": "Medical Record Request",
-            "note": "October 2022",
-            "debit": "73.87"
-        },
-        {
-            "date": "10/21/2022",
-            "item": "Insurance",
-            "note": "October 2022",
-            "debit": "00.00"
-        }
-    ],
-    "total": "1024.50"
+  "hospital": "Hope Haven Hospital",
+  "tax_id": "26-123123",
+  "address": "855 Howard Street\nDutton, MI 49316",
+  "email": "hopedutton@hopehaven.com",
+  "phone": "(123) 456-1238",
+  "items": [
+    {
+      "date": "10/21/2022",
+      "item": "Appointment",
+      "note": "October 2022",
+      "debit": "1,056.25"
+    },
+    {
+      "date": "10/21/2022",
+      "item": "Insurance",
+      "note": "October 2022",
+      "debit": "($105.63)"
+    },
+    {
+      "date": "10/21/2022",
+      "item": "Medical Record Request",
+      "note": "October 2022",
+      "debit": "73.87"
+    },
+    {
+      "date": "10/21/2022",
+      "item": "Insurance",
+      "note": "October 2022",
+      "debit": "00.00"
+    }
+  ],
+  "total": "1024.50"
 }
 ```
-
-
-
 
 ## Conclusion
 
@@ -167,18 +156,21 @@ Using **ScaleDP** and **Spark-PDF** together allows you to effortlessly extract 
 Because ScaleDP is built on top of **Apache Spark**, it’s also great for processing large datasets. Whether you’re dealing with hundreds or thousands of PDFs, ScaleDP can process them in parallel, making your workflow faster and more efficient.
 
 ---
+
 ## Links
 
 **Project Details:**
+
 - [ScaleDP](https://stabrise.com/scaledp/)
 - [Spark PDF](https://stabrise.com/spark-pdf/)
 
 **GitHub Repositories:**
+
 - [ScaleDP GitHub Repository](https://github.com/StabRise/scaledp)
 - [ScaleDP Tutorials GitHub Repository](https://github.com/StabRise/ScaleDP-Tutorials)
 - [Spark PDF GitHub Repository](https://github.com/StabRise/spark-pdf)
 
 **Colab Jupyter Notebooks with Usage Samples:**
+
 - [ScaleDP QuickStart](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/1.QuickStart.ipynb)
 - [ScaleDP with Spark-PDF Tutorial](https://colab.research.google.com/github/StabRise/scaledp-tutorials/blob/master/5.WithSparkPdf.ipynb)
-

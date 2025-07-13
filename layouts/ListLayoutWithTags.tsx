@@ -29,23 +29,18 @@ interface ListLayoutProps {
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
-  const segments = pathname.split('/')
-  const lastSegment = segments[segments.length - 1]
-  const basePath = pathname
-    .replace(/^\//, '') // Remove leading slash
-    .replace(/\/page\/\d+$/, '') // Remove any trailing /page
+  const basePath = pathname.replace(/^\//, '').replace(/\/page\/\d+$/, '')
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
   return (
     <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-      <nav className="flex justify-between">
-        {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
+      <nav className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
+        {!prevPage ? (
+          <button className="cursor-not-allowed opacity-50" disabled>
             Previous
           </button>
-        )}
-        {prevPage && (
+        ) : (
           <Link
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
@@ -54,14 +49,13 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           </Link>
         )}
         <span>
-          {currentPage} of {totalPages}
+          Page {currentPage} of {totalPages}
         </span>
-        {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
+        {!nextPage ? (
+          <button className="cursor-not-allowed opacity-50" disabled>
             Next
           </button>
-        )}
-        {nextPage && (
+        ) : (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
             Next
           </Link>
@@ -81,112 +75,111 @@ export default function ListLayoutWithTags({
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
-
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   return (
     <SectionContainer>
-      <div className="">
-        <div className="flex sm:space-x-0 md:space-x-3">
-          {/* Left Panel (No rounded corners) */}
-          <div className="hidden flex-wrap overflow-auto border-r border-gray-200 pt-5 pl-1 sm:flex sm:w-1/4 md:pl-6 xl:pl-12">
-            <div className="py-4">
-              <div className="text-center">
-                {pathname.startsWith('/blog') ? (
-                  <h4 className="text-primary-500 border-primary-500 mb-4 rounded-lg border px-3 py-2 font-semibold">
-                    All Posts
-                  </h4>
-                ) : (
-                  <Link
-                    href={`/blog`}
-                    className="hover:text-primary-500 font-semibold text-gray-700"
-                  >
-                    All Posts
-                  </Link>
-                )}
-              </div>
-
-              <ul className="mt-4 space-y-3">
-                {sortedTags.map((t) => {
-                  const isSelected = decodeURI(pathname.split('/tags/')[1]) === `${slug(t)}/`
-                  return (
-                    <li key={t}>
-                      <Link
-                        href={`/tags/${slug(t)}`}
-                        className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ease-in-out ${isSelected ? 'bg-primary-200 text-grey-900' : 'hover:bg-primary-100 dark:hover:bg-primary-500 hover:text-primary-500 text-gray-500 dark:text-gray-300'}`}
-                        aria-label={`View posts tagged ${t}`}
-                      >
-                        {`${t} (${tagCounts[t]})`}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right Content Panel */}
-          <div className="mt-12 flex-1">
-            <ul>
-              {displayPosts.map((post) => {
-                const { path, date, title, summary, tags, authors } = post
-                const authorDetails = getAuthorsByPost(post.authors || ['default'])
-                return (
-                  <li key={path} className="border-b border-gray-200 pb-8">
-                    <article className="flex flex-col space-y-4 px-8 md:flex-row md:space-y-0 md:space-x-6">
-                      {/* Content Section */}
-                      <div className="mb-3 flex-1">
-                        <H2>
-                          <Link href={`/${path}`} className="hover:text-primary-500">
-                            {title}
-                          </Link>
-                        </H2>
-
-                        {/* Tags */}
-                        <div className="text-primary-500 mt-2 flex flex-wrap space-x-2 text-sm text-xs">
-                          {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                        </div>
-
-                        {/* Summary/Description */}
-                        <div className="mt-3 text-justify text-gray-800 dark:text-gray-400">
-                          <p>{summary}</p>
-                        </div>
-
-                        <div className="mt-4 flex flex-col justify-between space-y-4 text-xs sm:mt-6 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
-                          {/* Author Info */}
-                          <div className="flex space-x-2 sm:items-center sm:space-x-4">
-                            {authorDetails.map((author) => (
-                              <AuthorCard
-                                key={author.name}
-                                name={author.name}
-                                avatar={author.avatar}
-                                occupation={author.occupation}
-                                profileLink={author.linkedin || author.github}
-                              />
-                            ))}
-                          </div>
-                          <div className="flex space-x-1 text-xs text-gray-500 sm:items-center">
-                            <span className="material-icons">
-                              <FaCalendar />
-                            </span>
-                            <span>
-                              <time dateTime={date} suppressHydrationWarning>
-                                {formatDate(date, siteMetadata.locale)}
-                              </time>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </li>
-                )
-              })}
-            </ul>
-            {pagination && pagination.totalPages > 1 && (
-              <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+      <div className="flex flex-col md:flex-row">
+        {/* Left Sidebar */}
+        <aside className="hidden flex-col border-r border-gray-200 py-5 pl-4 sm:flex sm:w-1/4 md:pl-6 lg:pl-12 dark:border-gray-800">
+          <div className="text-center">
+            {pathname.startsWith('/blog') ? (
+              <h4 className="border-primary-500 text-primary-500 dark:border-primary-400 dark:text-primary-400 mb-4 inline-block rounded-lg border px-3 py-2 font-semibold">
+                All Posts
+              </h4>
+            ) : (
+              <Link
+                href="/blog"
+                className="hover:text-primary-500 dark:hover:text-primary-400 font-semibold text-gray-700 dark:text-gray-300"
+              >
+                All Posts
+              </Link>
             )}
           </div>
-        </div>
+          <ul className="mt-4 space-y-3">
+            {sortedTags.map((t) => {
+              const isSelected = decodeURI(pathname.split('/tags/')[1]) === `${slug(t)}/`
+              return (
+                <li key={t}>
+                  <Link
+                    href={`/tags/${slug(t)}`}
+                    className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                      isSelected
+                        ? 'bg-primary-200 dark:bg-primary-500 text-gray-900 dark:text-white'
+                        : 'hover:bg-primary-100 hover:text-primary-500 text-gray-500 dark:text-gray-300 dark:hover:bg-gray-800'
+                    }`}
+                    aria-label={`View posts tagged ${t}`}
+                  >
+                    {`${t} (${tagCounts[t]})`}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 px-4 pt-6 md:px-6 lg:px-10">
+          <ul>
+            {displayPosts.map((post) => {
+              const { path, date, title, summary, tags, authors } = post
+              const authorDetails = getAuthorsByPost(authors || ['default'])
+
+              return (
+                <li key={path} className="mb-8 border-b border-gray-200 pb-12 dark:border-gray-800">
+                  <article className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
+                    {/* Text */}
+                    <div className="flex-1">
+                      <H2>
+                        <Link
+                          href={`/${path}`}
+                          className="hover:text-primary-500 dark:hover:text-primary-400"
+                        >
+                          {title}
+                        </Link>
+                      </H2>
+
+                      {/* Tags */}
+                      <div className="mt-6 flex flex-wrap gap-2 text-sm">
+                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                      </div>
+
+                      {/* Summary */}
+                      <p className="mt-3 text-justify text-gray-800 dark:text-gray-300">
+                        {summary}
+                      </p>
+
+                      {/* Footer */}
+                      <div className="mt-4 flex flex-col gap-4 text-xs sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex flex-wrap gap-4">
+                          {authorDetails.map((author) => (
+                            <AuthorCard
+                              key={author.name}
+                              name={author.name}
+                              avatar={author.avatar}
+                              occupation={author.occupation}
+                              profileLink={author.linkedin || author.github}
+                            />
+                          ))}
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                          <FaCalendar className="text-sm" />
+                          <time dateTime={date} suppressHydrationWarning>
+                            {formatDate(date, siteMetadata.locale)}
+                          </time>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              )
+            })}
+          </ul>
+
+          {pagination && pagination.totalPages > 1 && (
+            <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+          )}
+        </main>
       </div>
     </SectionContainer>
   )

@@ -1,35 +1,77 @@
+'use client'
 import Link from '@/components/Link'
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/data/siteMetadata'
 import FooterLogo from '@/data/logoFooter.svg'
 import projectsData from '@/data/projectsData'
+import { motion, Variants } from 'framer-motion'
+
+const socialLinks = [
+  { kind: 'mail', href: `mailto:${siteMetadata.email}` },
+  { kind: 'github', href: siteMetadata.github },
+  { kind: 'linkedin', href: siteMetadata.linkedin },
+  { kind: 'facebook', href: siteMetadata.facebook },
+  { kind: 'youtube', href: siteMetadata.youtube },
+  { kind: 'twitter', href: siteMetadata.twitter },
+  { kind: 'bluesky', href: siteMetadata.bluesky },
+  { kind: 'x', href: siteMetadata.x },
+  { kind: 'instagram', href: siteMetadata.instagram },
+  { kind: 'threads', href: siteMetadata.threads },
+  { kind: 'medium', href: siteMetadata.medium },
+] as const
+
+const iconContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const iconItem: Variants = {
+  hidden: { opacity: 0, scale: 0.8, y: 10 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: 'easeOut',
+    },
+  },
+}
 
 export default function Footer() {
   return (
     <div>
-      <footer className="border-t border-gray-300 bg-white py-6">
+      <footer className="border-t border-gray-300 bg-white py-6 dark:border-gray-700 dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4">
             {/* Logo and Description */}
             <div className="col-span-1">
               <Link href="/">
-                <FooterLogo className="mb-1 h-12 w-32 text-gray-800" />
+                <FooterLogo className="mb-1 h-12 w-32 text-gray-800 dark:text-gray-200" />
               </Link>
-              <p className="mb-4 text-sm text-gray-600">Document Processing Solutions</p>
-              <p className="text-sm text-gray-600 italic">
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                Document Processing Solutions
+              </p>
+              <p className="text-sm text-gray-600 italic dark:text-gray-400">
                 Scalable by the Spark. Process structured and unstructured data with ease.
               </p>
             </div>
 
             {/* Product Links */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Project</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Project
+              </div>
               <div className="space-y-2">
                 {projectsData.map((d) => (
                   <Link
                     key={d.title}
                     href={d.href}
-                    className="block text-sm text-gray-600 hover:text-gray-800"
+                    className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                   >
                     {d.title}
                   </Link>
@@ -39,20 +81,25 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Legal</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Legal
+              </div>
               <div className="space-y-2">
-                <Link href="/privacy" className="block text-sm text-gray-600 hover:text-gray-800">
+                <Link
+                  href="/privacy"
+                  className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+                >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms-of-use"
-                  className="block text-sm text-gray-600 hover:text-gray-800"
+                  className="block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                 >
                   Terms of Service
                 </Link>
                 <Link
                   href="/blog/"
-                  className="mt-6 block text-sm text-gray-600 hover:text-gray-800"
+                  className="mt-6 block text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                   itemProp="url"
                 >
                   Blog
@@ -60,9 +107,11 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Connect With Us */}
+            {/* Contact Us */}
             <div className="col-span-1">
-              <div className="my-3 text-lg font-semibold text-gray-800">Contact Us</div>
+              <div className="my-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Contact Us
+              </div>
               <div className="space-y-2">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -140,29 +189,32 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
       {/* Footer Bottom */}
-      <div className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700">
+      <motion.div
+        className="mb-2 border-t border-gray-300 pt-4 text-center dark:border-gray-700 dark:bg-gray-950"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="flex flex-col items-center">
-          <div className="mb-3 flex space-x-4">
-            <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-            <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-            <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-            <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-            <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-            <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-            <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
-            <SocialIcon kind="x" href={siteMetadata.x} size={6} />
-            <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
-            <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
-            <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
-          </div>
+          <motion.div className="mb-3 flex flex-wrap justify-center gap-4" variants={iconContainer}>
+            {socialLinks.map((icon) =>
+              icon.href ? (
+                <motion.div key={icon.kind} variants={iconItem} whileHover={{ scale: 1.15 }}>
+                  <SocialIcon kind={icon.kind} href={icon.href} size={6} />
+                </motion.div>
+              ) : null
+            )}
+          </motion.div>
+
           <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
             <div>{`© ${new Date().getFullYear()}`}</div>
-            <div>{` • `}</div>
+            <div> •</div>
             <Link href="/">{siteMetadata.title}</Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
