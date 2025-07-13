@@ -7,8 +7,8 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   /*Logo colors */
   /*--color1: #137DC5;*/
@@ -20,29 +20,29 @@
 
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
- --color-primary-50: #ecf4fd;
---color-primary-100: #e1eefc;
---color-primary-200: #b3d4f7;
---color-primary-300: #99c7f8;
---color-primary-400: #7eb1e6;
---color-primary-500: #2199ea;
---color-primary-600: #158bdc;
---color-primary-700: #137DC5;
---color-primary-800: #1169a5;
---color-primary-900: #0f5f96;
---color-primary-950: #0d3e70;
+  --color-primary-50: #ecf4fd;
+  --color-primary-100: #e1eefc;
+  --color-primary-200: #b3d4f7;
+  --color-primary-300: #99c7f8;
+  --color-primary-400: #7eb1e6;
+  --color-primary-500: #2199ea;
+  --color-primary-600: #158bdc;
+  --color-primary-700: #137dc5;
+  --color-primary-800: #1169a5;
+  --color-primary-900: #0f5f96;
+  --color-primary-950: #0d3e70;
 
-  --color-secondary-50: #fff3e0;   /* Very light, almost pastel */
-  --color-secondary-100: #ffd8b3;   /* Light orange */
-  --color-secondary-200: #ffb84d;   /* Lighter orange */
-  --color-secondary-300: #ff8c3b;   /* Light-medium orange */
-  --color-secondary-400: #ff9800;   /* Base color (orange #FF9800) */
-  --color-secondary-500: #fb8c00;   /* Medium orange */
-  --color-secondary-600: #f57c00;   /* Slightly darker orange */
-  --color-secondary-700: #ef6c00;   /* Darker orange */
-  --color-secondary-800: #e65100;   /* Very dark orange */
-  --color-secondary-900: #d84315;   /* Deep orange */
-  --color-secondary-950: #bf360c;   /* Very deep orange */
+  --color-secondary-50: #fff3e0; /* Very light, almost pastel */
+  --color-secondary-100: #ffd8b3; /* Light orange */
+  --color-secondary-200: #ffb84d; /* Lighter orange */
+  --color-secondary-300: #ff8c3b; /* Light-medium orange */
+  --color-secondary-400: #ff9800; /* Base color (orange #FF9800) */
+  --color-secondary-500: #fb8c00; /* Medium orange */
+  --color-secondary-600: #f57c00; /* Slightly darker orange */
+  --color-secondary-700: #ef6c00; /* Darker orange */
+  --color-secondary-800: #e65100; /* Very dark orange */
+  --color-secondary-900: #d84315; /* Deep orange */
+  --color-secondary-950: #bf360c; /* Very deep orange */
 
   --color-gray-50: #f7f7f7;
   --color-gray-100: #f5f5f5;
@@ -55,7 +55,6 @@
   --color-gray-800: #474747;
   --color-gray-900: #353535;
   --color-gray-950: #212121;
-
 
   /* Line heights */
   --line-height-11: 2.75rem;
@@ -74,16 +73,14 @@ body {
 }
 
 /* Add this to your custom CSS file */
-button, .button {
-  @apply rounded-md p-2 font-bold
-  transform hover:scale-105 transition-all duration-300
-  cursor-pointer;
+button,
+.button {
+  @apply transform cursor-pointer rounded-md p-2 font-bold transition-all duration-300 hover:scale-105;
 }
 
 button:hover {
   @apply scale-105; /* Increases size on hover */
 }
-
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

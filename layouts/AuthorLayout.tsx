@@ -16,21 +16,21 @@ export default function AuthorLayout({ children, content }: Props) {
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center space-x-2 pt-8">
+          <div className="flex flex-col items-center space-x-2 pt-8 text-center">
             {avatar && (
               <Image
                 src={avatar}
                 alt={name}
                 width={192}
                 height={192}
-                className="h-32 w-32 rounded-full border-2 border-gray-300"
+                className="h-32 w-32 rounded-full border-2 border-gray-300 dark:border-gray-600"
               />
             )}
             <PageTitle cssClass="mt-6 mb-1" withPadding={false}>
               {name}
             </PageTitle>
-            <div className="text-gray-500">{occupation}</div>
-            <div className="text-gray-500">{company}</div>
+            <div className="text-gray-600 dark:text-gray-400">{occupation}</div>
+            <div className="text-gray-600 dark:text-gray-400">{company}</div>
             <div className="flex items-center space-x-4 pt-3">
               <SocialIcon
                 size={6}
@@ -42,7 +42,7 @@ export default function AuthorLayout({ children, content }: Props) {
                 size={6}
                 kind="github"
                 href={github}
-                className="transition-colors duration-200 hover:text-black"
+                className="transition-colors duration-200 hover:text-gray-900 dark:hover:text-white"
               />
               <SocialIcon
                 size={6}

@@ -15,6 +15,7 @@ gettingStarted: https://github.com/StabRise/ScaleDP-Tutorials/blob/master/1.Quic
 keywords: ['scaledp', 'spark document processing']
 banner: /static/images/projects/scaledp-card.png
 ---
+
 ## ScaleDP: Streamlined Document Processing with AI and Apache Spark
 
 **ScaleDP** is an open-source library designed to simplify extracting structured data from unstructured documents using cutting-edge **AI models**. By leveraging the power of **Apache Spark**, ScaleDP provides **scalable, high-performance document processing** for tasks such as invoice extraction, scanned document processing, and real-time pipeline integration.
@@ -32,26 +33,24 @@ With its foundation built on **Apache Spark**, ScaleDP is capable of handling la
 ## Key Features
 
 - **Load PDFs and Images into Spark DataFrames**:
-Use the built-in [**Spark PDF DataSource**](/spark-pdf) or load files as `binaryFile` for flexible document handling.
+  Use the built-in [**Spark PDF DataSource**](/spark-pdf) or load files as `binaryFile` for flexible document handling.
 
 - **Extract Text and Images**:
-Extract text and images from **PDFs** and **image** files for further processing.
+  Extract text and images from **PDFs** and **image** files for further processing.
 
 - **Zero-Shot Data Extraction**:
-Use pre-trained **LLMs** and **VLMs** to extract structured data from text, images, and PDFs without custom training.
+  Use pre-trained **LLMs** and **VLMs** to extract structured data from text, images, and PDFs without custom training.
 
 - **REST API Support**:
-Run **ScaleDP** as a lightweight **REST API** for low-latency processing, even without a Spark session.
+  Run **ScaleDP** as a lightweight **REST API** for low-latency processing, even without a Spark session.
 
 - **Streaming Mode**:
-Process documents in real-time and integrate with event-driven architectures.
+  Process documents in real-time and integrate with event-driven architectures.
 
 - **Hugging Face Integration**:
-Access thousands of pre-trained models from the **Hugging Face Hub** or use your own custom models.
+  Access thousands of pre-trained models from the **Hugging Face Hub** or use your own custom models.
 
 ---
-
-
 
 ## Quick Start
 
@@ -65,7 +64,6 @@ In case to run with `Spark`:
 
 - `Apache Spark` 3.5 or higher
 - `Java` 8
-
 
 Install the `ScaleDP` package with pip. Python package on pypi is scaledp:
 
@@ -97,12 +95,12 @@ df = spark.read.format("pdf") \
 
 df.show_image()
 ```
+
 ---
 
 Output:
 
 ![Invoice Document](/static/images/blog/scaledp/invoice.png)
-
 
 ### Zero-Shot data Extraction from the Image
 
@@ -152,51 +150,55 @@ result.show_json("invoice")
 
 ## Generative AI Capabilities
 
-import Note from "@/components/Note";
+import Note from '@/components/Note'
 
-<Note
-  title="Gen AI"
-  icon="🚀"
->
+<Note title="Gen AI" icon="🚀">
   ScaleDP leverages advanced AI/ML models to enhance document processing.
 </Note>
 
 Here are some of its key capabilities:
 
 **LLM based OCR**
- - Accurate
- - Multilingual
+
+- Accurate
+- Multilingual
 
 **LLM Data Extraction from the text**
- - **Zero-shot** data extraction
- - Declarative (possibility to define schema)
- - Scalable
+
+- **Zero-shot** data extraction
+- Declarative (possibility to define schema)
+- Scalable
 
 **Visual LLM data extraction**
- - Extract data from the images
- - Zero shot
- - Accurate
- - Declarative
+
+- Extract data from the images
+- Zero shot
+- Accurate
+- Declarative
 
 **LLM Ner**
- - Zero-shot **NER**
+
+- Zero-shot **NER**
 
 ## Supported OCR engines
 
 **Tesseract OCR**
- - Fast
- - Most popular
+
+- Fast
+- Most popular
 
 **Easy OCR**
- - Ready-to-use **OCR** with **80+ languages** support.
+
+- Ready-to-use **OCR** with **80+ languages** support.
 
 **Surya OCR**
- - OCR in **90+ languages** that benchmarks favorably vs cloud services
- - Line-level text detection in any language
+
+- OCR in **90+ languages** that benchmarks favorably vs cloud services
+- Line-level text detection in any language
 
 **DocTR OCR**
- - Optical Character Recognition made seamless & accessible to anyone, powered by TensorFlow 2 & PyTorch
 
+- Optical Character Recognition made seamless & accessible to anyone, powered by TensorFlow 2 & PyTorch
 
 ## Use Cases
 
@@ -223,4 +225,3 @@ Experiment with pre-trained models or fine-tune them for specific tasks. Whether
 - **Advanced AI/ML Capabilities**: Leverage state-of-the-art **LLMs**, **VLMs**, and **OCR** engines to extract, process, and analyze data with high accuracy.
 - **Real-Time and Batch Processing**: Whether you need real-time streaming or batch processing, **ScaleDP** has you covered.
 - **Extensible**: Easily integrate custom models or extend functionality to meet your unique requirements.
-

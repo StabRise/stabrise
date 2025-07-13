@@ -34,19 +34,21 @@ export default function DefaultPostLayout({
     <SectionContainer>
       <ScrollTopAndComment toc={content.toc} />
       <article className="flex flex-col md:flex-row">
-        {/* Left Panel: Table of Contents (Visible on large screens only) */}
+        {/* TOC Panel */}
         <div className="hidden md:block md:w-1/4 md:pr-6">
           {content.toc.length > 0 && (
-            <div className="pl-1bg-white sticky top-20 overflow-y-auto border-r border-b border-gray-200 p-4 pt-5">
-              <h3 className="text-lg font-semibold text-gray-800">Table of Contents</h3>
-              <ul className="text-primary-700 mt-4 space-y-2">
+            <div className="sticky top-20 overflow-y-auto border-r border-b border-gray-200 bg-white p-4 pt-5 dark:border-gray-700 dark:bg-gray-900">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Table of Contents
+              </h3>
+              <ul className="mt-4 space-y-2 text-sm">
                 {content.toc.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.url}
-                      className={`hover:text-primary-950 block py-1 pl-2 text-sm ${
+                      className={`hover:text-primary-700 dark:hover:text-primary-400 block py-1 pl-2 transition-colors duration-150 ${
                         item.depth === 3 ? 'pl-4' : ''
-                      }`}
+                      } text-gray-600 dark:text-gray-300`}
                     >
                       {item.value}
                     </a>
@@ -57,7 +59,7 @@ export default function DefaultPostLayout({
           )}
         </div>
 
-        {/* Right Panel: Main Content */}
+        {/* Main Content */}
         <div className="md:w-3/4">
           {displayImage && (
             <div className="relative h-64 w-full sm:h-80 md:h-96 lg:h-112">
@@ -65,39 +67,37 @@ export default function DefaultPostLayout({
             </div>
           )}
           <div className="px-6 py-12">
-            <header className="border-b border-gray-200 py-4 sm:py-6">
+            {/* Header */}
+            <header className="border-b border-gray-200 py-4 sm:py-6 dark:border-gray-700">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Publication Date and Title */}
                 <div className="space-y-2 text-center">
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                   </p>
                   <PageTitle withPadding={false}>{title}</PageTitle>
                 </div>
 
-                {/* Author Details and Tags */}
-                <div className="mt-4 flex flex-col items-center space-y-3 md:flex-row md:justify-center md:space-y-0">
+                {/* Authors & Tags */}
+                <div className="mt-4 flex flex-col items-center space-y-3 md:flex-row md:justify-center md:space-y-0 md:space-x-6">
                   {authorDetails.map((author) => (
-                    <div key={author.name} className="w-full flex-col justify-center">
-                      <AuthorCard
-                        name={author.name}
-                        avatar={author.avatar}
-                        occupation={author.occupation}
-                        profileLink={author.linkedin || author.github}
-                      />
-                    </div>
+                    <AuthorCard
+                      key={author.name}
+                      name={author.name}
+                      avatar={author.avatar}
+                      occupation={author.occupation}
+                      profileLink={author.linkedin || author.github}
+                    />
                   ))}
-                  <div className="flex w-full md:flex-grow">
-                    <Tags tags={tags} />
-                  </div>
+                  <Tags tags={tags} />
                 </div>
               </div>
             </header>
-            <div className="grid-rows-[auto_1fr]">
-              <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-                <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
-              </div>
 
+            {/* Content */}
+            <div className="grid-rows-[auto_1fr]">
+              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
+
+              {/* Comments */}
               {siteMetadata.comments && (
                 <div
                   className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300"
@@ -107,6 +107,7 @@ export default function DefaultPostLayout({
                 </div>
               )}
 
+              {/* Footer */}
               <footer>
                 <Tags tags={tags} />
                 <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
