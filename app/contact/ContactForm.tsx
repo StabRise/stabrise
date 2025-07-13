@@ -35,23 +35,47 @@ const ContactForm = () => {
     setError(null)
     setLoading(true)
 
+    const TELEGRAM_BOT_TOKEN = '7941414587:AAHkcM0L74f9UQ7EjmCm0Fb02dLqxQ8RZo8'
+    const TELEGRAM_CHAT_ID = '1824136546'
+
+    const message = `
+📬 Stabrise: New Contact Submission
+
+👤 Name: ${data.name}  
+📧 Email: ${data.email}  
+🏢 Company: ${data.company}  
+_______________________
+
+${data.comment}
+`
+
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`
     try {
-      const res = await fetch('/api/contact_form', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+        }),
       })
 
-      const result = await res.json()
+      const result = await response.json()
 
-      if (result.success) {
+      if (result.ok) {
         setSubmitted(true)
-        setFormData({ name: '', company: '', email: '', comment: '' })
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          comment: '',
+        })
       } else {
-        setError(result.message || 'An error occurred. Please try again.')
+        setError('Failed to send message. Try again.')
       }
     } catch (err) {
-      setError('Network error. Please check your connection.')
+      console.error('Telegram Error:', err)
+      setError('An error occurred. Please try again later.')
     } finally {
       setLoading(false)
     }
