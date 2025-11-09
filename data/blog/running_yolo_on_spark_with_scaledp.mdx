@@ -1,0 +1,323 @@
+---
+title: 'Running YOLO Models on Spark Using ScaleDP'
+date: '2025-11-07'
+tags: ['spark', 'object detection', 'spark-pdf', 'ScaleDP']
+draft: false
+project: 'scaledp'
+authors: ['nmelnik', ]
+displayImage: /static/images/blog/scaledp/yolo/yolo-scaledp.png
+summary: 'Inference YOLO Models in scale on Spark using ScaleDP with ONNX.'
+keywords: ['ScaleDP', 'Spark-PDF', ]
+---
+
+I encountered a task in my project where I needed to detect signatures
+ across millions of PDF documents. To tackle this, I chose to use [YOLO](https://www.ultralytics.com/yolo)
+ (You Only Look Once), one of the most popular models for real-time object detection tasks.
+
+The [Spark PDF datasource](/spark-pdf/) enabled me to read and process PDF
+documents in a distributed manner, while [ScaleDP](/scaledp/)
+ already had built-in capabilities for image processing.
+
+As a result, I developed the [`YoloOnnxDetector`](https://scaledp.stabrise.com/en/latest/models/detectors/yolo_onnx_detector.html).
+
+In this post, I’ll walk through how to run YOLO models on Apache Spark using the ScaleDP
+library — including how to export YOLO models to ONNX format and perform scalable inference with Spark.
+
+---
+
+## Introduction
+
+YOLO models provide fast and accurate object detection, making them ideal for real-time applications.
+However, processing thousands or millions of images requires scalable solutions.
+Apache Spark is a powerful distributed computing framework, and ScaleDP bridges the gap between Spark
+and state-of-the-art deep learning models, including YOLO.
+
+## Why Use Spark for Object Detection?
+
+- **Scalability:** Process large datasets in parallel across multiple nodes.
+- **Efficiency:** Distribute inference workloads to maximize resource utilization.
+
+## Overview of Scaledp
+
+ScaleDP is a Python library designed for scalable document and image processing.
+It provides Spark ML transformers for tasks like object detection, OCR, and NER.
+The `YoloOnnxDetector` transformer allows you to run YOLO models exported to [ONNX](https://onnx.ai/) format
+directly on Spark DataFrames. Using ONNX in Scaledp allows you to run models without PyTorch or TensorFlow dependencies,
+making it lightweight and easy to deploy in various environments.
+
+## Exporting YOLO Model to ONNX
+
+Before running inference, I exported YOLO model to ONNX format.
+ScaleDP supports models from Hugging Face Hub, but you can also export your own using the Ultralytics library.
+
+**Example of the exporting:**
+
+First need to install ultralytics package:
+```bash
+pip install ultralytics
+```
+
+Then lets export standard Yolo model pretrained on COCO dataset to ONNX:
+
+```python
+from ultralytics import YOLO
+model = YOLO('yolov11n.pt')
+model.export(format="onnx")
+```
+
+**Console output:**
+```
+ONNX: starting export with onnx 1.17.0 opset 12...
+ONNX: slimming with onnxslim 0.1.73...
+ONNX: export success ✅ 0.7s, saved as 'yolo11n.onnx' (10.2 MB)
+```
+
+And I need also list of the labels for the run model:
+
+```python
+label_list = list(model.names.values())
+print(label_list)
+```
+
+**Console output:**
+```
+['person', 'bicycle', 'car', 'motorcycle', 'airplane', ....
+```
+
+So I can now use `yolo11n.onnx` for inference in Scaledp.
+
+## Setting Up the Environment
+
+- Python 3.8+
+- Apache Spark
+- ScaleDP
+
+Install Scaledp and dependencies:
+```bash
+pip install scaledp
+```
+
+## Running YOLO Models with Scaledp on Spark
+
+Let's start Spark Session with ScaleDP:
+
+```python
+from scaledp import *
+
+spark = ScaleDPSession(with_spark_pdf=True)
+spark
+```
+
+![spark_session](/static/images/blog/scaledp/yolo/spark_session.png)
+
+Load sample pdf file with headshot photos into a Spark DataFrame for try to detect it:
+
+```python
+pdf_example = '../data/pdfs/SampleWithFace.pdf'
+
+df = spark.read.format("pdf") \
+    .load(pdf_example)
+
+```
+
+Lets check the dataframe schema:
+```python
+df.printSchema()
+```
+
+Output:
+```
+root
+ |-- path: string (nullable = true)
+ |-- filename: string (nullable = true)
+ |-- page_number: integer (nullable = true)
+ |-- partition_number: integer (nullable = true)
+ |-- text: string (nullable = true)
+ |-- image: struct (nullable = true)
+ |    |-- path: string (nullable = true)
+ |    |-- resolution: integer (nullable = true)
+ |    |-- data: binary (nullable = true)
+ |    |-- imageType: string (nullable = true)
+ |    |-- exception: string (nullable = true)
+ |    |-- height: integer (nullable = true)
+ |    |-- width: integer (nullable = true)
+ |-- document: struct (nullable = true)
+ |    |-- path: string (nullable = true)
+ |    |-- text: string (nullable = true)
+ |    |-- outputType: string (nullable = true)
+ |    |-- bBoxes: array (nullable = true)
+ |    |    |-- element: struct (containsNull = true)
+ |    |    |    |-- text: string (nullable = true)
+ |    |    |    |-- score: float (nullable = true)
+ |    |    |    |-- x: integer (nullable = true)
+ |    |    |    |-- y: integer (nullable = true)
+ |    |    |    |-- width: integer (nullable = true)
+ |    |    |    |-- height: integer (nullable = true)
+ |    |-- exception: string (nullable = true)
+```
+
+So we have `image` column in the dataframe.
+Let's see the image using `show_image` utility from ScaleDP.
+ It available as DataFrame method:
+
+```python
+df.show_image()
+```
+
+Output:
+
+![img_input_with_faces](/static/images/blog/scaledp/yolo/img_input_with_faces.png)
+
+So now we can define first stage in our simple pipeline `YoloOnnxDetector`:
+
+```python
+from scaledp import *
+
+detector = YoloOnnxDetector(
+        keepInputData=True,
+        partitionMap=True,
+        numPartitions=0,
+        task="detect",
+        model="yolo11n.onnx",
+        scoreThreshold=0.6,
+        labels=label_list,
+    )
+```
+
+More details about parameters you can find in the [documentation](https://scaledp.stabrise.com/en/latest/models/detectors/yolo_onnx_detector.html).
+
+We can run inference now:
+
+```python
+# Assume df is a Spark DataFrame with an 'image' column
+result_df = detector.transform(df)
+```
+Let's see schema:
+
+```python
+result_df.printSchema()
+```
+
+```
+...
+ |-- boxes: struct (nullable = true)
+ |    |-- path: string (nullable = true)
+ |    |-- type: string (nullable = true)
+ |    |-- bboxes: array (nullable = true)
+ |    |    |-- element: struct (containsNull = true)
+ |    |    |    |-- text: string (nullable = false)
+ |    |    |    |-- score: double (nullable = false)
+ |    |    |    |-- x: integer (nullable = false)
+ |    |    |    |-- y: integer (nullable = false)
+ |    |    |    |-- width: integer (nullable = false)
+ |    |    |    |-- height: integer (nullable = false)
+ |    |    |    |-- angle: double (nullable = false)
+ |    |-- exception: string (nullable = true)
+ ...
+```
+
+And show results:
+
+```python
+from pyspark .sql.functions import explode
+results.select(explode("boxes.bboxes")).show(10, False)
+```
+
+
+**Console output:**
+```
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{person, 0.911443829536438, 310, 1282, 494, 638, 0.0}  |
+|{person, 0.8633673191070557, 1794, 2089, 440, 634, 0.0}|
++-------------------------------------------------------+
+```
+
+## Customizing Detection
+
+You can adjust detection parameters:
+- `scoreThreshold`: Minimum confidence for detections
+- `padding`: Expand bounding boxes by a percentage
+- `labels`: Provide class labels
+
+
+## Visualizing Results
+
+Detection results are returned as bounding boxes. For convenient visualization,
+ScaleDP provides the [`ImageDrawBoxes`](https://scaledp.stabrise.com/en/latest/image/image_draw_boxes.html) transformer, which overlays detected boxes and labels on images.
+You can use it directly or as part of a Spark pipeline.
+
+**Direct usage:**
+```python
+draw_boxes = ImageDrawBoxes(
+    keepInputData=True,
+    inputCols=["image", "boxes"],
+    outputCol="image_with_boxes",
+    filled=False,
+    color="red",
+    lineWidth=5,
+    textSize=34,
+    displayDataList=["text", "score"],
+)
+
+draw_boxes.transform(result_df).show_image("image_with_boxes")
+```
+
+**Spark pipeline usage (as in the notebook):**
+```python
+pipeline = PipelineModel(stages=[
+    YoloOnnxDetector(
+        keepInputData=True,
+        partitionMap=True,
+        numPartitions=0,
+        task="detect",
+        model="yolo11n.onnx",
+        scoreThreshold=0.6,
+        labels=label_list,
+    ),
+    ImageDrawBoxes(
+        keepInputData=True,
+        inputCols=["image", "boxes"],
+        outputCol="image_with_boxes",
+        filled=False,
+        color="red",
+        lineWidth=5,
+        textSize=34,
+        displayDataList=["text", "score"],
+    )
+])
+
+results = pipeline.transform(df)
+results.show_image("image_with_boxes")
+```
+
+**Example output image:**
+![img_yolo_detection_results](/static/images/blog/scaledp/yolo/img_yolo_detection_results.png)
+
+## Full Example Notebook
+
+For a complete, runnable example, see the [YOLO ONNX Detector tutorial notebook](https://github.com/StabRise/ScaleDP-Tutorials/blob/master/object-detection/1.YoloOnnxDetector.ipynb).
+You can run it directly in Google Colab for easy setup.
+
+## Pretrained YOLO Models in ScaleDP
+
+ScaleDP has built-in support for several pretrained YOLO models in ONNX format, including:
+- **[FaceDetector](https://scaledp.stabrise.com/en/latest/models/detectors/face_detector.html):** Specialized YOLO model for face detection in the documents.
+- **[SignatureDetector](https://scaledp.stabrise.com/en/latest/models/detectors/signature_detector.html):** YOLO model fine-tuned for signature detection in the documents.
+
+## Conclusion
+
+Running YOLO models on Spark with Scaledp enables scalable, distributed object detection for large datasets. By exporting models to ONNX and leveraging Spark's parallelism, you can efficiently process images at scale.
+
+---
+
+## References
+
+- [ScaleDP Documentation](https://scaledp.stabrise.com/)
+- [ScaleDP Tutorials](https://github.com/StabRise/ScaleDP-Tutorials)
+- [ScaleDP GitHub Repository](https://github.com/StabRise/ScaleDP)
+- [Spark PDF Datasource](https://spark-pdf.stabrise.com/)
+- [Ultralytics YOLO](https://www.ultralytics.com/)
+- [ONNX Format](https://onnx.ai/)
+
