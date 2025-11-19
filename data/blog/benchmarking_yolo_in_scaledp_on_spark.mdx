@@ -1,0 +1,176 @@
+---
+title: 'Benchmarking YOLO Models on Spark Using ScaleDP'
+date: '2025-11-19'
+tags: ['spark', 'object detection', 'benchmarking', 'ScaleDP', 'GPU']
+draft: false
+project: 'scaledp'
+authors: ['nmelnik']
+displayImage: /static/images/blog/scaledp/yolo/yolo-scaledp-benchmarking.png
+summary: 'Performance benchmarking of YOLO inference on Spark using ScaleDP with CPU and GPU acceleration.'
+keywords: ['ScaleDP', 'YOLO', 'Benchmarking', 'Performance']
+---
+
+When processing large-scale document datasets with object detection, understanding performance characteristics is critical for production deployments. In my previous post, I demonstrated how to run YOLO models on Apache Spark using ScaleDP. Now, I want to share comprehensive benchmarking results that show how ScaleDP's YoloOnnxDetector performs with different configurations.
+
+---
+
+## Introduction
+
+Performance optimization is key when processing millions of documents. The choice between CPU and GPU, partition size, and reader configuration all impact throughput. In this post, I'll share detailed benchmarks from running YOLO11 Nano model on a test dataset of 1,000 PDF pages using both CPU and GPU acceleration.
+
+## Test Environment
+
+My test setup included:
+- **CPU:** 13th Gen Intel(R) Core(TM) i9-13980HX (32 vCore)
+- **GPU:** NVIDIA GeForce RTX 4090 Laptop
+- **Model:** YOLO11 Nano (10.2 MB ONNX format)
+- **Dataset:** 1,000 PDF pages from document samples
+- **Framework:** Apache Spark with ScaleDP
+
+## Benchmark Methodology
+
+I tested three key scenarios:
+1. **End-to-End Pipeline:** PDF reading + image rendering + object detection
+2. **Cached Images:** With images pre-cached to isolate detection performance
+3. **Detection Only:** Pure YOLO inference performance
+
+I varied the following parameters:
+- **Pages per Partition:** 20, 50, and 100 pages
+- **Execution Device:** CPU and GPU (CUDA)
+- **PDF Readers:** PdfBox and Ghostscript
+
+## Results
+
+Here are the detailed benchmark results for processing 1,000 pages:
+
+| Pages in Partition | Device | Reader  | Time (seconds) | Per Page (ms) | Notes         |
+|--------------------|--------|---------|----------------|---------------|---------------|
+| 100                | CPU    | PdfBox  | 93             | 93            |               |
+| 50                 | CPU    | PdfBox  | 77             | 77            |               |
+| 20                 | CPU    | GS      | 56             | 56            | Detection only|
+| 20                 | GPU    | GS      | 27.2           | 27.2          |  |
+| 20                 | GPU    | GS      | 14.7           | 14.7          | Detection only|
+
+## Key Findings
+
+### 1. Partition Size Impact
+
+Smaller partition sizes (20 pages) perform better than larger ones (100 pages). This suggests that optimal parallelism is achieved with finer-grained partitions:
+- **100 pages:** 93ms per page
+- **50 pages:** 77ms per page
+- **20 pages:** 56ms per page
+
+### 2. PDF Reader Performance
+
+The Ghostscript (GS) reader outperforms PdfBox:
+- **PdfBox (50 pages):** 77ms per page
+- **Ghostscript (20 pages):** 56ms per page
+
+This is a **27% improvement** just by switching readers.
+
+### 3. GPU Acceleration
+
+GPU acceleration provides significant speedup over CPU:
+- **CPU (20 pages):** 56ms per page
+- **GPU (20 pages, full):** 27.2ms per page
+- **GPU (20 pages, detection only):** 14.7ms per page
+
+This represents a **51.6% improvement** with GPU for the full pipeline, and **73.8% improvement** for detection only.
+
+### 4. Image Caching
+
+Caching images in memory between pipeline stages eliminates PDF reading overhead:
+- **With PDF reading:** 56s for 1,000 pages (56ms per page)
+- **With cached images (CPU):** 69s for 1,000 pages (69ms per page)
+- **With cached images (GPU):** 14.7s for 1,000 pages (14.7ms per page)
+
+The GPU benefit becomes even more apparent with cached images, achieving **~14.7ms per page** for pure detection.
+
+## Throughput Analysis
+
+Based on these benchmarks, here's what you can expect:
+
+| Scenario                      | Pages/Hour | Pages/Day  |
+|-------------------------------|-----------|-----------|
+| CPU with PdfBox (100 pages)   | 38,710    | 929,000   |
+| CPU with GS (20 pages)        | 64,285    | 1,542,857 |
+| GPU with GS (20 pages, full)  | 132,352   | 3,176,470 |
+| GPU cached (detection only)   | 244,216   | 5,861,184 |
+
+## Recommendations for Production Deployments
+
+Based on these findings, I recommend:
+
+1. **Use GPU when available:** GPU acceleration provides 2-5x throughput improvement, making it highly cost-effective for large-scale processing.
+
+2. **Optimize partition size:** Use smaller partitions (20 pages) to achieve better parallelism and throughput.
+
+3. **Choose appropriate PDF reader:** For document quality and performance, prefer Ghostscript over PdfBox when rendering PDFs.
+
+4. **Consider image caching:** For pipelines with multiple stages, caching images can eliminate redundant PDF reading.
+
+5. **Scale horizontally:** With these per-node throughputs, distribute processing across multiple nodes:
+   - 10 GPU nodes: ~2.4M pages/hour
+   - 50 GPU nodes: ~12.2M pages/hour
+
+## Running the Benchmarks Yourself
+
+I've included a complete benchmarking notebook in the ScaleDP tutorials:
+
+```bash
+tutorials/object-detection/4.YoloOnnxDetectorBenchmarks.ipynb
+```
+
+You can run this notebook in Google Colab or on your local Spark:
+
+```python
+from scaledp import *
+
+spark = ScaleDPSession(with_spark_pdf=True)
+
+# Load PDF documents
+df = spark.read.format("pdf") \
+    .option("pagePerPartition", "20") \
+    .option("reader", "gs") \
+    .load("samples_1k.pdf")
+
+# Define detection pipeline
+detector = YoloOnnxDetector(
+    keepInputData=False,
+    partitionMap=True,
+    numPartitions=0,
+    model="yolo11n.onnx",
+    device=Device.CUDA,  # or Device.CPU
+    scoreThreshold=0.6,
+    labels=label_list
+)
+
+# Run inference
+results = detector.transform(df)
+results.select("boxes").count()
+```
+
+## Factors Affecting Performance
+
+Several factors can influence your benchmarking results:
+
+- **Hardware specs:** CPU cores, GPU compute capability, RAM bandwidth
+- **Model size:** YOLO11 Nano is very efficient; larger models will be slower
+- **Input resolution:** Default 640x640; adjust based on your use case
+- **Spark configuration:** Executor cores, memory, and driver settings
+
+## Conclusion
+
+ScaleDP's YoloOnnxDetector enables efficient, scalable object detection on Apache Spark. With GPU acceleration, you can process millions of document pages daily. These benchmarks demonstrate that thoughtful configuration choices — partition size, reader selection, and GPU utilization — can dramatically improve throughput.
+
+For your specific use case, I recommend benchmarking with your actual hardware and document types to validate these results and find optimal configurations.
+
+---
+
+## References
+
+- [ScaleDP Documentation](https://scaledp.stabrise.com/)
+- [ScaleDP Benchmarking Notebook](https://github.com/StabRise/ScaleDP-Tutorials/blob/master/object-detection/4.YoloOnnxDetectorBenchmarks.ipynb)
+- [Previous Post: Running YOLO Models on Spark Using ScaleDP](/blog/running-yolo-on-spark-with-scaledp)
+- [YoloOnnxDetector Documentation](https://scaledp.stabrise.com/en/latest/models/detectors/yolo_onnx_detector.html)
+- [Ultralytics YOLO](https://www.ultralytics.com/)
