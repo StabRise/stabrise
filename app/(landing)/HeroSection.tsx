@@ -1,69 +1,41 @@
-'use client'
-
-import { motion, Variants } from 'framer-motion'
-import Image from '@/components/Image'
-import PageTitle from '@/components/PageTitle'
-
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const fadeInUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 50,
-      damping: 20,
-    },
-  },
-}
+import Link from '@/components/Link'
+import DocToDataFrame from './DocToDataFrame'
 
 export default function HeroSection() {
   return (
-    <motion.section
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.6 }}
-      className="bg-gradient-to-tr dark:from-gray-950 dark:to-gray-800 dark:pb-10"
-    >
-      <motion.div variants={fadeInUp}>
-        <PageTitle>Scalable AI-Powered Document Processing Solutions</PageTitle>
-      </motion.div>
+    <section className="dark:bg-ink-deep overflow-hidden bg-white">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:px-8 lg:pt-24 lg:pb-28">
+        <div>
+          <h1 className="font-display text-ink text-[2.6rem] leading-[1.02] font-semibold tracking-[-0.03em] sm:text-6xl lg:text-[3.75rem] dark:text-white">
+            Turn millions of documents into Spark DataFrames
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-700 dark:text-slate-300">
+            StabRise builds tools that read PDFs, scans and DICOM files at cluster scale. Extract
+            text, tables and entities, and redact what has to stay private, all on your own
+            infrastructure.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              href="/contact/"
+              className="bg-ink hover:bg-ink-deep focus-visible:outline-brand dark:text-ink rounded-md px-6 py-3 font-semibold text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 dark:bg-white dark:hover:bg-slate-200"
+            >
+              Talk to an engineer
+            </Link>
+            <Link
+              href="#projects"
+              className="border-rule text-ink hover:border-ink focus-visible:outline-brand rounded-md border px-6 py-3 font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/20 dark:text-white dark:hover:border-white/60"
+            >
+              See our projects
+            </Link>
+          </div>
+          <p className="mt-10 max-w-md text-sm text-gray-500 dark:text-slate-400">
+            Runs on Apache Spark, Databricks, AWS, Azure and Google Cloud. Built for HIPAA and GDPR
+            workloads.
+          </p>
+        </div>
 
-      <motion.p
-        variants={fadeInUp}
-        className="mx-auto max-w-5xl px-6 pb-6 text-center text-lg text-gray-600 dark:text-gray-200"
-      >
-        Effortlessly manage both structured and unstructured data with solutions that grow with your
-        business. Stay compliant with <strong>HIPAA</strong>, <strong>GDPR</strong>, and other
-        regulations while improving efficiency. Powered by <strong>Spark</strong> and{' '}
-        <strong>AI</strong>, we make it easy to scale your document processing securely and
-        smoothly, so you can focus on what matters most.
-      </motion.p>
-
-      <motion.div variants={fadeInUp}>
-        <Image
-          src="/static/images/landing/banner.svg"
-          alt="AI Document Processing Illustration"
-          width={1200}
-          height={600}
-          className="hidden w-full sm:block"
-          priority
-        />
-      </motion.div>
-    </motion.section>
+        <DocToDataFrame />
+      </div>
+    </section>
   )
 }

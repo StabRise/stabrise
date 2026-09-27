@@ -5,6 +5,8 @@ interface Project {
   imgSrc?: string
   img2Src?: string
   features?: string[]
+  // Used on the landing page to group projects
+  category?: 'open-source' | 'web-tool'
 }
 
 const projectsData: Project[] = [
@@ -15,6 +17,7 @@ const projectsData: Project[] = [
     img2Src: '/static/images/projects/spark-pdf-800x600.png',
     href: '/spark-pdf/',
     features: ['Open-source', 'Supports large files', 'Optimized for performance'],
+    category: 'open-source',
   },
   {
     title: 'ScaleDP',
@@ -23,6 +26,7 @@ const projectsData: Project[] = [
     img2Src: '/static/images/projects/scale-dp-800x600.png',
     href: '/scaledp/',
     features: ['Open-source', 'Highly scalable'],
+    category: 'open-source',
   },
   {
     title: 'PDF Redaction',
@@ -32,20 +36,7 @@ const projectsData: Project[] = [
     img2Src: '/static/images/projects/pdf-redaction-800x600.png',
     href: 'https://pdf-redaction.com/',
     features: ['AI Powered', 'Free Web-Based Tool', 'API', 'Scalable'],
-  },
-  {
-    title: 'De-identify',
-    description: `
-    Our Data De-Identification Tools are designed to anonymize sensitive data with over 98% accuracy, ensuring that both structured and unstructured data remain secure. Built on the powerful Apache Spark framework, these tools are scalable and fully automated, making it easy to comply with regulations such as HIPAA, GDPR, and more.
-    `,
-    imgSrc: '/static/images/projects/deidentify.webp',
-    img2Src: '/static/images/projects/de-identify-800x600.png',
-    href: 'https://deidentify.online/',
-    features: [
-      'Data De‑identification Tools\n' + 'Scalable',
-      'Structured and unstructured data support',
-      'HIPAA, GDPR compliance',
-    ],
+    category: 'web-tool',
   },
 ]
 

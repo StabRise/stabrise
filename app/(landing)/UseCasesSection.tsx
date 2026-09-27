@@ -1,20 +1,23 @@
-import H2 from '@/components/H2'
 import useCases from '@/data/useCases'
 
 export default function UseCasesSection() {
   return (
-    <section className="mx-auto max-w-screen-xl px-6 pt-6 sm:px-12 sm:pt-12">
-      <H2 className="dark:text-gray-100">Use Cases</H2>
-      <div className="mt-6 mb-12">
-        {useCases.map((caseItem, idx) => (
-          <div key={idx} className="mb-8">
-            <div className="mb-2.5 flex items-center">
-              <div className="text-primary mr-2.5">{caseItem.icon}</div>
-              <p className="text-xl text-gray-800 dark:text-gray-200">{caseItem.title}</p>
+    <section className="dark:bg-ink-deep bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <h2 className="font-display text-ink max-w-2xl text-4xl font-semibold tracking-[-0.02em] sm:text-5xl dark:text-white">
+          What teams build with it
+        </h2>
+        <div className="mt-14 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+          {useCases.map(({ title, description, icon: Icon }) => (
+            <div key={title} className="border-rule border-t py-7 dark:border-white/10">
+              <Icon className="text-brand h-5 w-5" aria-hidden="true" />
+              <h3 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+              <p className="mt-2 leading-relaxed text-gray-600 dark:text-slate-400">
+                {description}
+              </p>
             </div>
-            <p className="text-base text-gray-700 dark:text-gray-400">{caseItem.description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )

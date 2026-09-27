@@ -38,14 +38,6 @@ At PDF Redaction, we help you protect sensitive information with our fast, AI-po
 
 ---
 
-### [De-identify](https://deidentify.online)
-
-Our Data De-Identification Tools are designed to anonymize sensitive data with over 98% accuracy, ensuring that both structured and unstructured data remain secure. Built on the powerful Apache Spark framework, these tools are scalable and fully automated, making it easy to comply with regulations such as HIPAA, GDPR, and more.
-
-- ✔ Data De‑identification Tools Scalable
-- ✔ Structured and unstructured data support
-- ✔ HIPAA, GDPR compliance
-
 ### ScaleDP-Pro
 
 Paid extantion to the ScaleDP library which included:

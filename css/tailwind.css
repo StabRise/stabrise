@@ -56,6 +56,15 @@
   --color-gray-900: #353535;
   --color-gray-950: #212121;
 
+  /* Brand tokens (from the StabRise logo) used by the landing page */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #113653;
+  --color-ink-deep: #0a2238;
+  --color-brand: #14a0e1;
+  --color-mist: #f2f7fb;
+  --color-rule: #d5e3ee;
+  --color-marker: #ffe36e;
+
   /* Line heights */
   --line-height-11: 2.75rem;
   --line-height-12: 3rem;
