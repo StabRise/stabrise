@@ -2,7 +2,7 @@
 import React from 'react'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
+import Image from '@/components/Image'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import SearchButton from './SearchButton'
@@ -19,7 +19,14 @@ const Header: React.FC = () => {
       {/* Logo + Title */}
       <Link href="/" aria-label={siteMetadata.headerTitle}>
         <div className="flex items-center space-x-3">
-          <Logo className="h-10 w-auto" />
+          <Image
+            src="/static/images/StabRiseLogo.png"
+            alt={siteMetadata.headerTitle}
+            width={647}
+            height={139}
+            priority
+            className="h-10 w-auto"
+          />
           {/*<GradientTypingTitle text={siteMetadata.headerTitle} />*/}
         </div>
       </Link>

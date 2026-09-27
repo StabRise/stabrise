@@ -24,7 +24,7 @@ const siteMetadata = {
   theme: 'light', // system, dark or light
   siteUrl: siteUrl,
   siteRepo: 'https://github.com/StabRise/stabrise',
-  siteLogo: `${siteUrl}${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteLogo: `${siteUrl}${process.env.BASE_PATH || ''}/static/images/StabRiseLogo.png`,
   socialBanner: `${siteUrl}${process.env.BASE_PATH || ''}/static/images/card.png`,
   // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'info@stabrise.com',

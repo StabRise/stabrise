@@ -27,6 +27,17 @@ An Open-Source Library for Processing Documents using AI/ML in Apache Spark.
 
 ---
 
+### [ScaleDP-TS](https://scaledp-ts.stabrise.com)
+
+ScaleDP for TypeScript. Render PDFs, run OCR, detect signatures and faces, and extract entities right in the browser with WebAssembly or WebGPU, so documents never leave the user's machine.
+
+- ✔ Open-source
+- ✔ Runs in the browser
+- ✔ WebAssembly and WebGPU
+- ✔ Same stages as ScaleDP
+
+---
+
 ### [PDF Redaction](https://pdf-redaction.com)
 
 At PDF Redaction, we help you protect sensitive information with our fast, AI-powered, easy-to-use, and 100% free online PDF redaction tool. Whether you're redacting names, dates, addresses, or confidential data, our AI ensures your documents stay secure and compliant with privacy regulations like GDPR, HIPAA, and CCPA.
@@ -37,14 +48,6 @@ At PDF Redaction, we help you protect sensitive information with our fast, AI-po
 - ✔ Scalable
 
 ---
-
-### [De-identify](https://deidentify.online)
-
-Our Data De-Identification Tools are designed to anonymize sensitive data with over 98% accuracy, ensuring that both structured and unstructured data remain secure. Built on the powerful Apache Spark framework, these tools are scalable and fully automated, making it easy to comply with regulations such as HIPAA, GDPR, and more.
-
-- ✔ Data De‑identification Tools Scalable
-- ✔ Structured and unstructured data support
-- ✔ HIPAA, GDPR compliance
 
 ### ScaleDP-Pro
 

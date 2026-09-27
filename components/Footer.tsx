@@ -2,7 +2,7 @@
 import Link from '@/components/Link'
 import SocialIcon from '@/components/social-icons'
 import siteMetadata from '@/data/siteMetadata'
-import FooterLogo from '@/data/logoFooter.svg'
+import Image from '@/components/Image'
 import projectsData from '@/data/projectsData'
 import { motion, Variants } from 'framer-motion'
 
@@ -51,7 +51,13 @@ export default function Footer() {
             {/* Logo and Description */}
             <div className="col-span-1">
               <Link href="/">
-                <FooterLogo className="mb-1 h-12 w-32 text-gray-800 dark:text-gray-200" />
+                <Image
+                  src="/static/images/StabRiseLogo.png"
+                  alt={siteMetadata.headerTitle}
+                  width={647}
+                  height={139}
+                  className="mb-3 h-9 w-auto"
+                />
               </Link>
               <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
                 Document Processing Solutions
