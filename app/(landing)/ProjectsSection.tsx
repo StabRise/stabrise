@@ -55,14 +55,14 @@ export default function ProjectsSection() {
           Projects
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-gray-700 dark:text-slate-300">
-          Libraries you can add to an existing Spark job today, and a tool anyone can use in the
-          browser.
+          Open-source libraries for Spark clusters and for the browser, and a free tool anyone can
+          use online.
         </p>
 
         <h3 className="mt-14 text-lg font-semibold text-gray-800 dark:text-slate-200">
-          Open source for Apache Spark
+          Open source libraries
         </h3>
-        <div className="border-rule mt-5 grid gap-12 border-t pt-8 md:grid-cols-2 md:gap-10 dark:border-white/10">
+        <div className="border-rule mt-5 grid gap-12 border-t pt-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 dark:border-white/10">
           {openSource.map((project) => (
             <Link key={project.title} href={project.href} className="group block">
               <Banner project={project} className="mb-6" />

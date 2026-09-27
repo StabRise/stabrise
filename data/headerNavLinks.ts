@@ -6,6 +6,7 @@ const headerNavLinks = [
     sublinks: [
       { href: '/spark-pdf/', title: 'Spark PDF' },
       { href: '/scaledp/', title: 'ScaleDP' },
+      { href: 'https://scaledp-ts.stabrise.com/', title: 'ScaleDP-TS' },
       { href: 'https://pdf-redaction.com/', title: 'PDF Redaction' },
     ],
   },
